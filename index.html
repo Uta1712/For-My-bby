@@ -1326,6 +1326,113 @@ body.bedtime-active{overflow:hidden!important}
 .finale-firework{animation-duration:2.1s!important;text-shadow:0 0 10px #ffb8d8!important;pointer-events:none!important}
 </style>
 
+
+<style id="final-night-and-hug-fix">
+/* Perbaikan kontras mode malam */
+#ruang-nyaman.bedtime-mode,
+#ruang-nyaman.bedtime-mode * {
+  color: #f8edf4;
+}
+#ruang-nyaman.bedtime-mode .comfort-kicker,
+#ruang-nyaman.bedtime-mode .comfort-title,
+#ruang-nyaman.bedtime-mode .comfort-intro,
+#ruang-nyaman.bedtime-mode .voice-box p,
+#ruang-nyaman.bedtime-mode .voice-file,
+#ruang-nyaman.bedtime-mode #bedtimeHint,
+#ruang-nyaman.bedtime-mode details summary {
+  color: #f1dce8 !important;
+}
+#ruang-nyaman.bedtime-mode .comfort-choice {
+  background: #332a3d !important;
+  border-color: #675064 !important;
+  color: #fff5fa !important;
+}
+#ruang-nyaman.bedtime-mode .comfort-choice strong {
+  color: #fff5fa !important;
+}
+#ruang-nyaman.bedtime-mode .comfort-choice span {
+  color: #e1c8d8 !important;
+}
+#ruang-nyaman.bedtime-mode .comfort-letter {
+  background: #332a3d !important;
+  border-color: #80647a !important;
+  color: #fff5fa !important;
+}
+#ruang-nyaman.bedtime-mode .comfort-letter h3,
+#ruang-nyaman.bedtime-mode #comfortLetterText {
+  color: #f8d9e8 !important;
+}
+#ruang-nyaman.bedtime-mode .comfort-btn {
+  background: #e7bfd5 !important;
+  border-color: #e7bfd5 !important;
+  color: #352538 !important;
+  position: relative;
+  z-index: 3;
+  pointer-events: auto !important;
+}
+#ruang-nyaman.bedtime-mode .comfort-btn.secondary {
+  background: #332a3d !important;
+  border-color: #c49ab3 !important;
+  color: #fff5fa !important;
+}
+#ruang-nyaman.bedtime-mode .voice-box {
+  background: #332a3d !important;
+  border: 1px solid #675064 !important;
+  border-radius: 20px;
+  padding: 22px 16px;
+}
+#ruang-nyaman.bedtime-mode audio {
+  max-width: 100%;
+}
+/* Overlay pelukan mesti berada di atas overlay mode malam */
+#comfortAffection {
+  z-index: 100010 !important;
+  pointer-events: none;
+}
+#comfortAffection.show {
+  pointer-events: auto;
+}
+#comfortAffection .affection-card,
+#comfortAffection button {
+  pointer-events: auto;
+}
+</style>
+
+
+<script id="robust-comfort-hug-handler">
+document.addEventListener('click', function(event) {
+  const hugButton = event.target.closest('#comfortHug');
+  if (!hugButton) return;
+  event.preventDefault();
+  event.stopPropagation();
+  const overlay = document.getElementById('comfortAffection');
+  if (overlay) {
+    overlay.classList.add('show');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+}, true);
+(function() {
+  const overlay = document.getElementById('comfortAffection');
+  if (!overlay) return;
+  function closeComfortHug() {
+    overlay.classList.remove('show');
+    overlay.setAttribute('aria-hidden', 'true');
+    if (!document.getElementById('ruang-nyaman')?.classList.contains('bedtime-mode')) {
+      document.body.style.overflow = '';
+    }
+  }
+  const closeButton = document.getElementById('closeComfortAffection');
+  if (closeButton) closeButton.addEventListener('click', closeComfortHug);
+  overlay.addEventListener('click', function(event) {
+    if (event.target === overlay) closeComfortHug();
+  });
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && overlay.classList.contains('show')) closeComfortHug();
+  });
+})();
+</script>
+
 </body></html>
 <style>
 /* Upgrade fitur 3 & 5: maskot responsif dan mesin hadiah tanpa pengulangan sampai semua hadiah keluar */
