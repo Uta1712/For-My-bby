@@ -1,4 +1,4 @@
-/* ===== Stylesheet 1 ===== */
+
 :root{--pink:#f4c5da;--pink2:#ffeaf3;--blue:#dceeff;--ink:#594553;--muted:#927c8b;--white:#fffdfd}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -469,7 +469,11 @@ button:active,a:active,[role="button"]:active{transform:scale(.97)}
 @media(max-width:520px){.cinema-overlay{padding:14px}.cinema-content{max-height:calc(100dvh - 24px);padding:10px 4px}.cinema-kicker{letter-spacing:.2em;font-size:8px}.finale-overline{font-size:8px}.cinema-copy{line-height:1.72}.finale-orbit{width:115vw}.finale-signature{margin:14px auto 16px}}
 @media(prefers-reduced-motion:reduce){.cinema-overlay:before,.finale-stars,.finale-orbit,.finale-orbit span,.cinema-overlay.show .finale-overline,.cinema-overlay.show .cinema-title,.cinema-overlay.show .finale-divider,.cinema-overlay.show .cinema-copy,.cinema-overlay.show .finale-promise,.cinema-overlay.show .finale-signature,.cinema-overlay.show .cinema-close{animation:none!important}}
 
-/* ===== Stylesheet 2 ===== */
+
+
+/* ===== Original style block separator ===== */
+
+
 /* CINEMATIC ROMANTIC UPGRADE — opening film, dramatic reveals, enhanced gift machine */
 .cinematic-intro{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;overflow:hidden;padding:24px;background:radial-gradient(ellipse at 50% 42%,#61354f 0%,#251722 48%,#100d16 100%);color:#fff5f8;text-align:center;transition:opacity 1s ease,visibility 1s ease}
 .cinematic-intro.dismissed{opacity:0;visibility:hidden;pointer-events:none}
@@ -508,10 +512,14 @@ button:active,a:active,[role="button"]:active{transform:scale(.97)}
 @media(max-width:520px){.intro-copy{font-size:14px}.intro-eyebrow{letter-spacing:.22em}.intro-foot{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.cinematic-intro,.intro-inner,.intro-stars,.cinematic-intro:before,.cinematic-intro:after,.gift-box.drawing,.gift-result.reveal,.gift-burst,.cinema-overlay.show .cinema-content,.cinema-overlay.show .cinema-heart,.cinema-overlay.show .cinema-spark{animation:none!important;transition:none!important}}
 
-/* ===== Stylesheet 3 ===== */
+
+/* ===== Original style block separator ===== */
+
 .section-arrive{animation:sectionArrive .7s cubic-bezier(.2,.75,.25,1)}@keyframes sectionArrive{0%{filter:brightness(1.08);transform:translateY(12px)}100%{filter:brightness(1);transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.section-arrive{animation:none}}
 
-/* ===== Stylesheet 4 ===== */
+/* ===== Original style block separator ===== */
+
+
 /* Finale polish: voice message and cinematic action layout */
 .finale-actions{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin:14px auto 8px}
 .finale-voice{border:1px solid #f6c9e588;border-radius:999px;padding:13px 20px;background:#ffffff0b;color:#ffe6f3;font-weight:600;cursor:pointer;backdrop-filter:blur(8px);transition:transform .25s,background .25s,box-shadow .25s}
@@ -521,7 +529,10 @@ button:active,a:active,[role="button"]:active{transform:scale(.97)}
 @media(max-width:520px){.finale-actions{flex-direction:column;width:100%}.finale-actions button{width:min(100%,310px)}}
 @media(prefers-reduced-motion:reduce){.cinema-overlay.show .finale-voice,.cinema-overlay.show .finale-voice-status{animation:none!important}}
 
-/* ===== Stylesheet 5 ===== */
+
+/* ===== Original style block separator ===== */
+
+
 /* Upgrade fitur 3 & 5: maskot responsif dan mesin hadiah tanpa pengulangan sampai semua hadiah keluar */
 #livingHeart{transform-origin:center;transition:filter .2s}#livingHeart:hover{filter:drop-shadow(0 0 10px #f3a8cb);transform:scale(1.12)}#livingHeart.mascot-pop{animation:mascotPop .55s cubic-bezier(.2,1.5,.4,1)}
 @keyframes mascotPop{0%{transform:scale(1) rotate(0)}35%{transform:scale(1.42) rotate(-12deg)}65%{transform:scale(.88) rotate(10deg)}100%{transform:scale(1) rotate(0)}}
