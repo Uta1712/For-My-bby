@@ -67,8 +67,8 @@ footer{text-align:center;padding:32px 0 42px;color:#a48d9c;font-size:12px}
 .music-dock.playing .music-toggle{animation:musicPulse 1.8s ease-in-out infinite}
 .music-label{white-space:nowrap}.music-label small{display:block;font-weight:500;color:#a38e9c;margin-top:2px}
 .youtube-music-panel{display:none;position:fixed;right:16px;bottom:78px;z-index:49;width:300px;max-width:calc(100vw - 24px);padding:10px;background:#fffdfd;border:1px solid #f4dce8;border-radius:18px;box-shadow:0 12px 32px #b98da744;color:#927c8b;font-size:12px}
-.youtube-music-panel.show{display:block;animation:pop .25s ease}
-.youtube-music-panel iframe{display:block;width:100%;height:200px;border:0;border-radius:10px}
+.youtube-music-panel.show{display:none!important;animation:none}
+.youtube-music-panel iframe{display:block;width:1px;height:1px;border:0;border-radius:0;opacity:0;pointer-events:none}
 .youtube-music-panel p{margin:8px 2px 2px;line-height:1.5}
 @media(max-width:420px){.youtube-music-panel{right:10px;bottom:72px}}
 .heart{position:fixed;pointer-events:none;z-index:20;will-change:transform,opacity;animation:heartDrift var(--duration,3.8s) cubic-bezier(.2,.65,.3,1) forwards;font-size:20px;filter:drop-shadow(0 3px 5px #d7a4c355);user-select:none}
@@ -319,7 +319,7 @@ function toggleMusic(){
   frame.allowFullscreen=true;
   frame.src='https://www.youtube-nocookie.com/embed/'+youtubeVideoId+'?autoplay=1&playsinline=1&loop=1&playlist='+youtubeVideoId;
   host.replaceChildren(frame);
-  panel.classList.add('show');musicPlaying=true;dock.classList.add('playing');
+  panel.classList.remove('show');musicPlaying=true;dock.classList.add('playing');
   btn.textContent='Ⅱ';btn.setAttribute('aria-label','Hentikan musik');btn.setAttribute('aria-pressed','true');status.textContent='lagu YouTube diputar ♡';hearts(7);
  }else{
   host.replaceChildren();panel.classList.remove('show');musicPlaying=false;dock.classList.remove('playing');
