@@ -375,6 +375,27 @@ button:focus-visible{outline:2px solid #b58a9b;outline-offset:4px}
 @media(max-width:520px){.comfort-grid{grid-template-columns:1fr}.comfort-section{margin:28px 12px;border-radius:22px}.comfort-section:before{font-size:56px}.comfort-choice{min-height:64px}}
 @media(prefers-reduced-motion:reduce){.comfort-letter,.comfort-choice,.comfort-btn{animation:none!important;transition:none!important}}
 
+
+/* Surat dari masa depan: satu perjalanan emosional, bukan sekadar kumpulan kartu */
+.future-section{padding:66px 0 76px;background:radial-gradient(ellipse at 50% 0%,#fff0f6 0%,#fffafc 44%,#f4f7ff 100%);position:relative;overflow:hidden}
+.future-section:before,.future-section:after{content:'✦';position:absolute;color:#e6b3cc;opacity:.55;font-size:22px;animation:futureTwinkle 4s ease-in-out infinite}
+.future-section:before{top:7%;left:8%}.future-section:after{right:9%;top:18%;animation-delay:1.6s}
+.future-shell{width:min(100% - 32px,640px);margin:auto;position:relative;z-index:1}
+.future-kicker{text-align:center;font-size:10px;letter-spacing:.2em;font-weight:800;color:#b57696;margin-bottom:13px}
+.future-title{font:500 clamp(34px,9vw,49px)/1.08 Georgia,serif;text-align:center;color:#9f5d7e;margin:0 auto 15px;max-width:520px}
+.future-intro{max-width:440px;margin:0 auto 28px;text-align:center;font-size:14px;line-height:1.9;color:#806b7a}
+.future-timecards{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.future-timecard{min-height:120px;text-align:left;border:1px solid #f0dce7;border-radius:20px;padding:17px 15px;background:#ffffffd9;color:#765b6d;box-shadow:0 8px 25px #d8b7cc18;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s}
+.future-timecard:hover,.future-timecard:focus-visible{transform:translateY(-3px);border-color:#dca8c1;box-shadow:0 12px 28px #d8b7cc35;outline:none}
+.future-timecard .symbol{font-size:23px;display:block;margin-bottom:10px}.future-timecard strong{display:block;font:500 18px Georgia,serif;color:#a36383;margin-bottom:5px}.future-timecard span:last-child{font-size:12px;line-height:1.5;color:#988393}
+.future-letter{display:none;margin-top:18px;padding:25px 21px 22px;border:1px solid #f0dbe5;border-radius:23px;background:linear-gradient(150deg,#fffefa,#fff3f8);box-shadow:0 15px 40px #c9a5ba24;animation:pop .35s ease both}
+.future-letter.show{display:block}.future-letter .letter-stamp{text-align:center;font-size:27px;margin-bottom:10px}.future-letter h3{font:500 27px/1.2 Georgia,serif;text-align:center;color:#a45f81;margin:0 0 16px}.future-letter .letter-body{font:16px/1.95 Georgia,serif;color:#735e6d;white-space:pre-line;min-height:90px}.future-sign{font-size:13px;color:#ae7895;font-style:italic;text-align:right;margin-top:18px}
+.future-actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:20px}.future-actions button{border:1px solid #e8c8d9;background:#fff;color:#a05f80;border-radius:999px;padding:11px 15px;min-height:42px;cursor:pointer;font-weight:650;font-size:12px}.future-actions button.main{background:linear-gradient(100deg,#eaaac8,#c5def7);border:0;color:#fff}
+.future-last{display:none;margin-top:18px;padding:27px 20px;border-radius:24px;text-align:center;background:#30283d;color:#fff0f7;box-shadow:0 18px 45px #39273d30;animation:pop .5s ease both}.future-last.show{display:block}.future-last .last-stars{letter-spacing:.45em;color:#f1bfd7}.future-last h3{font:italic 27px Georgia,serif;font-weight:400;margin:13px 0}.future-last p{font:15px/1.9 Georgia,serif;color:#f3dce8;max-width:420px;margin:0 auto}.future-last .last-sign{margin-top:18px;color:#f1bfd7;font-size:12px;letter-spacing:.08em}
+@keyframes futureTwinkle{0%,100%{opacity:.25;transform:scale(.85) rotate(0)}50%{opacity:.85;transform:scale(1.2) rotate(20deg)}}
+@media(max-width:390px){.future-timecards{grid-template-columns:1fr}.future-timecard{min-height:unset}.future-letter{padding:22px 17px}}
+@media(prefers-reduced-motion:reduce){.future-section:before,.future-section:after{animation:none}}
+
 </style>
 </head>
 <body>
@@ -707,6 +728,58 @@ function romanticShowConsent(){
   },true);
 })();
 
+</script>
+
+
+<section class="future-section" id="surat-masa-depan" aria-labelledby="futureHeading">
+ <div class="future-shell">
+  <div class="future-kicker">BUKAN CUMA HARI INI · UNTUK KITA</div>
+  <h2 class="future-title" id="futureHeading">Surat dari masa depan</h2>
+  <p class="future-intro">Aku nggak bisa menjanjikan setiap hari akan mudah. Tapi aku ingin meninggalkan beberapa kata untukmu—untuk hari ini, untuk hari yang berat, dan untuk hari-hari yang belum kita temui. Pilih surat yang paling kamu butuhkan.</p>
+  <div class="future-timecards" role="group" aria-label="Pilih surat yang ingin dibuka">
+   <button class="future-timecard" type="button" data-future="today"><span class="symbol">☀️</span><strong>Untuk hari ini</strong><span>Kalau kamu lupa betapa berharganya dirimu.</span></button>
+   <button class="future-timecard" type="button" data-future="hard"><span class="symbol">🌧️</span><strong>Untuk hari yang berat</strong><span>Kamu nggak harus selalu terlihat kuat.</span></button>
+   <button class="future-timecard" type="button" data-future="distance"><span class="symbol">🌙</span><strong>Untuk saat kita berjauhan</strong><span>Ketika rindu terasa lebih besar dari biasanya.</span></button>
+   <button class="future-timecard" type="button" data-future="future"><span class="symbol">🕯️</span><strong>Untuk kita nanti</strong><span>Catatan kecil dari aku, yang memilihmu hari ini.</span></button>
+  </div>
+  <article class="future-letter" id="futureLetter" aria-live="polite" aria-atomic="true">
+   <div class="letter-stamp" aria-hidden="true">♡</div><h3 id="futureLetterTitle">Surat kecil untukmu</h3><div class="letter-body" id="futureLetterBody"></div><div class="future-sign">— dari aku, yang menyayangimu ♡</div>
+   <div class="future-actions"><button type="button" id="futureVoice">Dengarkan suaraku 🎧</button><button type="button" class="main" id="futureContinue">Ada satu hal lagi…</button></div>
+  </article>
+  <article class="future-last" id="futureLast" aria-live="polite">
+   <div class="last-stars">✦ · ♡ · ✦</div><h3>Kalau suatu hari kamu lupa…</h3>
+   <p>kembalilah ke sini dan ingat satu hal: kamu nggak perlu menjadi versi paling sempurna dari dirimu agar pantas disayangi. Aku ingin mengenalmu di hari yang cerah, dan tetap mendengarkanmu di hari yang mendung. Terima kasih sudah hadir di hidupku. Kalau nanti kita tumbuh dan berubah, aku berharap kita tetap mau saling mengenal lagi—dengan lembut, dengan jujur, dan dengan hati yang terbuka.</p>
+   <div class="last-sign">HARI INI, ESOK, DAN SELAMA KITA TERUS MEMILIH ♡</div>
+   <div class="future-actions"><button type="button" id="futureCloseLast">Peluk dari jauh 🫂</button></div>
+  </article>
+ </div>
+</section>
+<script>
+(function(){
+ const letters={
+  today:{title:'Untuk kamu, hari ini',text:`Hai, sayang.
+
+Kalau hari ini kamu merasa belum cukup baik, berhenti sebentar, ya. Kamu bukan daftar hal yang berhasil kamu selesaikan. Kamu juga bukan kesalahan yang pernah kamu buat. Kamu adalah seseorang yang sedang belajar, bertumbuh, dan mencoba lagi—dan itu layak dihargai.
+
+Aku nggak ingin kamu hanya menyayangi dirimu saat semuanya berjalan baik. Tolong tetap lembut pada dirimu saat kamu sedang berjuang. Kamu berharga, bahkan di hari ketika kamu sendiri sulit mempercayainya.`},
+  hard:{title:'Kamu boleh beristirahat',text:`Sayang, kamu nggak harus menyelesaikan semuanya malam ini. Kamu boleh berhenti, menarik napas, menangis kalau memang perlu, atau meminta ditemani tanpa harus punya penjelasan yang rapi.
+
+Aku nggak bisa menghapus semua hal sulit dari hidupmu, dan aku nggak mau berpura-pura bisa. Tapi aku ingin menjadi seseorang yang mau mendengarkanmu, bukan menghakimimu. Kita bisa mengambil satu langkah kecil dulu. Hari ini, itu sudah cukup.`},
+  distance:{title:'Jarak bukan berarti kamu sendirian',text:`Kalau aku belum bisa ada di sampingmu sekarang, aku tahu pesan di layar ini nggak sama dengan pelukan sungguhan. Aku nggak akan berpura-pura itu sama.
+
+Tapi rasa sayangku nggak berhenti hanya karena kita sedang berjauhan. Kamu boleh merindukanku, dan kamu juga boleh menjalani harimu sendiri. Nanti, saat kita bertemu, ceritakan semuanya—yang lucu, yang melelahkan, bahkan hal kecil yang kamu pikir nggak penting. Aku ingin mendengarnya.`},
+  future:{title:'Untuk kita yang belum sampai di sana',text:`Aku nggak tahu persis seperti apa hidup kita nanti. Aku nggak bisa menebak semua jalan yang akan kita lewati. Tapi aku berharap, saat kita berubah, kita tetap memberi ruang untuk saling mengenal lagi.
+
+Aku berharap kita belajar meminta maaf tanpa mencari menang, mendengar tanpa buru-buru membela diri, dan merayakan hal kecil yang sering luput. Aku nggak menjanjikan hubungan yang selalu mudah. Aku ingin ikut membangun hubungan yang aman untuk berkata jujur, bertumbuh, dan tetap menjadi diri sendiri.
+
+Terima kasih sudah menjadi bagian dari ceritaku sekarang.`}
+ };
+ const card=document.getElementById('futureLetter'),title=document.getElementById('futureLetterTitle'),body=document.getElementById('futureLetterBody'),last=document.getElementById('futureLast');
+ document.querySelectorAll('[data-future]').forEach(btn=>btn.addEventListener('click',()=>{const item=letters[btn.dataset.future];if(!item)return;title.textContent=item.title;body.textContent=item.text;card.classList.add('show');last.classList.remove('show');card.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});}));
+ document.getElementById('futureVoice').addEventListener('click',()=>{const player=document.getElementById('personalVoicePlayer');if(player){player.scrollIntoView({behavior:'smooth',block:'center'});player.play().catch(()=>{});}});
+ document.getElementById('futureContinue').addEventListener('click',()=>{last.classList.add('show');last.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});});
+ document.getElementById('futureCloseLast').addEventListener('click',()=>{last.classList.remove('show');const hug=document.getElementById('comfortAffection');if(hug)hug.classList.add('show');});
+})();
 </script>
 
 <section class="comfort-section" id="ruang-nyaman" aria-labelledby="comfortHeading">
