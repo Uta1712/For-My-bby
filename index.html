@@ -280,6 +280,47 @@ button:focus-visible{outline:2px solid #b58a9b;outline-offset:4px}
 @keyframes leanForKissOther{0%,65%{transform:rotate(4deg)}100%{transform:rotate(-15deg) translateX(-3px)}}
 @media(prefers-reduced-motion:reduce){.affection-person,.affection-hug-heart,.affection-overlay[data-kind="kiss"] .person-head{animation:none!important}.affection-overlay{transition:none}}
 
+
+/* Layout polish: navigation controls sit below the content, never beside it. */
+.hero{min-height:auto!important;padding:clamp(28px,5vh,54px) 0 34px!important;align-items:stretch!important}
+.hero-inner{width:100%;max-width:440px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
+.hero-inner .eyebrow{order:0;margin-bottom:18px}
+.hero-inner .hero-photo{order:1;margin:8px auto 26px}
+.hero-inner h1{order:2;width:100%;margin:0 auto 18px}
+.hero-inner .lead{order:3;margin:0 auto 24px;width:100%}
+.hero-inner .primary{order:4;position:static!important;display:block;width:min(100%,320px);margin:0 auto}
+.hero-inner .tiny{order:5;margin:14px auto 0}
+.journey-controls{position:relative!important;inset:auto!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:center!important;gap:9px!important;width:min(100%,320px)!important;margin:26px auto 0!important;padding:0 8px!important;float:none!important;transform:none!important;z-index:3}
+.journey-controls .journey-btn{position:static!important;display:block!important;width:100%!important;min-height:48px!important;margin:0!important;white-space:normal!important;transform:none}
+.journey-controls .journey-btn:hover{transform:translateY(-1px)}
+.stage-counter{position:static!important;text-align:center!important;width:100%;margin:10px auto 0!important;clear:both}
+@media(max-width:480px){.hero{min-height:auto!important;padding-top:30px!important;padding-bottom:34px!important}.hero-photo{margin-top:10px!important}.hero-inner h1{font-size:clamp(43px,11.5vw,58px)!important}.journey-controls{width:min(100%,330px)!important;margin-top:24px!important}}
+/* More readable couple illustration: long-haired feminine figure meets short-haired masculine figure. */
+.affection-stage{height:236px!important;background:radial-gradient(ellipse at 50% 85%,#e9c5d4aa,transparent 60%),linear-gradient(180deg,#fffafc,#f9edf2)!important}
+.affection-scene{width:310px!important;height:200px!important}
+.affection-person{width:106px!important;height:160px!important;bottom:14px!important}
+.affection-person.left{left:22px!important;--skin:#f3c9b8;--hair:#704c55;--clothes:#bd829b}
+.affection-person.right{right:22px!important;--skin:#e7b89f;--hair:#493744;--clothes:#78617f}
+.affection-person.left .person-hair{left:21px!important;top:0!important;width:59px!important;height:65px!important;border-radius:52% 52% 35% 35%!important}
+.affection-person.left .person-hair:after{top:29px!important;left:-2px!important;width:17px!important;height:68px!important;border-radius:12px!important;transform:rotate(9deg)!important;box-shadow:48px 3px 0 var(--hair)}
+.affection-person.right .person-hair{left:29px!important;top:2px!important;width:48px!important;height:43px!important;border-radius:50% 50% 35% 35%!important}
+.affection-person.right .person-hair:after{display:none!important}
+.affection-person.right .person-body{left:9px!important;width:88px!important;height:84px!important;border-radius:25px 25px 13px 13px!important}
+.affection-person.left .person-body{left:15px!important;width:76px!important;border-radius:28px 28px 14px 14px!important}
+.affection-person.left .person-arm.inner{left:18px!important;transform:rotate(18deg)}
+.affection-person.right .person-arm.inner{left:9px!important;transform:rotate(-18deg)}
+.affection-person.left{animation:walkFromLeft 1.55s cubic-bezier(.2,.8,.2,1) both,hugLeft 2.4s 1.35s ease-in-out infinite alternate!important}
+.affection-person.right{animation:walkFromRight 1.55s cubic-bezier(.2,.8,.2,1) both,hugRight 2.4s 1.35s ease-in-out infinite alternate!important}
+@keyframes hugLeft{from{transform:translateX(0)}to{transform:translateX(9px)}}
+@keyframes hugRight{from{transform:translateX(0)}to{transform:translateX(-9px)}}
+.affection-person.left .person-arm.inner{animation:embraceLeft 1.2s 1.25s ease-in-out both}
+.affection-person.right .person-arm.inner{animation:embraceRight 1.2s 1.25s ease-in-out both}
+@keyframes embraceLeft{to{transform:rotate(58deg) translateY(-4px)}}
+@keyframes embraceRight{to{transform:rotate(-58deg) translateY(-4px)}}
+.affection-person.right .person-head{transform:rotate(-3deg)!important}
+.affection-person.left .person-head{transform:rotate(3deg)!important}
+@media(prefers-reduced-motion:reduce){.affection-person.left,.affection-person.right,.affection-person.left .person-arm.inner,.affection-person.right .person-arm.inner{animation:none!important}}
+
 </style>
 </head>
 <body>
