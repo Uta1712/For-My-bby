@@ -223,6 +223,14 @@ button:focus-visible{outline:2px solid #b58a9b;outline-offset:4px}
 @media(max-width:480px){.wrap{width:min(100% - 30px,660px)}.hero{min-height:86svh}.hero-photo{width:150px;height:188px}.interactive-card{padding:21px 15px}.note{padding:25px 20px}.flower-continue{margin-top:25px}}
 @media(prefers-reduced-motion:reduce){button{transition:none!important}}
 
+/* Fix amplop terbuka: beri ruang untuk flap agar tidak menimpa judul */
+#envelopeCard{overflow:visible;padding-top:28px}
+#envelopeCard h3{position:relative;z-index:4;margin-bottom:10px!important}
+#envelopeCard .envelope{margin-top:78px;margin-bottom:22px;isolation:isolate}
+#envelopeCard .envelope:before{z-index:2;pointer-events:none}
+#envelopeCard .envelope-hint{position:relative;z-index:4;min-height:22px;line-height:1.6;margin-top:4px}
+#envelopeCard .story-action{position:relative;z-index:4;margin-top:12px}
+@media(max-width:480px){#envelopeCard{padding:24px 16px}#envelopeCard .envelope{margin-top:72px}}
 </style>
 </head>
 <body>
@@ -369,9 +377,9 @@ function showFlowerReveal(){
  if(surat&&!document.getElementById('envelopeCard')){
   const card=document.createElement('div');card.className='interactive-card';card.id='envelopeCard';
   card.innerHTML='<div class="section-tag">PESAN RAHASIA</div><h3 style="font:500 23px Georgia;color:#a85f82;margin:0">Ada surat untukmu 💌</h3><div class="envelope" id="loveEnvelope" role="button" tabindex="0" aria-label="Buka amplop cinta"><span>♡</span></div><div class="envelope-hint" id="envelopeHint">Ketuk amplopnya pelan-pelan untuk membuka surat</div>';
-  const note=surat.querySelector('.note'); if(note){note.style.display='none';card.appendChild(styleButton('Buka surat cintaku ♡',()=>{if(!musicPlaying)toggleMusic();showFlowerReveal();note.style.display='block';note.scrollIntoView({behavior:'smooth',block:'nearest'});document.getElementById('loveEnvelope').classList.add('open');document.getElementById('envelopeHint').textContent='Suratnya terbuka… semoga kamu ikut tersenyum 🤍';hearts(8)}));note.style.transition='opacity .3s';}
+  const note=surat.querySelector('.note'); if(note){note.style.display='none';card.appendChild(styleButton('Buka surat cintaku ♡',()=>{if(!musicPlaying)toggleMusic();showFlowerReveal();note.style.display='block';note.scrollIntoView({behavior:'smooth',block:'nearest'});document.getElementById('loveEnvelope').classList.add('open');document.getElementById('envelopeHint').textContent='Kelopak bunga akan mengantarmu ke surat ini 🤍';hearts(8)}));note.style.transition='opacity .3s';}
   surat.appendChild(card);
-  const open=()=>{if(!musicPlaying)toggleMusic();showFlowerReveal();const env=document.getElementById('loveEnvelope');env.classList.add('open');document.getElementById('envelopeHint').textContent='Amplopnya sudah terbuka! Musik cinta mulai mengiringi suratmu ♡';hearts(5)};
+  const open=()=>{if(!musicPlaying)toggleMusic();showFlowerReveal();const env=document.getElementById('loveEnvelope');env.classList.add('open');document.getElementById('envelopeHint').textContent='Musik cinta mulai mengiringi suratmu ♡';hearts(5)};
   document.getElementById('loveEnvelope').addEventListener('click',open);document.getElementById('loveEnvelope').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}});
  }
  const footer=document.querySelector('footer');
