@@ -83,7 +83,10 @@ footer{text-align:center;padding:32px 0 42px;color:#a48d9c;font-size:12px}
 /* Mode cerita: satu halaman kecil setiap kali, lanjut dengan sentuhan */
 .story-stage{display:none!important;min-height:calc(100svh - 76px);padding-top:26px!important;padding-bottom:28px!important;align-content:center}
 .story-stage.active{display:block!important;animation:stageIn .45s ease both}
-header.story-stage.active{display:flex!important}
+header.story-stage.active{display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;width:100%}
+header.story-stage.active>.hero-inner{width:100%;max-width:460px;flex:0 0 auto}
+header.story-stage.active>.journey-controls{width:100%;flex:0 0 auto;margin:24px auto 0;display:flex;justify-content:center;align-items:center}
+header.story-stage.active>.stage-counter{width:100%;flex:0 0 auto}
 footer.story-stage.active{display:flex!important;flex-direction:column;justify-content:center;align-items:center;min-height:calc(100svh - 76px)}
 .journey-controls{display:flex;gap:10px;justify-content:center;align-items:center;margin:28px auto 0;flex-wrap:wrap}
 .journey-btn{border:1px solid #f0d6e3;background:#fffdfd;color:#a85f82;border-radius:999px;padding:12px 18px;min-height:46px;font-weight:700;cursor:pointer;box-shadow:0 5px 16px #d8b7cc24}
