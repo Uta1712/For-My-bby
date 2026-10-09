@@ -396,6 +396,19 @@ button:focus-visible{outline:2px solid #b58a9b;outline-offset:4px}
 @media(max-width:390px){.future-timecards{grid-template-columns:1fr}.future-timecard{min-height:unset}.future-letter{padding:22px 17px}}
 @media(prefers-reduced-motion:reduce){.future-section:before,.future-section:after{animation:none}}
 
+
+/* Smooth page/section transitions + little love bursts */
+html{scroll-behavior:smooth;scroll-padding-top:18px}
+body{transition:background .65s ease,color .45s ease}
+section,.hero,.note,.polaroid,.future-timecard,.voice-box,.comfort-choice,.future-letter,.future-last{transition:opacity .65s ease,transform .65s cubic-bezier(.22,.8,.25,1),box-shadow .35s ease}
+.reveal-on-scroll{opacity:0;transform:translateY(22px) scale(.99)}
+.reveal-on-scroll.revealed{opacity:1;transform:translateY(0) scale(1)}
+.love-burst{position:fixed;z-index:99999;pointer-events:none;left:0;top:0;font-size:var(--size,22px);line-height:1;filter:drop-shadow(0 3px 5px #e88bb966);animation:loveFloat 1.05s cubic-bezier(.18,.7,.3,1) forwards;will-change:transform,opacity}
+@keyframes loveFloat{0%{opacity:0;transform:translate(-50%,-35%) scale(.35) rotate(-15deg)}15%{opacity:1;transform:translate(-50%,-55%) scale(1.15) rotate(8deg)}100%{opacity:0;transform:translate(calc(-50% + var(--drift,18px)),-125px) scale(.65) rotate(var(--turn,25deg)}}
+button,a,[role="button"],summary{transition:transform .22s ease,filter .22s ease,box-shadow .22s ease}
+button:active,a:active,[role="button"]:active{transform:scale(.97)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal-on-scroll{opacity:1;transform:none}.love-burst{animation-duration:.2s}*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
 </style>
 </head>
 <body>
@@ -834,5 +847,44 @@ Terima kasih sudah menjadi bagian dari ceritaku sekarang.`}
  const bedtime=document.getElementById('bedtimeToggle'),section=document.getElementById('ruang-nyaman');bedtime.addEventListener('click',()=>{const active=section.classList.toggle('bedtime-mode');bedtime.textContent=active?'Kembali ke tampilan biasa ♡':'Masuk mode sebelum tidur ☾';document.body.style.overflow=active?'hidden':'';if(active)section.scrollTop=0;});
 })();
 </script>
+
+
+<script>
+(function(){
+  const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Reveal each page section gently as it enters the viewport.
+  const revealTargets=document.querySelectorAll('section,.hero');
+  revealTargets.forEach((el,i)=>{if(i>0)el.classList.add('reveal-on-scroll')});
+  if('IntersectionObserver' in window && !reduced){
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('revealed');observer.unobserve(entry.target)}}),{threshold:.08,rootMargin:'0px 0px -4% 0px'});
+    document.querySelectorAll('.reveal-on-scroll').forEach(el=>observer.observe(el));
+  } else document.querySelectorAll('.reveal-on-scroll').forEach(el=>el.classList.add('revealed'));
+  // Tiny hearts on every deliberate interactive click/tap, without blocking the control.
+  const symbols=['💗','💕','💖','♡','💘','💞'];
+  let lastBurst=0;
+  function burst(x,y){
+    const now=Date.now(); if(now-lastBurst<55)return; lastBurst=now;
+    const count=reduced?1:4;
+    for(let i=0;i<count;i++){
+      const heart=document.createElement('span'); heart.className='love-burst'; heart.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+      heart.style.left=(x+(Math.random()*32-16))+'px'; heart.style.top=(y+(Math.random()*20-10))+'px';
+      heart.style.setProperty('--size',(15+Math.random()*17)+'px');heart.style.setProperty('--drift',(Math.random()*90-45)+'px');heart.style.setProperty('--turn',(Math.random()*90-45)+'deg');
+      document.body.appendChild(heart);heart.addEventListener('animationend',()=>heart.remove(),{once:true});setTimeout(()=>heart.remove(),1400);
+    }
+  }
+  document.addEventListener('pointerdown',e=>{
+    const target=e.target.closest('button,a,[role="button"],summary,label,input[type="checkbox"],input[type="radio"],.polaroid,.future-timecard,.comfort-choice');
+    if(!target)return;
+    // Avoid triggering on the hidden file input itself; the visible label gets the hearts.
+    if(target.matches('input[type="file"]'))return;
+    burst(e.clientX,e.clientY);
+  },{passive:true});
+  // A soft transition when internal links jump to another section.
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{
+    const id=a.getAttribute('href');if(!id||id==='#')return;const dest=document.querySelector(id);if(dest){dest.classList.remove('section-arrive');void dest.offsetWidth;dest.classList.add('section-arrive');setTimeout(()=>dest.classList.remove('section-arrive'),700)}
+  }));
+})();
+</script>
+<style>.section-arrive{animation:sectionArrive .7s cubic-bezier(.2,.75,.25,1)}@keyframes sectionArrive{0%{filter:brightness(1.08);transform:translateY(12px)}100%{filter:brightness(1);transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.section-arrive{animation:none}}</style>
 
 </body></html>
