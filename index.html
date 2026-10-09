@@ -448,5 +448,92 @@ function showFlowerReveal(){
  panel.classList.add('show');
 })();
 
+
+// Pencatatan jawaban ke Google Sheets. Isi URL setelah deploy Apps Script.
+const ROMANTIC_SHEETS_ENDPOINT = 'PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+const ROMANTIC_TRACKING_CONSENT_KEY = 'romanticAnswersConsentV1';
+let romanticSessionId = '';
+let romanticTrackingAllowed = false;
+
+function romanticGetSessionId(){
+  try {
+    let id = sessionStorage.getItem('romanticAnswerSessionId');
+    if(!id){id = 'sesi-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,10);sessionStorage.setItem('romanticAnswerSessionId',id)}
+    return id;
+  } catch(e) { return 'sesi-' + Date.now().toString(36); }
+}
+function romanticActiveStage(){
+  const active = document.querySelector('.story-stage.active');
+  if(!active) return document.title || 'Website romantis';
+  const heading = active.querySelector('h1,h2,h3');
+  return (heading && heading.textContent.trim()) || active.id || 'Tahap website';
+}
+function romanticRecordAnswer(eventName, question, answer){
+  if(!romanticTrackingAllowed || !ROMANTIC_SHEETS_ENDPOINT || ROMANTIC_SHEETS_ENDPOINT.includes('PASTE_GOOGLE_APPS_SCRIPT')) return;
+  const payload = {
+    sessionId: romanticSessionId,
+    stage: String(romanticActiveStage()).slice(0,180),
+    event: String(eventName || 'interaksi').slice(0,80),
+    question: String(question || '').slice(0,500),
+    answer: String(answer || '').slice(0,1500),
+    timestamp: new Date().toISOString()
+  };
+  try {
+    const body = new URLSearchParams({payload: JSON.stringify(payload)}).toString();
+    fetch(ROMANTIC_SHEETS_ENDPOINT, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
+      body
+    }).then(()=>{
+      const status=document.getElementById('romanticSaveStatus');
+      if(status) status.textContent='Pilihanmu sedang dikirim dengan aman. ♡';
+    }).catch(()=>{
+      const status=document.getElementById('romanticSaveStatus');
+      if(status) status.textContent='Koneksi belum berhasil. Kamu tetap bisa melanjutkan cerita. ♡';
+    });
+  } catch(e) { /* Website tetap berfungsi meski pencatatan tidak tersedia. */ }
+}
+function romanticShowConsent(){
+  romanticSessionId = romanticGetSessionId();
+  const overlay=document.createElement('div');
+  overlay.id='romanticConsentDialog';
+  overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-labelledby','romanticConsentTitle');
+  overlay.innerHTML = '<div class="romantic-consent-card"><div class="romantic-consent-kicker">CATATAN KECIL ♡</div><h2 id="romanticConsentTitle">Sebelum kita mulai</h2><p>Kalau kamu setuju, pilihan di kuis dan fitur interaktif di halaman ini akan dikirim ke Google Sheets milik pembuat website agar bisa dibaca nanti. Kalau tidak, kamu tetap bisa menikmati seluruh website tanpa menyimpan jawaban.</p><p class="romantic-consent-small">Yang dicatat: jawaban/pilihan, nama tahap, dan waktu. Jangan masukkan informasi yang sangat pribadi.</p><div class="romantic-consent-actions"><button type="button" id="romanticConsentYes">Setuju, simpan jawabanku</button><button type="button" id="romanticConsentNo">Lanjut tanpa menyimpan</button></div><div id="romanticSaveStatus" role="status" aria-live="polite"></div></div>';
+  document.body.appendChild(overlay);
+  const close=(allow)=>{romanticTrackingAllowed=allow;try{sessionStorage.setItem(ROMANTIC_TRACKING_CONSENT_KEY,allow?'yes':'no')}catch(e){}overlay.classList.add('romantic-consent-hide');setTimeout(()=>overlay.remove(),260);};
+  document.getElementById('romanticConsentYes').addEventListener('click',()=>close(true));
+  document.getElementById('romanticConsentNo').addEventListener('click',()=>close(false));
+}
+(function initRomanticAnswerTracking(){
+  const style=document.createElement('style');
+  style.textContent = '#romanticConsentDialog{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;padding:22px;background:rgba(37,25,33,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:1;transition:opacity .26s ease}#romanticConsentDialog.romantic-consent-hide{opacity:0;pointer-events:none}.romantic-consent-card{width:min(100%,440px);padding:clamp(24px,6vw,38px);background:#fbf7f5;color:#46333e;border:1px solid rgba(255,255,255,.72);box-shadow:0 28px 90px #160d1540;border-radius:5px;text-align:left}.romantic-consent-kicker{font-size:10px;letter-spacing:.22em;color:#a46d84;font-weight:700}.romantic-consent-card h2{font:normal clamp(27px,6vw,36px)/1.15 Georgia,serif;margin:14px 0;color:#4a3340}.romantic-consent-card p{font-size:14px;line-height:1.75;color:#75616c}.romantic-consent-card .romantic-consent-small{font-size:12px;color:#927f88}.romantic-consent-actions{display:grid;gap:10px;margin-top:22px}.romantic-consent-actions button{width:100%;border:1px solid #d9b8c6;background:#563c4b;color:#fffafc;padding:13px 16px;cursor:pointer;font:inherit;font-size:13px;letter-spacing:.02em}.romantic-consent-actions button+button{background:transparent;color:#6e5662;border-color:#e5d7dd}.romantic-consent-actions button:focus-visible{outline:2px solid #b67f99;outline-offset:3px}#romanticSaveStatus{font-size:11px;color:#967284;margin-top:12px;min-height:1em}@media(prefers-reduced-motion:reduce){#romanticConsentDialog{transition:none}}';
+  document.head.appendChild(style);
+  let choice='';try{choice=sessionStorage.getItem(ROMANTIC_TRACKING_CONSENT_KEY)||''}catch(e){}
+  romanticTrackingAllowed=choice==='yes';
+  if(!choice) romanticShowConsent(); else romanticSessionId=romanticGetSessionId();
+
+  // Kuis: simpan pertanyaan dan pilihan yang diketuk.
+  document.addEventListener('click',function(e){
+    const quizButton=e.target.closest('#quizOptions button');
+    if(quizButton){const q=document.getElementById('quizQuestion');romanticRecordAnswer('jawaban_kuis',q?q.textContent.trim():'Kuis',quizButton.textContent.trim());return;}
+    const moodButton=e.target.closest('[data-mood]');
+    if(moodButton){romanticRecordAnswer('pilihan_suasana_hati','Suasana hati saat ini',moodButton.textContent.trim());return;}
+    const voucherButton=e.target.closest('[data-voucher]');
+    if(voucherButton){const claimed=voucherButton.classList.contains('claimed');romanticRecordAnswer(claimed?'klaim_voucher':'batalkan_voucher','Buku voucher pasangan',voucherButton.textContent.trim()+' — '+(claimed?'diklaim':'dibatalkan'));return;}
+    const giftButton=e.target.closest('#giftDraw');
+    if(giftButton){const result=document.getElementById('giftResult');romanticRecordAnswer('hadiah_virtual','Hadiah apa yang didapat?',result?result.textContent.trim():'Hadiah virtual');return;}
+    const surpriseButton=e.target.closest('button.primary');
+    if(surpriseButton && /kejutan/i.test(surpriseButton.textContent)){const result=document.getElementById('pesan');romanticRecordAnswer('membuka_kejutan','Pesan kejutan',result?result.textContent.trim():'Membuka kejutan');return;}
+  },false);
+  document.addEventListener('submit',function(e){
+    if(e.target && e.target.id==='secretForm'){
+      const input=document.getElementById('secretWord');
+      const value=input?input.value.trim().toLowerCase():'';
+      const accepted=['sayang','sayangku','bby','cinta'].includes(value);
+      romanticRecordAnswer('jawaban_kata_rahasia','Kata rahasia untuk membuka ending',accepted?'Berhasil membuka ending (kata cocok)':'Percobaan belum cocok');
+    }
+  },true);
+})();
+
 </script>
 </body></html>
