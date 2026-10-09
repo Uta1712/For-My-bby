@@ -141,6 +141,29 @@ footer.story-stage.active{display:flex!important;flex-direction:column;justify-c
 @media(max-width:390px){.mood-grid{gap:8px}.mood-choice{padding:12px 7px;font-size:13px}.voucher{padding:12px 10px}}
 @media(prefers-reduced-motion:reduce){.cinema-heart,.cinema-spark{animation:none!important}.cinema-overlay,.cinema-content{transition:none!important}}
 
+
+/* Pembuka bunga pink: lembut, editorial, dan sinematik */
+.flower-reveal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:28px 22px;background:radial-gradient(ellipse at 50% 48%,rgba(255,246,250,.98) 0%,rgba(251,222,235,.97) 45%,rgba(230,177,202,.98) 100%);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .9s ease,visibility .9s ease}
+.flower-reveal.show{opacity:1;visibility:visible;pointer-events:auto}
+.flower-reveal.leaving{opacity:0;visibility:hidden;pointer-events:none}
+.flower-glow{position:absolute;width:min(76vw,560px);aspect-ratio:1;border-radius:50%;background:#fff8fb;filter:blur(42px);opacity:.78;animation:flowerGlow 4.8s ease both}
+.flower-bloom{position:absolute;width:var(--size,100px);height:var(--size,100px);left:var(--x,50%);top:var(--y,50%);opacity:0;transform:translate(-50%,-50%) scale(.25) rotate(var(--rot,0deg));animation:bloomIn 1.5s cubic-bezier(.16,.78,.23,1) var(--delay,0s) forwards;filter:drop-shadow(0 8px 12px #a85f8220)}
+.flower-bloom i{position:absolute;left:50%;top:50%;width:37%;height:49%;margin-left:-18.5%;margin-top:-45%;border-radius:52% 52% 44% 44%;transform-origin:50% 92%;background:linear-gradient(155deg,#fff7fb 0%,#f5c9dc 60%,#e7a9c5 100%);border:1px solid #fff9fc99}
+.flower-bloom i:nth-child(1){transform:rotate(0deg)}.flower-bloom i:nth-child(2){transform:rotate(60deg)}.flower-bloom i:nth-child(3){transform:rotate(120deg)}.flower-bloom i:nth-child(4){transform:rotate(180deg)}.flower-bloom i:nth-child(5){transform:rotate(240deg)}.flower-bloom i:nth-child(6){transform:rotate(300deg)}
+.flower-bloom b{position:absolute;left:50%;top:50%;width:18%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff5d9,#d7a06e 72%,#bd875c);box-shadow:0 0 0 4px #fff5f833}
+.flower-copy{position:relative;z-index:3;max-width:420px;text-align:center;color:#80566c;animation:flowerTextIn 1.25s .45s both}
+.flower-eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#a66f8a;margin-bottom:18px}
+.flower-title{font:500 clamp(31px,8vw,48px)/1.18 Georgia,'Times New Roman',serif;letter-spacing:-.025em;color:#895a73;margin:0 auto 14px;text-wrap:balance}
+.flower-subtitle{font:italic 16px/1.8 Georgia,'Times New Roman',serif;color:#9a7187;margin:0 auto;max-width:300px}
+.flower-continue{margin-top:30px;padding:12px 21px;border:1px solid #bd8da5;border-radius:999px;background:#fff9fcbb;color:#895a73;font-size:12px;letter-spacing:.04em;cursor:pointer;opacity:0;animation:flowerTextIn .7s 1.65s both;backdrop-filter:blur(8px)}
+.flower-petal{position:absolute;top:-8vh;left:var(--x);width:12px;height:19px;border-radius:80% 12% 75% 20%;background:linear-gradient(145deg,#fff8fc,#e8a9c6);opacity:0;animation:petalFall var(--dur,5s) linear var(--delay,0s) forwards;transform:rotate(var(--rot,0deg));box-shadow:0 2px 6px #a85f8220}
+@keyframes bloomIn{0%{opacity:0;transform:translate(-50%,-50%) scale(.25) rotate(var(--rot,0deg))}65%{opacity:.95}100%{opacity:.83;transform:translate(-50%,-50%) scale(1) rotate(var(--rot,0deg))}}
+@keyframes flowerGlow{0%{transform:scale(.5);opacity:0}40%{opacity:.85}100%{transform:scale(1.35);opacity:.5}}
+@keyframes flowerTextIn{from{opacity:0;transform:translateY(13px);filter:blur(5px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes petalFall{0%{opacity:0;transform:translate3d(0,-5vh,0) rotate(0deg)}12%{opacity:.78}85%{opacity:.68}100%{opacity:0;transform:translate3d(var(--drift,60px),112vh,0) rotate(540deg)}}
+@media(max-width:480px){.flower-bloom{width:calc(var(--size,100px)*.82);height:calc(var(--size,100px)*.82)}.flower-copy{max-width:330px}.flower-subtitle{font-size:15px}}
+@media(prefers-reduced-motion:reduce){.flower-reveal *{animation:none!important;transition:none!important}.flower-reveal.show .flower-bloom{opacity:.7;transform:translate(-50%,-50%) scale(1)}}
+
 </style>
 </head>
 <body>
@@ -262,6 +285,24 @@ function reveal(){
 }
 
 
+
+// Pembuka floral yang elegan saat amplop cinta pertama kali dibuka.
+let flowerRevealShown=false;
+function showFlowerReveal(){
+ if(flowerRevealShown)return;
+ flowerRevealShown=true;
+ const overlay=document.createElement('div');overlay.className='flower-reveal';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-label','Pembuka bunga untukmu');
+ overlay.innerHTML='<div class="flower-glow" aria-hidden="true"></div><div class="flower-copy"><div class="flower-eyebrow">SEBUAH PESAN UNTUKMU</div><h2 class="flower-title">Untuk kamu,<br>yang selalu istimewa.</h2><p class="flower-subtitle">Semoga hari-harimu selalu menemukan alasan untuk mekar.</p><button class="flower-continue" type="button">Buka surat cintaku&nbsp; →</button></div>';
+ const blooms=[[-8,8,155,-18,0],[18,4,110,22,.12],[50,1,135,-10,.18],[82,8,160,25,.05],[106,29,112,-25,.2],[1,45,135,15,.12],[99,55,145,-18,.25],[8,88,150,25,.08],[42,99,118,-15,.24],[77,92,160,12,.16],[29,69,78,18,.34],[68,32,84,-24,.28],[48,76,96,12,.3]];
+ blooms.forEach(([x,y,size,rot,delay])=>{const flower=document.createElement('span');flower.className='flower-bloom';flower.setAttribute('aria-hidden','true');flower.style.setProperty('--x',x+'%');flower.style.setProperty('--y',y+'%');flower.style.setProperty('--size',size+'px');flower.style.setProperty('--rot',rot+'deg');flower.style.setProperty('--delay',delay+'s');flower.innerHTML='<i></i><i></i><i></i><i></i><i></i><i></i><b></b>';overlay.appendChild(flower)});
+ for(let i=0;i<24;i++){const petal=document.createElement('span');petal.className='flower-petal';petal.setAttribute('aria-hidden','true');petal.style.setProperty('--x',(Math.random()*100)+'vw');petal.style.setProperty('--dur',(4.4+Math.random()*3.2)+'s');petal.style.setProperty('--delay',(Math.random()*.9)+'s');petal.style.setProperty('--rot',(Math.random()*220)+'deg');petal.style.setProperty('--drift',(-90+Math.random()*180)+'px');overlay.appendChild(petal)}
+ document.body.appendChild(overlay);requestAnimationFrame(()=>overlay.classList.add('show'));
+ const close=()=>{overlay.classList.add('leaving');setTimeout(()=>overlay.remove(),1000)};
+ overlay.querySelector('.flower-continue').addEventListener('click',close);
+ // Beri waktu animasi mekar, lalu lanjut otomatis jika tombol belum ditekan.
+ window.setTimeout(()=>{if(document.body.contains(overlay))close()},6200);
+}
+
 // Fitur cerita interaktif: surat, kuis jahil, hadiah virtual, dan ending rahasia.
 (function addRomanticInteractions(){
  const styleButton=(label,fn)=>{const b=document.createElement('button');b.className='story-action';b.type='button';b.textContent=label;b.addEventListener('click',fn);return b};
@@ -269,9 +310,9 @@ function reveal(){
  if(surat&&!document.getElementById('envelopeCard')){
   const card=document.createElement('div');card.className='interactive-card';card.id='envelopeCard';
   card.innerHTML='<div class="section-tag">PESAN RAHASIA</div><h3 style="font:500 23px Georgia;color:#a85f82;margin:0">Ada surat untukmu 💌</h3><div class="envelope" id="loveEnvelope" role="button" tabindex="0" aria-label="Buka amplop cinta"><span>♡</span></div><div class="envelope-hint" id="envelopeHint">Ketuk amplopnya pelan-pelan untuk membuka surat</div>';
-  const note=surat.querySelector('.note'); if(note){note.style.display='none';card.appendChild(styleButton('Buka surat cintaku ♡',()=>{note.style.display='block';note.scrollIntoView({behavior:'smooth',block:'nearest'});document.getElementById('loveEnvelope').classList.add('open');document.getElementById('envelopeHint').textContent='Suratnya terbuka… semoga kamu ikut tersenyum 🤍';hearts(8)}));note.style.transition='opacity .3s';}
+  const note=surat.querySelector('.note'); if(note){note.style.display='none';card.appendChild(styleButton('Buka surat cintaku ♡',()=>{if(!musicPlaying)toggleMusic();showFlowerReveal();note.style.display='block';note.scrollIntoView({behavior:'smooth',block:'nearest'});document.getElementById('loveEnvelope').classList.add('open');document.getElementById('envelopeHint').textContent='Suratnya terbuka… semoga kamu ikut tersenyum 🤍';hearts(8)}));note.style.transition='opacity .3s';}
   surat.appendChild(card);
-  const open=()=>{const env=document.getElementById('loveEnvelope');env.classList.add('open');document.getElementById('envelopeHint').textContent='Amplopnya sudah terbuka! Tekan tombol di bawah untuk membaca surat ♡';hearts(5)};
+  const open=()=>{if(!musicPlaying)toggleMusic();showFlowerReveal();const env=document.getElementById('loveEnvelope');env.classList.add('open');document.getElementById('envelopeHint').textContent='Amplopnya sudah terbuka! Musik cinta mulai mengiringi suratmu ♡';hearts(5)};
   document.getElementById('loveEnvelope').addEventListener('click',open);document.getElementById('loveEnvelope').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}});
  }
  const footer=document.querySelector('footer');

@@ -1,28 +1,13 @@
-# Website Romantis 💗
+# Website Romantis untuk BBY 💗
 
-Website romantis interaktif berbasis HTML, CSS, dan JavaScript. Setiap bagian dibuka lewat tombol **Lanjut pelan-pelan ♡**, dilengkapi tombol kembali, indikator progres, animasi hati, kejutan, dan musik YouTube. Bisa dipublikasikan gratis menggunakan GitHub Pages.
+## Cara memasang di GitHub Pages
+1. Unggah `index.html` ke repository GitHub kamu (gantikan file lama).
+2. Pastikan GitHub Pages aktif melalui **Settings → Pages**.
+3. Buka URL GitHub Pages setelah perubahan selesai diterbitkan.
 
-## Cara upload ke GitHub
-1. Login ke https://github.com/
-2. Klik **New repository** dan beri nama, misalnya `website-romantis`.
-3. Pilih **Public**, lalu klik **Create repository**.
-4. Klik **Add file → Upload files**.
-5. Upload `index.html` dari folder ini (opsional: upload `README.md` juga), lalu klik **Commit changes**.
-6. Buka **Settings → Pages**.
-7. Pada **Build and deployment**, pilih **Deploy from a branch**.
-8. Pilih branch **main** dan folder **/(root)**, lalu klik **Save**.
-9. Tunggu proses publikasi selesai. GitHub akan menampilkan alamat website di halaman Pages, biasanya berbentuk `https://USERNAME.github.io/website-romantis/`.
-
-## Catatan musik
-Musik menggunakan pemutar YouTube. Website akan mencoba memutar musik saat dibuka. Namun, autoplay bersuara tidak bisa dijamin karena Chrome, Safari, dan browser lain sering memblokirnya sampai pengunjung berinteraksi. Jika musik tidak berbunyi, tekan tombol putar pada pemutar YouTube. Pemutaran juga bergantung pada apakah video mengizinkan embed.
+## Musik
+Musik YouTube akan dicoba mulai saat amplop cinta diketuk atau tombol **Buka surat cintaku** ditekan. Browser masih dapat menerapkan kebijakan pemutaran media masing-masing; jika suara belum terdengar, gunakan tombol ♫ pada website atau kontrol pemutar YouTube.
 
 
-## Fitur interaktif terbaru
-- Surat cinta dengan amplop animasi.
-- Kuis kecil hubungan dengan respons lucu.
-- Mesin hadiah virtual acak.
-- Ending rahasia terkunci (kata pembuka: `sayang`, `sayangku`, `bby`, atau `cinta`).
-- Maskot hati kecil yang bisa diketuk.
-- Navigasi tahap menggunakan tombol lanjut/kembali.
-
-Catatan: autoplay musik YouTube bisa diblokir browser; jika tidak terdengar, tekan tombol musik atau play pada pemutar.
+### Pembuka bunga pink
+Saat amplop cinta diketuk, animasi bunga pink memenuhi layar dengan gaya elegan dan sinematik. Ketuk tombol “Buka surat cintaku” untuk melanjutkan lebih cepat; jika tidak, animasi menutup sendiri setelah beberapa detik.
