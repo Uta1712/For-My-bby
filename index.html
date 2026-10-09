@@ -7,9 +7,517 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>Untuk BBY ♡</title>
+<style>
+:root{--pink:#f4c5da;--pink2:#ffeaf3;--blue:#dceeff;--ink:#594553;--muted:#927c8b;--white:#fffdfd}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:linear-gradient(160deg,#fff8fb 0%,#fff 45%,#f2f8ff 100%);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
+button{font:inherit;-webkit-tap-highlight-color:transparent}
+.wrap{width:min(100% - 32px,680px);margin:auto}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;color:#a86c8a;font-size:13px;letter-spacing:.08em}
+.brand{font-weight:800}
+.hero{min-height:83svh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;padding:24px 0 48px}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);z-index:0;opacity:.72}
+.b1{width:170px;height:170px;background:#ffe0ed;top:12%;left:-75px}
+.b2{width:150px;height:150px;background:#d9edff;bottom:10%;right:-70px}
+.hero-inner{position:relative;z-index:1;max-width:460px}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:#b57696;font-weight:700}
+.hero-photo{width:156px;height:190px;object-fit:cover;border:8px solid white;border-radius:100px 100px 26px 26px;box-shadow:0 14px 38px #d7b4c94d;transform:rotate(-3deg);margin:22px auto 24px;display:block}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,12vw,64px);font-weight:500;line-height:1.05;letter-spacing:-.04em;margin:0 0 14px;color:#b5678a}
+h1 span{color:#7ba4cb;font-style:italic}
+.lead{font-size:15px;line-height:1.8;color:#7f6b7a;max-width:330px;margin:0 auto 24px}
+.primary{border:0;background:linear-gradient(100deg,#eaaac8,#c5def7);color:#fff;padding:15px 24px;border-radius:999px;box-shadow:0 8px 20px #d8b7cc4d;font-weight:700;min-height:48px;cursor:pointer}
+.tiny{font-size:11px;color:#a38e9c;margin-top:15px}
+section{padding:48px 0}
+.section-tag{text-align:center;color:#b57696;font-size:11px;letter-spacing:.16em;font-weight:800;margin-bottom:10px}
+h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(29px,8vw,40px);text-align:center;margin:0 0 12px;color:#a85f82}
+.sub{text-align:center;color:var(--muted);font-size:14px;line-height:1.75;margin:0 auto 28px;max-width:390px}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.polaroid{background:white;padding:9px 9px 16px;border-radius:5px;box-shadow:0 8px 28px #cbb7c329;transform:rotate(-2deg)}
+.polaroid:nth-child(2){margin-top:30px;transform:rotate(2deg)}
+.polaroid:nth-child(3){grid-column:1/3;width:78%;justify-self:center;transform:rotate(-1deg);margin-top:4px}
+.polaroid img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:3px}
+.polaroid:nth-child(3) img{aspect-ratio:4/3}
+.caption{text-align:center;font-family:Georgia,serif;font-style:italic;color:#9b7188;font-size:14px;padding-top:12px}
+.note{background:#fff;border:1px solid #f5e4ed;border-radius:24px;padding:26px 22px;box-shadow:0 12px 32px #d9c4d51f;position:relative}
+.note:before{content:"♡";position:absolute;right:18px;top:8px;font-size:28px;color:#efc3d8}
+.note p{font-family:Georgia,serif;font-size:17px;line-height:1.95;margin:0;color:#745e6e}
+.note .sign{font-family:inherit;font-size:13px;color:#b57696;margin-top:20px}
+.reasons{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.reason{background:#fff;border-radius:18px;padding:18px 14px;text-align:center;border:1px solid #f7e7ef}
+.reason:nth-child(2),.reason:nth-child(3){background:#f1f8ff;border-color:#e2effb}
+.reason .emoji{font-size:24px;margin-bottom:8px}
+.reason p{font-size:13px;line-height:1.6;margin:0;color:#796778}
+.surprise{background:linear-gradient(145deg,#fff0f6,#eff7ff);border-radius:28px;padding:30px 20px;text-align:center}
+.surprise .gift{font-size:42px;margin-bottom:10px}
+.surprise p{font-size:14px;line-height:1.8;color:#7f6b7a;max-width:340px;margin:0 auto 20px}
+.hidden-message{display:none;margin-top:22px;background:#ffffffd9;border-radius:20px;padding:22px 16px;line-height:1.9;font-family:Georgia,serif;font-size:18px;color:#a85f82;animation:pop .4s ease}
+.hidden-message.show{display:block}
+footer{text-align:center;padding:32px 0 42px;color:#a48d9c;font-size:12px}
+.heart{position:fixed;pointer-events:none;z-index:20;animation:float 2.8s ease-out forwards;font-size:20px}
+@keyframes float{0%{opacity:0;transform:translateY(0) scale(.6)}15%{opacity:1}100%{opacity:0;transform:translateY(-170px) rotate(25deg) scale(1.3)}}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(min-width:600px){.hero{min-height:700px}.hero-photo{width:175px;height:215px}.gallery{gap:22px}.polaroid{padding:12px 12px 20px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* Fitur tambahan: pemutar musik romantis dan hati yang lebih hidup */
+.music-dock{position:fixed;right:16px;bottom:18px;z-index:50;display:flex;align-items:center;gap:9px;padding:9px 13px 9px 10px;border:1px solid #f4dce8;border-radius:999px;background:#ffffffed;box-shadow:0 8px 28px #b98da733;backdrop-filter:blur(12px);color:#a85f82;font-size:12px;font-weight:700}
+.music-toggle{width:38px;height:38px;border:0;border-radius:50%;background:linear-gradient(135deg,#f4c5da,#dceeff);color:#9e5c80;font-size:17px;display:grid;place-items:center;cursor:pointer;box-shadow:0 3px 10px #d7b4c94d}
+.music-toggle:focus-visible{outline:3px solid #b57696;outline-offset:3px}
+.music-dock.playing .music-toggle{animation:musicPulse 1.8s ease-in-out infinite}
+.music-label{white-space:nowrap}.music-label small{display:block;font-weight:500;color:#a38e9c;margin-top:2px}
+.youtube-music-panel{display:none;position:fixed;right:16px;bottom:78px;z-index:49;width:300px;max-width:calc(100vw - 24px);padding:10px;background:#fffdfd;border:1px solid #f4dce8;border-radius:18px;box-shadow:0 12px 32px #b98da744;color:#927c8b;font-size:12px}
+.youtube-music-panel.show{display:none!important;animation:none}
+.youtube-music-panel iframe{display:block;width:1px;height:1px;border:0;border-radius:0;opacity:0;pointer-events:none}
+.youtube-music-panel p{margin:8px 2px 2px;line-height:1.5}
+@media(max-width:420px){.youtube-music-panel{right:10px;bottom:72px}}
+.heart{position:fixed;pointer-events:none;z-index:20;will-change:transform,opacity;animation:heartDrift var(--duration,3.8s) cubic-bezier(.2,.65,.3,1) forwards;font-size:20px;filter:drop-shadow(0 3px 5px #d7a4c355);user-select:none}
+.heart.ambient{z-index:2;opacity:0;animation-name:ambientFloat;animation-timing-function:linear}
+@keyframes heartDrift{0%{opacity:0;transform:translate3d(0,18px,0) rotate(-18deg) scale(.45)}12%{opacity:1}55%{transform:translate3d(var(--sway,18px),-100px,0) rotate(18deg) scale(1.12)}100%{opacity:0;transform:translate3d(calc(var(--sway,18px) * -1),-260px,0) rotate(48deg) scale(.8)}}
+@keyframes ambientFloat{0%{opacity:0;transform:translateY(25px) rotate(-15deg) scale(.7)}15%{opacity:.55}80%{opacity:.35}100%{opacity:0;transform:translateY(-110vh) rotate(35deg) scale(1.15)}}
+@keyframes musicPulse{0%,100%{box-shadow:0 0 0 0 #eaaac866}50%{box-shadow:0 0 0 7px #eaaac800}}
+@media(max-width:420px){.music-dock{right:10px;bottom:10px}.music-label{font-size:11px}.music-label small{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.heart,.music-dock.playing .music-toggle{animation:none!important}}
 
 
-<link rel="stylesheet" href="style.css">
+/* Mode cerita: satu halaman kecil setiap kali, lanjut dengan sentuhan */
+.story-stage{display:none!important;min-height:calc(100svh - 76px);padding-top:26px!important;padding-bottom:28px!important;align-content:center}
+.story-stage.active{display:block!important;animation:stageIn .45s ease both}
+header.story-stage.active{display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;width:100%}
+header.story-stage.active>.hero-inner{width:100%;max-width:460px;flex:0 0 auto}
+header.story-stage.active>.journey-controls{width:100%;flex:0 0 auto;margin:24px auto 0;display:flex;justify-content:center;align-items:center}
+header.story-stage.active>.stage-counter{width:100%;flex:0 0 auto}
+footer.story-stage.active{display:flex!important;flex-direction:column;justify-content:center;align-items:center;min-height:calc(100svh - 76px)}
+.journey-controls{display:flex;gap:10px;justify-content:center;align-items:center;margin:28px auto 0;flex-wrap:wrap}
+.journey-btn{border:1px solid #f0d6e3;background:#fffdfd;color:#a85f82;border-radius:999px;padding:12px 18px;min-height:46px;font-weight:700;cursor:pointer;box-shadow:0 5px 16px #d8b7cc24}
+.journey-btn.next{border:0;background:linear-gradient(100deg,#eaaac8,#c5def7);color:#fff}
+.journey-progress{height:4px;position:fixed;z-index:45;top:0;left:0;right:0;background:#f7e7ef}
+.journey-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#eaaac8,#c5def7);transition:width .35s ease}
+.stage-counter{text-align:center;color:#ad8b9f;font-size:11px;letter-spacing:.1em;margin-top:12px}
+@keyframes stageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.story-stage.active{animation:none}}
+
+
+/* HALAMAN 12 — mini grand finale sinematik */
+.story-stage.page-twelve{position:relative!important;isolation:isolate;overflow:hidden!important;background:radial-gradient(ellipse at 50% 18%,#ffe0f0 0%,#fff7fb 42%,#edf6ff 100%);border-radius:30px;box-shadow:inset 0 0 70px #f3c8e355;animation:pageTwelveReveal 1s cubic-bezier(.16,1,.3,1) both!important}
+.story-stage.page-twelve:before{content:"";position:absolute;inset:-40%;z-index:-1;pointer-events:none;background:repeating-radial-gradient(circle at 50% 50%,#ffffff00 0 42px,#ffffffa8 43px 44px,transparent 45px 86px);animation:pageTwelveOrbit 26s linear infinite}
+.story-stage.page-twelve:after{content:"✦     ·   ♡   ·     ✧     ·    ✦";position:absolute;left:0;right:0;top:12%;text-align:center;color:#d99abb;letter-spacing:.65em;font-size:clamp(14px,4vw,25px);pointer-events:none;animation:pageTwelveTwinkle 2.4s ease-in-out infinite alternate}
+.story-stage.page-twelve h2{animation:pageTwelveTitle 1.1s .15s both; text-shadow:0 5px 25px #e7b1d455}
+.story-stage.page-twelve .sub,.story-stage.page-twelve .interactive-card,.story-stage.page-twelve .note,.story-stage.page-twelve .reasons,.story-stage.page-twelve .surprise{animation:pageTwelveRise .9s .35s both}
+.page12-star{position:absolute;z-index:0;pointer-events:none;color:#d98ab3;text-shadow:0 0 14px #f2b8d7;animation:page12StarFly var(--dur,4s) var(--delay,0s) ease-in-out infinite alternate;left:var(--x);top:var(--y);font-size:var(--size,18px)}
+.story-stage.page-twelve>*:not(.page12-star){position:relative;z-index:1}
+@keyframes pageTwelveReveal{from{opacity:0;filter:blur(8px);transform:scale(.96)}to{opacity:1;filter:blur(0);transform:scale(1)}}
+@keyframes pageTwelveOrbit{to{transform:rotate(360deg)}}
+@keyframes pageTwelveTwinkle{from{opacity:.35;transform:translateY(0) scale(.95)}to{opacity:1;transform:translateY(-5px) scale(1.04)}}
+@keyframes pageTwelveTitle{from{opacity:0;transform:translateY(18px) scale(.94);letter-spacing:.02em}to{opacity:1;transform:translateY(0) scale(1);letter-spacing:normal}}
+@keyframes pageTwelveRise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes page12StarFly{from{transform:translate3d(0,12px,0) rotate(-18deg) scale(.7);opacity:.35}to{transform:translate3d(12px,-14px,0) rotate(24deg) scale(1.25);opacity:1}}
+@media(prefers-reduced-motion:reduce){.story-stage.page-twelve,.story-stage.page-twelve:before,.story-stage.page-twelve:after,.story-stage.page-twelve *{animation:none!important}}
+
+/* Bab interaktif romantis */
+.interactive-card{max-width:520px;margin:22px auto;padding:22px;border:1px solid #f3d8e6;border-radius:24px;background:linear-gradient(145deg,#fffdfd,#fff1f7);box-shadow:0 12px 34px #bd8eaa1c;text-align:center}
+.story-action{border:0;border-radius:999px;padding:12px 19px;margin:5px;background:linear-gradient(135deg,#eaa9c9,#b9d8f4);color:#67475b;font-weight:700;cursor:pointer;box-shadow:0 6px 16px #d9abc333;transition:transform .2s}
+.story-action:hover{transform:translateY(-2px)}.story-action:focus-visible{outline:3px solid #bc7da1;outline-offset:3px}
+.envelope{position:relative;width:150px;height:100px;margin:24px auto 18px;background:#f3bfd6;border-radius:8px;cursor:pointer;box-shadow:0 10px 22px #b77d9b33;display:grid;place-items:center;font-size:36px;transition:transform .3s}
+.envelope:before{content:"";position:absolute;top:0;left:0;width:0;height:0;border-left:75px solid transparent;border-right:75px solid transparent;border-top:58px solid #e9a9c8;transform-origin:top;transition:transform .5s;z-index:2}
+.envelope.open:before{transform:rotateX(180deg)}.envelope span{position:relative;z-index:3}.envelope-hint{font-size:13px;color:#9b7188}
+.quiz-options{display:grid;grid-template-columns:1fr;gap:9px;margin-top:18px}.quiz-options button{width:100%;text-align:left;background:#fff;border:1px solid #f1d6e4;border-radius:15px;padding:13px;color:#76566a;cursor:pointer}.quiz-options button:hover{background:#fff0f7}.quiz-feedback{min-height:28px;margin-top:14px;color:#a35e84;font-weight:700}
+.gift-box{font-size:64px;cursor:pointer;display:inline-block;filter:drop-shadow(0 8px 10px #d5a3bf44);animation:giftBob 2s ease-in-out infinite}@keyframes giftBob{50%{transform:translateY(-7px) rotate(3deg)}}
+.gift-result{min-height:60px;margin:16px auto 0;padding:14px;border-radius:16px;background:#fff4f9;color:#9b5e7e;line-height:1.7}
+.lock-icon{font-size:44px;margin:8px}.lock-input{padding:12px 14px;border:1px solid #e9c8d9;border-radius:14px;width:min(100%,280px);font:inherit;text-align:center;background:#fff}
+.secret-message{display:none;margin-top:18px;padding:18px;border-radius:18px;background:#fff1f7;color:#945c7a;line-height:1.8}.secret-message.unlocked{display:block;animation:stageIn .5s ease}
+.living-heart{position:fixed;left:16px;bottom:18px;z-index:48;border:1px solid #f0d3e2;border-radius:50%;width:49px;height:49px;background:#fff7fb;box-shadow:0 7px 22px #ba8ba733;font-size:24px;cursor:pointer;animation:heartBeat 1.6s infinite}
+@keyframes heartBeat{0%,100%{transform:scale(1)}12%{transform:scale(1.13)}22%{transform:scale(1)}}.heart-bubble{position:fixed;left:14px;bottom:74px;z-index:48;max-width:220px;padding:10px 13px;background:#fff;border:1px solid #f0d3e2;border-radius:16px;box-shadow:0 8px 24px #ba8ba733;font-size:12px;color:#9b5e7e;display:none}.heart-bubble.show{display:block;animation:pop .25s ease}
+@media(max-width:480px){.interactive-card{padding:18px 14px}.living-heart{left:10px;bottom:12px}.music-dock{right:10px;bottom:12px}}
+
+
+
+/* Mood booster: ruang kecil untuk mengangkat semangat dengan lembut */
+.boost-card{background:linear-gradient(145deg,#fffdfa,#fcf1f6);border:1px solid #ead9e1;border-radius:20px;padding:22px 18px;box-shadow:0 14px 35px #6c4a5809}
+.boost-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.boost-action{border:1px solid #ead7e0;background:#fffdfc;color:#76596a;border-radius:14px;padding:13px 10px;min-height:58px;cursor:pointer;transition:transform .2s,background .2s}
+.boost-action:active{transform:scale(.98)}
+.boost-message{min-height:112px;padding:20px 16px;border-radius:16px;background:#fff;color:#80566b;border:1px solid #f0e2e8;text-align:center;font:17px/1.8 Georgia,serif;display:flex;align-items:center;justify-content:center}
+.boost-breath{font-size:12px;color:#a18793;text-align:center;line-height:1.7;margin:12px 0 0}
+@media(max-width:390px){.boost-actions{gap:8px}.boost-action{font-size:13px;padding:12px 7px}}
+
+/* Tambahan: toples suasana hati, voucher, dan finale sinematik */
+.mood-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+.mood-choice{border:1px solid #f0d4e2;background:linear-gradient(145deg,#fff,#fff2f8);border-radius:18px;padding:16px 10px;color:#815d73;cursor:pointer;min-height:84px;box-shadow:0 7px 20px #d7b8c51c;transition:transform .2s,box-shadow .2s}
+.mood-choice:hover,.mood-choice:focus-visible{transform:translateY(-3px);box-shadow:0 12px 25px #d7b8c533}
+.mood-choice span{display:block;font-size:25px;margin-bottom:7px}
+.mood-note{min-height:100px;margin-top:14px;padding:22px 18px;border-radius:18px;background:linear-gradient(135deg,#fff7fb,#f1f7ff);border:1px solid #f4e2ec;color:#8e5e7c;font:17px/1.85 Georgia,serif;display:none;animation:cinemaIn .65s ease both}
+.mood-note.show{display:block}
+.voucher-list{display:grid;gap:12px;margin-top:20px}
+.voucher{display:flex;align-items:center;gap:12px;text-align:left;border:1px dashed #d9a7c0;border-radius:17px;padding:14px;background:linear-gradient(110deg,#fff8fb,#f5f9ff);color:#7b5b70;cursor:pointer;position:relative;overflow:hidden}
+.voucher:after{content:'♡';font-size:28px;color:#e6b4cc;margin-left:auto}
+.voucher .v-icon{font-size:28px}.voucher strong{display:block;font:17px Georgia,serif;color:#a45f82}.voucher small{display:block;margin-top:4px;color:#9c8292;font-size:11px}
+.voucher.claimed{background:linear-gradient(110deg,#fbe3ef,#e7f2ff);border-style:solid;opacity:.86}.voucher.claimed:after{content:'✓';color:#78a5a1}
+.voucher-status{min-height:28px;margin-top:15px;color:#a35e84;font-size:13px}
+.cinema-overlay{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;background:radial-gradient(ellipse at center,#4a2b48 0%,#21172e 58%,#100f1c 100%);color:#fff5fb;opacity:0;visibility:hidden;transition:opacity 1.2s ease,visibility 1.2s ease;overflow:hidden}
+.cinema-overlay.show{opacity:1;visibility:visible}
+.cinema-content{max-width:520px;position:relative;z-index:2;transform:translateY(18px) scale(.98);transition:transform 1.2s ease}
+.cinema-overlay.show .cinema-content{transform:translateY(0) scale(1)}
+.cinema-kicker{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#e7bfd7;margin-bottom:24px}
+.cinema-heart{font-size:70px;filter:drop-shadow(0 0 24px #f4a8d7);animation:cinemaPulse 2.1s ease-in-out infinite}
+.cinema-title{font:500 clamp(36px,10vw,58px)/1.1 Georgia,serif;color:#fff1f8;margin:20px 0}
+.cinema-copy{font:17px/1.95 Georgia,serif;color:#f1dce9;max-width:390px;margin:0 auto 28px}
+.cinema-close{border:1px solid #e8bfd7;background:#ffffff12;color:#fff3fa;padding:13px 22px;border-radius:999px;cursor:pointer}
+.cinema-spark{position:absolute;color:#f8cbe1;opacity:.6;animation:sparkDrift 8s linear infinite}
+@keyframes cinemaIn{from{opacity:0;transform:translateY(16px);filter:blur(3px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes cinemaPulse{0%,100%{transform:scale(.95);filter:drop-shadow(0 0 14px #f4a8d7)}50%{transform:scale(1.08);filter:drop-shadow(0 0 32px #f4a8d7)}}
+@keyframes sparkDrift{from{transform:translateY(20vh) rotate(0deg);opacity:0}20%{opacity:.65}to{transform:translateY(-100vh) rotate(180deg);opacity:0}}
+@media(max-width:390px){.mood-grid{gap:8px}.mood-choice{padding:12px 7px;font-size:13px}.voucher{padding:12px 10px}}
+@media(prefers-reduced-motion:reduce){.cinema-heart,.cinema-spark{animation:none!important}.cinema-overlay,.cinema-content{transition:none!important}}
+
+
+/* Pembuka bunga pink: lembut, editorial, dan sinematik */
+.flower-reveal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:28px 22px;background:radial-gradient(ellipse at 50% 48%,rgba(255,246,250,.98) 0%,rgba(251,222,235,.97) 45%,rgba(230,177,202,.98) 100%);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .9s ease,visibility .9s ease}
+.flower-reveal.show{opacity:1;visibility:visible;pointer-events:auto}
+.flower-reveal.leaving{opacity:0;visibility:hidden;pointer-events:none}
+.flower-glow{position:absolute;width:min(76vw,560px);aspect-ratio:1;border-radius:50%;background:#fff8fb;filter:blur(42px);opacity:.78;animation:flowerGlow 4.8s ease both}
+.flower-bloom{position:absolute;width:var(--size,100px);height:var(--size,100px);left:var(--x,50%);top:var(--y,50%);opacity:0;transform:translate(-50%,-50%) scale(.25) rotate(var(--rot,0deg));animation:bloomIn 1.5s cubic-bezier(.16,.78,.23,1) var(--delay,0s) forwards;filter:drop-shadow(0 8px 12px #a85f8220)}
+.flower-bloom i{position:absolute;left:50%;top:50%;width:37%;height:49%;margin-left:-18.5%;margin-top:-45%;border-radius:52% 52% 44% 44%;transform-origin:50% 92%;background:linear-gradient(155deg,#fff7fb 0%,#f5c9dc 60%,#e7a9c5 100%);border:1px solid #fff9fc99}
+.flower-bloom i:nth-child(1){transform:rotate(0deg)}.flower-bloom i:nth-child(2){transform:rotate(60deg)}.flower-bloom i:nth-child(3){transform:rotate(120deg)}.flower-bloom i:nth-child(4){transform:rotate(180deg)}.flower-bloom i:nth-child(5){transform:rotate(240deg)}.flower-bloom i:nth-child(6){transform:rotate(300deg)}
+.flower-bloom b{position:absolute;left:50%;top:50%;width:18%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff5d9,#d7a06e 72%,#bd875c);box-shadow:0 0 0 4px #fff5f833}
+.flower-copy{position:relative;z-index:3;max-width:420px;text-align:center;color:#80566c;animation:flowerTextIn 1.25s .45s both}
+.flower-eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#a66f8a;margin-bottom:18px}
+.flower-title{font:500 clamp(31px,8vw,48px)/1.18 Georgia,'Times New Roman',serif;letter-spacing:-.025em;color:#895a73;margin:0 auto 14px;text-wrap:balance}
+.flower-subtitle{font:italic 16px/1.8 Georgia,'Times New Roman',serif;color:#9a7187;margin:0 auto;max-width:300px}
+.flower-continue{margin-top:30px;padding:12px 21px;border:1px solid #bd8da5;border-radius:999px;background:#fff9fcbb;color:#895a73;font-size:12px;letter-spacing:.04em;cursor:pointer;opacity:0;animation:flowerTextIn .7s 1.65s both;backdrop-filter:blur(8px)}
+.flower-petal{position:absolute;top:-8vh;left:var(--x);width:12px;height:19px;border-radius:80% 12% 75% 20%;background:linear-gradient(145deg,#fff8fc,#e8a9c6);opacity:0;animation:petalFall var(--dur,5s) linear var(--delay,0s) forwards;transform:rotate(var(--rot,0deg));box-shadow:0 2px 6px #a85f8220}
+@keyframes bloomIn{0%{opacity:0;transform:translate(-50%,-50%) scale(.25) rotate(var(--rot,0deg))}65%{opacity:.95}100%{opacity:.83;transform:translate(-50%,-50%) scale(1) rotate(var(--rot,0deg))}}
+@keyframes flowerGlow{0%{transform:scale(.5);opacity:0}40%{opacity:.85}100%{transform:scale(1.35);opacity:.5}}
+@keyframes flowerTextIn{from{opacity:0;transform:translateY(13px);filter:blur(5px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes petalFall{0%{opacity:0;transform:translate3d(0,-5vh,0) rotate(0deg)}12%{opacity:.78}85%{opacity:.68}100%{opacity:0;transform:translate3d(var(--drift,60px),112vh,0) rotate(540deg)}}
+@media(max-width:480px){.flower-bloom{width:calc(var(--size,100px)*.82);height:calc(var(--size,100px)*.82)}.flower-copy{max-width:330px}.flower-subtitle{font-size:15px}}
+@media(prefers-reduced-motion:reduce){.flower-reveal *{animation:none!important;transition:none!important}.flower-reveal.show .flower-bloom{opacity:.7;transform:translate(-50%,-50%) scale(1)}}
+
+
+/* Refined cinematic art direction: blush, ivory, rose-gold, deep plum */
+:root{--pink:#e7b8c9;--pink2:#fbf0f4;--blue:#e9e3eb;--ink:#493641;--muted:#8f7a85;--white:#fffdfb;--rose-gold:#b58a83;--plum:#402b39}
+html{background:#fbf7f5}
+body{background:radial-gradient(ellipse at 12% 5%,#f8e8ed 0,transparent 34%),radial-gradient(ellipse at 90% 34%,#f1eaf0 0,transparent 30%),linear-gradient(160deg,#fcf8f5 0%,#fffdfb 52%,#f7f0f3 100%);color:var(--ink);font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{width:min(100% - 36px,660px)}
+nav{padding:22px 0 18px;color:#98727f;font-size:10px;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid #e8d9dd}
+.brand{font-weight:650;letter-spacing:.19em}
+.hero{min-height:88svh;padding:38px 0 56px}
+.blob{filter:blur(24px);opacity:.48}
+.b1{background:#f0d6df;width:220px;height:220px;left:-130px;top:8%}.b2{background:#e9dfe8;width:210px;height:210px;right:-130px;bottom:5%}
+.eyebrow,.section-tag{font-size:9px;letter-spacing:.25em;color:#a37c8a;font-weight:650}
+.hero-photo{width:164px;height:202px;border:5px solid #fffdfb;border-radius:100px 100px 70px 70px;box-shadow:0 22px 55px #87657722,0 0 0 1px #e6d4db;margin:27px auto 30px;transform:rotate(-1.5deg)}
+h1{font-family:"Bodoni 72",Didot,Georgia,"Times New Roman",serif;font-size:clamp(45px,12vw,70px);font-weight:400;line-height:1.02;letter-spacing:-.045em;color:#80566b}
+h1 span{color:#b68d9b;font-weight:400}
+.lead{font-family:Georgia,"Times New Roman",serif;font-size:16px;line-height:1.9;color:#806d78;max-width:330px}
+.primary,.journey-btn.next{background:linear-gradient(115deg,#b98d9e,#9f7a8d);color:#fffafc;border:1px solid #c9a6b4;box-shadow:0 12px 28px #9d71851f, inset 0 1px #ffffff55;letter-spacing:.025em;font-weight:550}
+.primary{padding:15px 27px}.primary:hover,.journey-btn:hover,.story-action:hover{filter:brightness(1.025);transform:translateY(-2px)}
+.tiny{letter-spacing:.06em;color:#a18a94}
+section{padding:46px 0}
+h2{font-family:"Bodoni 72",Didot,Georgia,"Times New Roman",serif;font-size:clamp(32px,8vw,44px);font-weight:400;letter-spacing:-.025em;color:#80566b;line-height:1.12}
+.sub{font-family:Georgia,"Times New Roman",serif;font-size:15px;line-height:1.9;color:#8d7a84}
+.note,.interactive-card,.surprise{background:rgba(255,253,251,.78);border:1px solid #eadce1;border-radius:4px;box-shadow:0 18px 50px #5d3c4b0a,0 2px 8px #5d3c4b05;backdrop-filter:blur(10px)}
+.note{padding:30px 25px}.note:before{color:#d8b8c5;font-size:25px}.note p{font-family:Georgia,"Times New Roman",serif;color:#6e5964;font-size:17px;line-height:2.05}
+.reasons{gap:12px}.reason,.reason:nth-child(2),.reason:nth-child(3){background:#fffdfa;border:1px solid #eee1e4;border-radius:4px;padding:20px 15px;box-shadow:0 9px 24px #6b48580a}.reason .emoji{filter:saturate(.7);font-size:22px}.reason p{font-family:Georgia,serif;color:#7d6974;line-height:1.8}
+.polaroid{background:#fffdfa;padding:8px 8px 15px;border-radius:2px;box-shadow:0 14px 35px #6c4a5815;border:1px solid #f2e8e9}
+.caption{font-family:Georgia,serif;color:#987989;letter-spacing:.015em}
+.surprise{background:linear-gradient(145deg,#fbf0f3,#f8f4f2);padding:34px 22px}
+.interactive-card{padding:25px 22px;border-radius:5px}
+.story-action{background:linear-gradient(115deg,#b98d9e,#9f7a8d);color:#fffafc;border-radius:3px;box-shadow:0 8px 22px #9d71851b;font-weight:550;letter-spacing:.02em}
+.envelope{background:#d9aebe;border-radius:3px;box-shadow:0 15px 30px #7c50621c}.envelope:before{border-top-color:#c995a9}
+.quiz-options button{background:#fffdfa;border-color:#e9dbe0;border-radius:3px;color:#6e5964;padding:15px}.quiz-options button:hover{background:#fbf0f4}
+.gift-result{background:#f8eff2;border-radius:3px;color:#866174}
+.lock-input{border-color:#e4d2d9;border-radius:3px;background:#fffdfa}
+.mood-choice{background:#fffdfa;border-color:#e9dce0;border-radius:3px;box-shadow:0 8px 22px #6c4a5808;color:#765c6a}
+.mood-note{background:linear-gradient(135deg,#fcf3f6,#fffdfa);border-color:#e9dce0;border-radius:3px;color:#80566b}
+.voucher{background:#fffdfa;border:1px dashed #c9a5b3;border-radius:3px;color:#725a67;padding:16px}.voucher strong{color:#80566b;font-weight:500}.voucher:after{color:#cba5b4}
+.voucher.claimed{background:#f5e9ee}
+.journey-progress{height:3px;background:#eee2e6}.journey-progress span{background:linear-gradient(90deg,#c69aab,#8f6b7f)}
+.journey-btn{border-color:#e6d6dd;background:#fffdfa;color:#8c6579;border-radius:3px;box-shadow:0 5px 16px #6c4a5808;font-weight:550}
+.stage-counter{color:#a18793;letter-spacing:.18em;font-size:10px}
+.music-dock{background:#fffdfaee;border-color:#e9dbe0;color:#876276;box-shadow:0 12px 32px #6c4a5816;border-radius:4px}
+.music-toggle{background:linear-gradient(135deg,#e8c9d5,#c6a6b5);color:#fff;border-radius:3px;box-shadow:none}
+.living-heart{background:#fffdfa;border-color:#e6d6dd;box-shadow:0 8px 24px #6c4a5816;animation:heartBeat 2.4s infinite}
+.heart-bubble{background:#fffdfa;border-color:#e6d6dd;color:#876276;border-radius:4px}
+.cinema-overlay{background:radial-gradient(ellipse at 50% 42%,#634451 0%,#33222f 48%,#17121a 100%)}
+.cinema-heart{color:#e9c2d0;filter:drop-shadow(0 0 24px #d99ab855)}.cinema-title{font-family:"Bodoni 72",Didot,Georgia,serif;font-weight:400;letter-spacing:-.025em}.cinema-copy{font-family:Georgia,serif;font-weight:400;color:#ead9df}.cinema-close{border-color:#c8a1b0;background:#ffffff0d;letter-spacing:.03em}
+.flower-reveal{background:radial-gradient(ellipse at 50% 46%,#fffaf9 0%,#f8e9ed 42%,#dfc0cd 100%)}
+.flower-glow{background:#fffaf8;filter:blur(55px);opacity:.65}
+.flower-bloom{filter:drop-shadow(0 12px 16px #82536815)}
+.flower-bloom i{background:linear-gradient(155deg,#fffafc 0%,#f0d0dc 62%,#dcaabd 100%);border-color:#fff9fcaa}
+.flower-copy{color:#725060}.flower-eyebrow{color:#9e7888;letter-spacing:.32em;font-size:9px}.flower-title{font-family:"Bodoni 72",Didot,Georgia,serif;font-weight:400;letter-spacing:-.035em;color:#79566a}.flower-subtitle{font-family:Georgia,serif;color:#967987;font-size:15px}.flower-continue{border-color:#bd9aa8;background:#fffdfad9;color:#79566a;border-radius:3px;letter-spacing:.06em;text-transform:uppercase;font-size:10px;padding:14px 22px}
+.flower-petal{background:linear-gradient(145deg,#fffafd,#d9aabd);box-shadow:0 3px 8px #82536812}
+footer{color:#a28b95;letter-spacing:.04em}
+button{transition:transform .28s ease,box-shadow .28s ease,background .28s ease}
+button:focus-visible{outline:2px solid #b58a9b;outline-offset:4px}
+@media(max-width:480px){.wrap{width:min(100% - 30px,660px)}.hero{min-height:86svh}.hero-photo{width:150px;height:188px}.interactive-card{padding:21px 15px}.note{padding:25px 20px}.flower-continue{margin-top:25px}}
+@media(prefers-reduced-motion:reduce){button{transition:none!important}}
+
+/* Fix amplop terbuka: beri ruang untuk flap agar tidak menimpa judul */
+#envelopeCard{overflow:visible;padding-top:28px}
+#envelopeCard h3{position:relative;z-index:4;margin-bottom:10px!important}
+#envelopeCard .envelope{margin-top:78px;margin-bottom:22px;isolation:isolate}
+#envelopeCard .envelope:before{z-index:2;pointer-events:none}
+#envelopeCard .envelope-hint{position:relative;z-index:4;min-height:22px;line-height:1.6;margin-top:4px}
+#envelopeCard .story-action{position:relative;z-index:4;margin-top:12px}
+@media(max-width:480px){#envelopeCard{padding:24px 16px}#envelopeCard .envelope{margin-top:72px}}
+
+/* Animasi sinematik dua karakter bertemu lalu berpelukan */
+.affection-overlay{position:fixed;inset:0;z-index:1200;display:flex;align-items:center;justify-content:center;padding:22px;background:radial-gradient(ellipse at 50% 35%,#fffafd 0%,#f7e8ef 52%,#ead4e1 100%);backdrop-filter:blur(9px);opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease}
+.affection-overlay.show{opacity:1;visibility:visible}
+.affection-card{width:min(390px,100%);padding:27px 22px 22px;text-align:center;background:linear-gradient(155deg,#fffefe,#fff8fb);border:1px solid #ecd8e2;border-radius:26px;box-shadow:0 24px 80px #79546a25;position:relative;overflow:hidden}
+.affection-kicker{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#ad8298}
+.affection-stage{height:218px;display:flex;align-items:center;justify-content:center;position:relative;margin:10px 0 4px;overflow:hidden;border-radius:20px;background:radial-gradient(ellipse at 50% 85%,#edcbd9aa,transparent 58%)}
+.affection-scene{position:relative;width:290px;height:190px;max-width:100%;}
+.affection-person{position:absolute;bottom:18px;width:100px;height:156px;filter:drop-shadow(0 8px 7px #80566b20)}
+.affection-person.left{left:23px;--skin:#f2c7b7;--hair:#79545c;--clothes:#bd829b;animation:walkFromLeft 1.45s cubic-bezier(.2,.8,.2,1) both}
+.affection-person.right{right:23px;--skin:#e9bda8;--hair:#4e3c4a;--clothes:#8f718f;animation:walkFromRight 1.45s cubic-bezier(.2,.8,.2,1) both}
+.person-head{position:absolute;top:9px;left:31px;width:39px;height:43px;border-radius:48% 48% 46% 46%;background:var(--skin);z-index:2;border:1px solid #bd8f8b55}
+.person-hair{position:absolute;top:2px;left:26px;width:49px;height:51px;border-radius:50% 50% 42% 45%;background:var(--hair);z-index:1}
+.person-hair:after{content:"";position:absolute;left:0;top:24px;width:13px;height:42px;border-radius:10px;background:var(--hair);transform:rotate(5deg)}
+.person-body{position:absolute;top:49px;left:16px;width:70px;height:83px;border-radius:28px 28px 14px 14px;background:var(--clothes);z-index:1}
+.person-body:after{content:"";position:absolute;bottom:-14px;left:13px;width:17px;height:31px;border-radius:9px;background:var(--clothes);box-shadow:28px 0 0 var(--clothes)}
+.person-arm{position:absolute;top:59px;left:12px;width:24px;height:70px;border-radius:16px;background:var(--clothes);transform-origin:14px 12px;z-index:3;border:1px solid #fff3}
+.person-arm.outer{left:66px;transform:rotate(-13deg)}
+.person-arm.inner{left:12px;transform:rotate(18deg)}
+.affection-person.right .person-arm.outer{transform:rotate(13deg)}
+.affection-person.right .person-arm.inner{transform:rotate(-18deg)}
+.affection-person.left .person-head{transform:rotate(-4deg)}
+.affection-person.right .person-head{transform:rotate(4deg)}
+.affection-hug-heart{position:absolute;z-index:5;left:50%;top:26px;transform:translateX(-50%) scale(.3);font-size:27px;opacity:0;animation:heartBloom 2.1s 1.05s ease-in-out infinite}
+.affection-overlay[data-kind="kiss"] .affection-person.left{animation:walkFromLeft 1.35s cubic-bezier(.2,.8,.2,1) both}
+.affection-overlay[data-kind="kiss"] .affection-person.right{animation:walkFromRight 1.35s cubic-bezier(.2,.8,.2,1) both}
+.affection-overlay[data-kind="kiss"] .affection-person.left .person-head{animation:leanForKiss 1.3s 1s ease-in-out both;transform-origin:70% 80%}
+.affection-overlay[data-kind="kiss"] .affection-person.right .person-head{animation:leanForKissOther 1.3s 1s ease-in-out both;transform-origin:25% 80%}
+.affection-overlay[data-kind="kiss"] .affection-hug-heart{content:"💋"}
+.affection-title{font:28px/1.25 Georgia,serif;color:#80566b;margin:4px 0 10px}
+.affection-copy{font-size:13px;line-height:1.8;color:#987e8d;margin:0 auto 18px;max-width:290px}
+.affection-close{border:0;border-radius:999px;background:#ad8298;color:white;font-weight:600;padding:12px 22px;cursor:pointer}
+@keyframes walkFromLeft{0%{opacity:0;transform:translateX(-75px) translateY(5px)}55%{opacity:1;transform:translateX(15px) translateY(-2px)}78%{transform:translateX(7px) translateY(0)}100%{opacity:1;transform:translateX(16px) translateY(0)}}
+@keyframes walkFromRight{0%{opacity:0;transform:translateX(75px) translateY(5px)}55%{opacity:1;transform:translateX(-15px) translateY(-2px)}78%{transform:translateX(-7px) translateY(0)}100%{opacity:1;transform:translateX(-16px) translateY(0)}}
+@keyframes heartBloom{0%,100%{opacity:0;transform:translateX(-50%) translateY(9px) scale(.55)}30%,70%{opacity:1;transform:translateX(-50%) translateY(-2px) scale(1)}}
+@keyframes leanForKiss{0%,65%{transform:rotate(-4deg)}100%{transform:rotate(15deg) translateX(3px)}}
+@keyframes leanForKissOther{0%,65%{transform:rotate(4deg)}100%{transform:rotate(-15deg) translateX(-3px)}}
+@media(prefers-reduced-motion:reduce){.affection-person,.affection-hug-heart,.affection-overlay[data-kind="kiss"] .person-head{animation:none!important}.affection-overlay{transition:none}}
+
+
+/* Layout polish: navigation controls sit below the content, never beside it. */
+.hero{min-height:auto!important;padding:clamp(28px,5vh,54px) 0 34px!important;align-items:stretch!important}
+.hero-inner{width:100%;max-width:440px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
+.hero-inner .eyebrow{order:0;margin-bottom:18px}
+.hero-inner .hero-photo{order:1;margin:8px auto 26px}
+.hero-inner h1{order:2;width:100%;margin:0 auto 18px}
+.hero-inner .lead{order:3;margin:0 auto 24px;width:100%}
+.hero-inner .primary{order:4;position:static!important;display:block;width:min(100%,320px);margin:0 auto}
+.hero-inner .tiny{order:5;margin:14px auto 0}
+.journey-controls{position:relative!important;inset:auto!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:center!important;gap:9px!important;width:min(100%,320px)!important;margin:26px auto 0!important;padding:0 8px!important;float:none!important;transform:none!important;z-index:3}
+.journey-controls .journey-btn{position:static!important;display:block!important;width:100%!important;min-height:48px!important;margin:0!important;white-space:normal!important;transform:none}
+.journey-controls .journey-btn:hover{transform:translateY(-1px)}
+.stage-counter{position:static!important;text-align:center!important;width:100%;margin:10px auto 0!important;clear:both}
+@media(max-width:480px){.hero{min-height:auto!important;padding-top:30px!important;padding-bottom:34px!important}.hero-photo{margin-top:10px!important}.hero-inner h1{font-size:clamp(43px,11.5vw,58px)!important}.journey-controls{width:min(100%,330px)!important;margin-top:24px!important}}
+/* More readable couple illustration: long-haired feminine figure meets short-haired masculine figure. */
+.affection-stage{height:236px!important;background:radial-gradient(ellipse at 50% 85%,#e9c5d4aa,transparent 60%),linear-gradient(180deg,#fffafc,#f9edf2)!important}
+.affection-scene{width:310px!important;height:200px!important}
+.affection-person{width:106px!important;height:160px!important;bottom:14px!important}
+.affection-person.left{left:22px!important;--skin:#f3c9b8;--hair:#704c55;--clothes:#bd829b}
+.affection-person.right{right:22px!important;--skin:#e7b89f;--hair:#493744;--clothes:#78617f}
+.affection-person.left .person-hair{left:21px!important;top:0!important;width:59px!important;height:65px!important;border-radius:52% 52% 35% 35%!important}
+.affection-person.left .person-hair:after{top:29px!important;left:-2px!important;width:17px!important;height:68px!important;border-radius:12px!important;transform:rotate(9deg)!important;box-shadow:48px 3px 0 var(--hair)}
+.affection-person.right .person-hair{left:29px!important;top:2px!important;width:48px!important;height:43px!important;border-radius:50% 50% 35% 35%!important}
+.affection-person.right .person-hair:after{display:none!important}
+.affection-person.right .person-body{left:9px!important;width:88px!important;height:84px!important;border-radius:25px 25px 13px 13px!important}
+.affection-person.left .person-body{left:15px!important;width:76px!important;border-radius:28px 28px 14px 14px!important}
+.affection-person.left .person-arm.inner{left:18px!important;transform:rotate(18deg)}
+.affection-person.right .person-arm.inner{left:9px!important;transform:rotate(-18deg)}
+.affection-person.left{animation:walkFromLeft 1.55s cubic-bezier(.2,.8,.2,1) both,hugLeft 2.4s 1.35s ease-in-out infinite alternate!important}
+.affection-person.right{animation:walkFromRight 1.55s cubic-bezier(.2,.8,.2,1) both,hugRight 2.4s 1.35s ease-in-out infinite alternate!important}
+@keyframes hugLeft{from{transform:translateX(0)}to{transform:translateX(9px)}}
+@keyframes hugRight{from{transform:translateX(0)}to{transform:translateX(-9px)}}
+.affection-person.left .person-arm.inner{animation:embraceLeft 1.2s 1.25s ease-in-out both}
+.affection-person.right .person-arm.inner{animation:embraceRight 1.2s 1.25s ease-in-out both}
+@keyframes embraceLeft{to{transform:rotate(58deg) translateY(-4px)}}
+@keyframes embraceRight{to{transform:rotate(-58deg) translateY(-4px)}}
+.affection-person.right .person-head{transform:rotate(-3deg)!important}
+.affection-person.left .person-head{transform:rotate(3deg)!important}
+@media(prefers-reduced-motion:reduce){.affection-person.left,.affection-person.right,.affection-person.left .person-arm.inner,.affection-person.right .person-arm.inner{animation:none!important}}
+
+
+/* Cinematic couple animation refresh: illustrated, layered and responsive */
+.cinematic-scene{width:min(340px,100%);height:218px;overflow:hidden;border-radius:20px;background:linear-gradient(180deg,#fbe7ed 0%,#f5d4df 58%,#e9bfd0 100%);isolation:isolate}
+.cinematic-scene:before{content:"";position:absolute;inset:auto 0 0;height:38%;background:linear-gradient(0deg,#c995ae44,transparent);z-index:0}
+.scene-glow{position:absolute;width:155px;height:155px;border-radius:50%;background:#fff5d8;filter:blur(22px);opacity:.52;left:calc(50% - 78px);top:5px;animation:sceneGlow 4s ease-in-out infinite alternate}
+.couple-art{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:2;filter:drop-shadow(0 9px 8px #80566b18)}
+.svg-person{transform-box:fill-box;transform-origin:center bottom}
+.svg-boy{animation:boyApproach 2.1s cubic-bezier(.2,.75,.25,1) both}
+.svg-girl{animation:girlApproach 2.1s cubic-bezier(.2,.75,.25,1) both}
+.embrace-arms{opacity:0;transform-origin:center;animation:armsWrap 1.3s 1.15s ease-in-out both}
+.affection-overlay[data-kind="kiss"] .svg-boy{animation:boyKiss 2s cubic-bezier(.2,.75,.25,1) both}
+.affection-overlay[data-kind="kiss"] .svg-girl{animation:girlKiss 2s cubic-bezier(.2,.75,.25,1) both}
+.affection-overlay[data-kind="kiss"] .embrace-arms{opacity:.82;animation:armsWrap 1.2s .75s ease-in-out both}
+.affection-overlay[data-kind="kiss"] .kiss-hearts{animation:kissSpark 2s 1s ease both}
+.kiss-hearts{opacity:0;transform-origin:center;animation:heartBloom 2.2s 1.25s ease-in-out infinite}
+.petal{position:absolute;z-index:4;color:#fff9fb;text-shadow:0 1px 6px #b77b98aa;opacity:0;pointer-events:none}
+.petal-one{left:18%;top:23%;animation:petalDrift 4.2s .4s ease-in-out infinite}
+.petal-two{right:18%;top:15%;animation:petalDrift 3.8s 1.2s ease-in-out infinite}
+.petal-three{right:30%;top:42%;animation:petalDrift 4.5s 1.8s ease-in-out infinite}
+@keyframes boyApproach{0%{transform:translate(-48px,8px)}55%{transform:translate(7px,-2px)}75%{transform:translate(0,0)}100%{transform:translate(3px,0)}}
+@keyframes girlApproach{0%{transform:translate(48px,8px)}55%{transform:translate(-7px,-2px)}75%{transform:translate(0,0)}100%{transform:translate(-3px,0)}}
+@keyframes boyKiss{0%{transform:translate(-48px,8px)}55%{transform:translate(7px,-2px)}78%{transform:translate(0,0) rotate(-2deg)}100%{transform:translate(5px,-1px) rotate(-4deg)}}
+@keyframes girlKiss{0%{transform:translate(48px,8px)}55%{transform:translate(-7px,-2px)}78%{transform:translate(0,0) rotate(2deg)}100%{transform:translate(-5px,-1px) rotate(4deg)}}
+@keyframes armsWrap{0%{opacity:0;transform:scale(.85)}45%{opacity:.9;transform:scale(1.04)}70%,100%{opacity:1;transform:scale(1)}}
+@keyframes sceneGlow{from{opacity:.35;transform:scale(.92)}to{opacity:.65;transform:scale(1.08)}}
+@keyframes kissSpark{0%,25%{opacity:0;transform:scale(.7)}55%,80%{opacity:1;transform:scale(1)}100%{opacity:.7;transform:scale(.95)}}
+@keyframes petalDrift{0%{opacity:0;transform:translateY(-8px) rotate(0deg)}20%{opacity:.9}80%{opacity:.7}100%{opacity:0;transform:translateY(100px) rotate(90deg)}}
+.affection-overlay[data-kind="kiss"] .affection-hug-heart{font-size:0}
+@media(max-width:390px){.affection-stage{height:205px}.cinematic-scene{height:205px}.couple-art{transform:scale(1.02)}}
+@media(prefers-reduced-motion:reduce){.svg-boy,.svg-girl,.embrace-arms,.kiss-hearts,.scene-glow,.petal-one,.petal-two,.petal-three{animation:none!important}.embrace-arms{opacity:1}}
+
+
+/* Ruang nyaman BBY: surat perasaan, pesan suara, dan mode malam */
+.comfort-section{max-width:900px;margin:42px auto;padding:clamp(22px,5vw,42px);border:1px solid #ead9e1;border-radius:28px;background:linear-gradient(145deg,#fffdfa 0%,#fcf1f6 58%,#f7edf5 100%);box-shadow:0 18px 55px #6c4a580d;color:#76596a;position:relative;overflow:hidden}
+.comfort-section:before{content:'✿';position:absolute;right:22px;top:8px;font-size:80px;color:#e7c5d3;opacity:.22;pointer-events:none}
+.comfort-kicker{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#ad8298;text-align:center}
+.comfort-title{font-family:Georgia,'Times New Roman',serif;font-weight:500;text-align:center;font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.2;color:#80566b;margin:10px 0}
+.comfort-intro{text-align:center;max-width:560px;margin:0 auto 22px;line-height:1.8;color:#927c8b}
+.comfort-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0}
+.comfort-choice{border:1px solid #ead7e0;background:#fffdfc;color:#76596a;border-radius:16px;padding:15px 12px;text-align:left;cursor:pointer;min-height:72px;transition:transform .2s,border-color .2s,background .2s}
+.comfort-choice:hover,.comfort-choice:focus-visible{transform:translateY(-2px);border-color:#c89bb0;background:#fff8fb;outline:2px solid #e7c5d3;outline-offset:2px}
+.comfort-choice strong{display:block;font-size:.96rem;margin-bottom:5px}.comfort-choice span{font-size:.82rem;color:#a08796;line-height:1.5}
+.comfort-letter{display:none;margin-top:18px;padding:clamp(18px,4vw,28px);border:1px solid #efdee6;border-radius:18px;background:#fffdfc;line-height:1.9;white-space:pre-line;animation:comfortIn .5s ease both}
+.comfort-letter.show{display:block}.comfort-letter h3{font-family:Georgia,serif;font-size:1.35rem;font-weight:500;color:#9b6e85;margin:0 0 10px}
+.comfort-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:16px}
+.comfort-btn{border:1px solid #d9b9c8;background:#a77b91;color:white;padding:12px 17px;border-radius:999px;cursor:pointer;font:inherit;transition:transform .2s}.comfort-btn:hover{transform:translateY(-2px)}.comfort-btn.secondary{background:#fffdfc;color:#80566b}
+.voice-box{border-top:1px solid #ead9e1;margin-top:28px;padding-top:24px;text-align:center}.voice-box p{line-height:1.7;color:#927c8b}.voice-file{display:block;max-width:100%;margin:12px auto;font-size:.85rem;color:#927c8b}.voice-player{width:min(100%,420px);margin:12px auto;display:block}
+.bedtime-mode{position:fixed!important;inset:0!important;z-index:3000!important;max-width:none!important;margin:0!important;border-radius:0!important;overflow-y:auto!important;background:radial-gradient(ellipse at 50% 15%,#453348 0%,#201c30 58%,#171725 100%)!important;color:#f8edf4!important;display:flex;flex-direction:column;justify-content:center;min-height:100dvh;box-shadow:none!important}
+.bedtime-mode:before{content:'✦  ·  ✧     ·    ✦     ·  ✧';position:absolute;inset:15% 0 auto;text-align:center;color:#edcfdf;letter-spacing:.5em;font-size:1.2rem;opacity:.8}
+.bedtime-mode .comfort-kicker,.bedtime-mode .comfort-title,.bedtime-mode .comfort-intro,.bedtime-mode .voice-box p{color:#f1dce8}.bedtime-mode .comfort-choice,.bedtime-mode .comfort-letter{background:#332a3d;border-color:#675064;color:#f8edf4}.bedtime-mode .comfort-choice span{color:#d2b8c9}.bedtime-mode .comfort-letter h3{color:#f1c9df}.bedtime-mode .comfort-btn{background:#d9b0c8;color:#332538;border-color:#d9b0c8}.bedtime-mode .comfort-btn.secondary{background:#332a3d;color:#f8edf4;border-color:#80647a}.bedtime-mode .voice-box{border-color:#675064}
+@keyframes comfortIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:520px){.comfort-grid{grid-template-columns:1fr}.comfort-section{margin:28px 12px;border-radius:22px}.comfort-section:before{font-size:56px}.comfort-choice{min-height:64px}}
+@media(prefers-reduced-motion:reduce){.comfort-letter,.comfort-choice,.comfort-btn{animation:none!important;transition:none!important}}
+
+
+/* Surat dari masa depan: satu perjalanan emosional, bukan sekadar kumpulan kartu */
+.future-section{padding:66px 0 76px;background:radial-gradient(ellipse at 50% 0%,#fff0f6 0%,#fffafc 44%,#f4f7ff 100%);position:relative;overflow:hidden}
+.future-section:before,.future-section:after{content:'✦';position:absolute;color:#e6b3cc;opacity:.55;font-size:22px;animation:futureTwinkle 4s ease-in-out infinite}
+.future-section:before{top:7%;left:8%}.future-section:after{right:9%;top:18%;animation-delay:1.6s}
+.future-shell{width:min(100% - 32px,640px);margin:auto;position:relative;z-index:1}
+.future-kicker{text-align:center;font-size:10px;letter-spacing:.2em;font-weight:800;color:#b57696;margin-bottom:13px}
+.future-title{font:500 clamp(34px,9vw,49px)/1.08 Georgia,serif;text-align:center;color:#9f5d7e;margin:0 auto 15px;max-width:520px}
+.future-intro{max-width:440px;margin:0 auto 28px;text-align:center;font-size:14px;line-height:1.9;color:#806b7a}
+.future-timecards{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.future-timecard{min-height:120px;text-align:left;border:1px solid #f0dce7;border-radius:20px;padding:17px 15px;background:#ffffffd9;color:#765b6d;box-shadow:0 8px 25px #d8b7cc18;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s}
+.future-timecard:hover,.future-timecard:focus-visible{transform:translateY(-3px);border-color:#dca8c1;box-shadow:0 12px 28px #d8b7cc35;outline:none}
+.future-timecard .symbol{font-size:23px;display:block;margin-bottom:10px}.future-timecard strong{display:block;font:500 18px Georgia,serif;color:#a36383;margin-bottom:5px}.future-timecard span:last-child{font-size:12px;line-height:1.5;color:#988393}
+.future-letter{display:none;margin-top:18px;padding:25px 21px 22px;border:1px solid #f0dbe5;border-radius:23px;background:linear-gradient(150deg,#fffefa,#fff3f8);box-shadow:0 15px 40px #c9a5ba24;animation:pop .35s ease both}
+.future-letter.show{display:block}.future-letter .letter-stamp{text-align:center;font-size:27px;margin-bottom:10px}.future-letter h3{font:500 27px/1.2 Georgia,serif;text-align:center;color:#a45f81;margin:0 0 16px}.future-letter .letter-body{font:16px/1.95 Georgia,serif;color:#735e6d;white-space:pre-line;min-height:90px}.future-sign{font-size:13px;color:#ae7895;font-style:italic;text-align:right;margin-top:18px}
+.future-actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:20px}.future-actions button{border:1px solid #e8c8d9;background:#fff;color:#a05f80;border-radius:999px;padding:11px 15px;min-height:42px;cursor:pointer;font-weight:650;font-size:12px}.future-actions button.main{background:linear-gradient(100deg,#eaaac8,#c5def7);border:0;color:#fff}
+.future-last{display:none;margin-top:18px;padding:27px 20px;border-radius:24px;text-align:center;background:#30283d;color:#fff0f7;box-shadow:0 18px 45px #39273d30;animation:pop .5s ease both}.future-last.show{display:block}.future-last .last-stars{letter-spacing:.45em;color:#f1bfd7}.future-last h3{font:italic 27px Georgia,serif;font-weight:400;margin:13px 0}.future-last p{font:15px/1.9 Georgia,serif;color:#f3dce8;max-width:420px;margin:0 auto}.future-last .last-sign{margin-top:18px;color:#f1bfd7;font-size:12px;letter-spacing:.08em}
+@keyframes futureTwinkle{0%,100%{opacity:.25;transform:scale(.85) rotate(0)}50%{opacity:.85;transform:scale(1.2) rotate(20deg)}}
+@media(max-width:390px){.future-timecards{grid-template-columns:1fr}.future-timecard{min-height:unset}.future-letter{padding:22px 17px}}
+@media(prefers-reduced-motion:reduce){.future-section:before,.future-section:after{animation:none}}
+
+
+/* Smooth page/section transitions + little love bursts */
+html{scroll-behavior:smooth;scroll-padding-top:18px}
+body{transition:background .65s ease,color .45s ease}
+section,.hero,.note,.polaroid,.future-timecard,.voice-box,.comfort-choice,.future-letter,.future-last{transition:opacity .65s ease,transform .65s cubic-bezier(.22,.8,.25,1),box-shadow .35s ease}
+.reveal-on-scroll{opacity:0;transform:translateY(22px) scale(.99)}
+.reveal-on-scroll.revealed{opacity:1;transform:translateY(0) scale(1)}
+.love-burst{position:fixed;z-index:99999;pointer-events:none;left:0;top:0;font-size:var(--size,22px);line-height:1;filter:drop-shadow(0 3px 5px #e88bb966);animation:loveFloat 1.05s cubic-bezier(.18,.7,.3,1) forwards;will-change:transform,opacity}
+@keyframes loveFloat{0%{opacity:0;transform:translate(-50%,-35%) scale(.35) rotate(-15deg)}15%{opacity:1;transform:translate(-50%,-55%) scale(1.15) rotate(8deg)}100%{opacity:0;transform:translate(calc(-50% + var(--drift,18px)),-125px) scale(.65) rotate(var(--turn,25deg)}}
+button,a,[role="button"],summary{transition:transform .22s ease,filter .22s ease,box-shadow .22s ease}
+button:active,a:active,[role="button"]:active{transform:scale(.97)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal-on-scroll{opacity:1;transform:none}.love-burst{animation-duration:.2s}*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+
+/* GRAND FINALE — langit malam, orbit cahaya, dan hujan bintang */
+.finale-firework{position:fixed;z-index:3;left:var(--fx);top:var(--fy);font-size:clamp(12px,2.5vw,24px);color:#ffe0f2;text-shadow:0 0 14px #ff8bc9;pointer-events:none;opacity:0;animation:finaleFirework 3.2s var(--fd) cubic-bezier(.12,.7,.25,1) both}
+@keyframes finaleFirework{0%{opacity:0;transform:translate(-50%,-50%) scale(.1) rotate(0)}12%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.25) rotate(var(--fr))}}
+.cinema-overlay{isolation:isolate;background:radial-gradient(ellipse at 50% 38%,#68405f 0%,#35213f 36%,#171426 72%,#090b18 100%);padding:clamp(18px,4vw,36px);overflow:hidden}
+.cinema-overlay:before{content:"";position:absolute;inset:-35%;z-index:0;pointer-events:none;background:conic-gradient(from 0deg,transparent 0 20%,#f5b7df0b 28%,transparent 38% 55%,#b8baff0c 65%,transparent 78%);animation:finaleNebula 32s linear infinite}
+.finale-stars{position:absolute;inset:0;pointer-events:none;opacity:.8;background-image:radial-gradient(2px 2px at 8% 18%,#fff 40%,transparent 70%),radial-gradient(1px 1px at 22% 72%,#ffe4f3 40%,transparent 70%),radial-gradient(2px 2px at 77% 23%,#fff 40%,transparent 70%),radial-gradient(1px 1px at 91% 61%,#ffe4f3 40%,transparent 70%),radial-gradient(1px 1px at 62% 84%,#fff 40%,transparent 70%),radial-gradient(2px 2px at 42% 12%,#d9dfff 40%,transparent 70%);background-size:240px 220px,180px 250px,300px 240px,220px 300px,260px 230px,310px 270px;animation:finaleStarfield 35s linear infinite}
+.finale-vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 35%,#08071380 100%)}
+.finale-orbit{position:absolute;z-index:1;width:min(86vw,650px);aspect-ratio:1;border:1px solid #f8d7f31c;border-radius:50%;box-shadow:0 0 70px #e6a6d00b,inset 0 0 70px #e6a6d008;animation:finaleOrbit 30s linear infinite;pointer-events:none}
+.finale-orbit:before,.finale-orbit:after{content:"";position:absolute;border:1px solid #f7cce51c;border-radius:50%;inset:10%;transform:rotate(38deg) scaleY(.44)}
+.finale-orbit:after{inset:20%;transform:rotate(-42deg) scaleY(.55);border-color:#c8d3ff20}
+.finale-orbit span{position:absolute;top:12%;left:14%;color:#ffe2f2;font-size:20px;text-shadow:0 0 20px #ffb6df;animation:finaleOrbitHeart 4s ease-in-out infinite}
+.cinema-content{width:min(100%,620px);max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain;padding:clamp(8px,2vw,20px) 8px 16px;scrollbar-width:thin}
+.cinema-kicker{font-size:9px;letter-spacing:.32em;color:#f8c8e5;margin-bottom:15px}
+.finale-overline{font-size:9px;letter-spacing:.22em;color:#d7c7f3;margin-bottom:8px}
+.cinema-heart{font-size:clamp(58px,10vw,82px);line-height:1.15;color:#ffd5e9;text-shadow:0 0 15px #ff9fd1,0 0 45px #ff5fae,0 0 100px #bca0ff66;position:relative;display:inline-block;margin:4px 0}
+.cinema-heart:after{content:"";position:absolute;inset:-22px;border:1px solid #ffd9ee35;border-radius:50%;animation:finaleHeartRing 3s ease-out infinite}
+.cinema-title{font-size:clamp(30px,7vw,54px);line-height:1.14;letter-spacing:-.035em;text-wrap:balance;margin:12px 0 15px;text-shadow:0 5px 35px #100b26}
+.cinema-title em{font-weight:400;color:#ffd0e8;text-shadow:0 0 30px #f3a5d766}
+.finale-divider{display:flex;align-items:center;gap:12px;justify-content:center;color:#f8c9e5;margin:10px auto 15px;max-width:220px}
+.finale-divider:before,.finale-divider:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,#f8c9e5aa)}
+.finale-divider:after{transform:rotate(180deg)}
+.cinema-copy{max-width:510px;font-size:clamp(14px,3.5vw,16px);line-height:1.85;color:#f4e5f2;margin-bottom:16px;text-wrap:pretty}
+.finale-promise{font:15px/1.8 Georgia,serif;color:#e7d8f0;margin:14px auto}
+.finale-promise strong{color:#ffe1f1;font-weight:500}
+.finale-signature{font-size:10px;letter-spacing:.13em;color:#d6bedc;margin:18px auto 22px}
+.cinema-close{background:linear-gradient(110deg,#fff0f8 0%,#f4d9ff 50%,#dfe7ff 100%);border:0;color:#4a2d4b;font-weight:600;padding:14px 24px;box-shadow:0 0 0 1px #fff8 inset,0 8px 32px #e8a8d62b;transition:transform .25s,box-shadow .25s}
+.cinema-close:hover{transform:translateY(-2px);box-shadow:0 0 0 1px #fff8 inset,0 12px 40px #e8a8d655}
+.cinema-close span{margin-right:7px}
+.cinema-overlay.show .finale-orbit{animation:finaleOrbitIn 2s .2s both,finaleOrbit 35s 2.2s linear infinite}
+.cinema-overlay.show .finale-stars{animation:finaleStarfield 35s linear infinite,finaleStarsAppear 2s ease both}
+.cinema-overlay.show .cinema-heart{animation:endingHeartBeat 2.1s .9s ease-in-out infinite,finaleHeartEntrance 1.2s .1s cubic-bezier(.16,1,.3,1) both}
+.cinema-overlay.show .finale-overline{animation:finaleFadeUp 1s .25s both}
+.cinema-overlay.show .cinema-title{animation:finaleFadeUp 1.1s .45s both}
+.cinema-overlay.show .finale-divider{animation:finaleFadeUp 1s .65s both}
+.cinema-overlay.show .cinema-copy{animation:finaleFadeUp 1.1s .8s both}
+.cinema-overlay.show .finale-promise{animation:finaleFadeUp 1.1s 1s both}
+.cinema-overlay.show .finale-signature,.cinema-overlay.show .cinema-close{animation:finaleFadeUp 1s 1.2s both}
+@keyframes finaleNebula{to{transform:rotate(360deg)}}
+@keyframes finaleStarfield{from{background-position:0 0,0 0,0 0,0 0,0 0,0 0}to{background-position:0 -600px,0 500px,0 -720px,0 430px,0 -550px,0 640px}}
+@keyframes finaleOrbit{to{transform:rotate(360deg)}}
+@keyframes finaleOrbitIn{from{opacity:0;transform:scale(.55) rotate(-30deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes finaleOrbitHeart{0%,100%{transform:scale(.85);opacity:.65}50%{transform:scale(1.25);opacity:1}}
+@keyframes finaleHeartRing{0%{transform:scale(.72);opacity:0}25%{opacity:.8}100%{transform:scale(1.5);opacity:0}}
+@keyframes finaleHeartEntrance{from{opacity:0;transform:scale(.1) rotate(-35deg);filter:blur(12px)}65%{opacity:1;transform:scale(1.18) rotate(5deg);filter:blur(0)}to{transform:scale(1) rotate(0)}}
+@keyframes finaleFadeUp{from{opacity:0;transform:translateY(18px);filter:blur(4px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes finaleStarsAppear{from{opacity:0}to{opacity:.8}}
+@media(max-width:520px){.cinema-overlay{padding:14px}.cinema-content{max-height:calc(100dvh - 24px);padding:10px 4px}.cinema-kicker{letter-spacing:.2em;font-size:8px}.finale-overline{font-size:8px}.cinema-copy{line-height:1.72}.finale-orbit{width:115vw}.finale-signature{margin:14px auto 16px}}
+@media(prefers-reduced-motion:reduce){.cinema-overlay:before,.finale-stars,.finale-orbit,.finale-orbit span,.cinema-overlay.show .finale-overline,.cinema-overlay.show .cinema-title,.cinema-overlay.show .finale-divider,.cinema-overlay.show .cinema-copy,.cinema-overlay.show .finale-promise,.cinema-overlay.show .finale-signature,.cinema-overlay.show .cinema-close{animation:none!important}}
+
+</style>
+<style>
+/* CINEMATIC ROMANTIC UPGRADE — opening film, dramatic reveals, enhanced gift machine */
+.cinematic-intro{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;overflow:hidden;padding:24px;background:radial-gradient(ellipse at 50% 42%,#61354f 0%,#251722 48%,#100d16 100%);color:#fff5f8;text-align:center;transition:opacity 1s ease,visibility 1s ease}
+.cinematic-intro.dismissed{opacity:0;visibility:hidden;pointer-events:none}
+.cinematic-intro:before,.cinematic-intro:after{content:"";position:absolute;inset:8%;border:1px solid #f3c8da44;pointer-events:none;animation:introFrame 5s ease-in-out infinite alternate}
+.cinematic-intro:after{inset:12%;border-color:#f3c8da22;animation-delay:-2s}
+.intro-stars{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(#ffe7f2 1px,transparent 1.5px),radial-gradient(#f2bdd6 1px,transparent 1.5px);background-size:71px 83px,113px 127px;background-position:4px 9px,45px 51px;opacity:.4;animation:starDrift 18s linear infinite}
+.intro-inner{position:relative;z-index:1;max-width:720px;animation:introRise 1.2s cubic-bezier(.2,.75,.25,1) both}
+.intro-eyebrow{font:700 10px/1.5 Arial,sans-serif;letter-spacing:.34em;text-transform:uppercase;color:#f0b9d1;margin-bottom:25px}
+.intro-title{font:500 clamp(37px,8vw,76px)/1.06 Georgia,serif;letter-spacing:-.035em;margin:0 auto 20px;text-shadow:0 5px 35px #f0a8cb44}
+.intro-title em{font-weight:400;color:#f3bfd5}
+.intro-copy{font:15px/1.9 Georgia,serif;color:#f4dce6;max-width:470px;margin:0 auto 32px}
+.intro-start{border:1px solid #f9d9e8a8;border-radius:999px;padding:14px 25px;background:linear-gradient(120deg,#f3c2d8,#dba5c3);color:#48283b;font-weight:800;letter-spacing:.04em;box-shadow:0 0 0 6px #f6d4e311,0 12px 42px #d47aa344;cursor:pointer;transition:transform .25s,box-shadow .25s}
+.intro-start:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 0 0 10px #f6d4e311,0 16px 52px #d47aa366}
+.intro-foot{margin-top:25px;font:10px Arial,sans-serif;letter-spacing:.18em;color:#c8a6b7;text-transform:uppercase}
+@keyframes introRise{from{opacity:0;transform:translateY(22px) scale(.98);filter:blur(5px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes introFrame{from{transform:scale(.99);opacity:.35}to{transform:scale(1.015);opacity:.8}}
+@keyframes starDrift{to{background-position:4px -166px,45px -203px}}
+.gift-box{position:relative;isolation:isolate;transition:transform .25s,filter .25s!important;filter:drop-shadow(0 10px 18px #c66f9c44)}
+.gift-box:before{content:"✦";position:absolute;inset:-16px;display:grid;place-items:start end;color:#e6a3c5;font-size:20px;opacity:0;transform:scale(.3) rotate(-35deg);transition:opacity .2s;pointer-events:none}
+.gift-box:hover{transform:translateY(-4px) rotate(-3deg) scale(1.06)!important;filter:drop-shadow(0 16px 22px #c66f9c66)}
+.gift-box.drawing{animation:giftShake .7s ease-in-out 2}
+.gift-result{min-height:2.5em;transition:opacity .25s,transform .25s}
+.gift-result.reveal{animation:giftReveal .65s cubic-bezier(.16,1,.3,1) both}
+.gift-burst{position:fixed;z-index:9998;pointer-events:none;font-size:clamp(18px,4vw,30px);animation:giftBurst 1.6s ease-out forwards}
+/* Ending: gunakan transisi asli agar opacity/visibility tidak tertimpa keyframes global. */
+.cinema-overlay.show .cinema-content{animation:endingContentIn 1.1s .12s cubic-bezier(.2,.8,.2,1) both}
+.cinema-overlay.show .cinema-heart{animation:endingHeartBeat 2.1s .9s ease-in-out infinite}
+.cinema-overlay.show .cinema-spark{animation:endingSparkDrift 8s linear infinite}
+@keyframes giftShake{0%,100%{transform:rotate(0)}20%{transform:rotate(-9deg) translateY(-3px)}40%{transform:rotate(9deg)}60%{transform:rotate(-6deg)}80%{transform:rotate(5deg)}}
+@keyframes giftReveal{0%{opacity:0;transform:translateY(14px) scale(.94);filter:blur(4px)}65%{opacity:1;transform:translateY(-3px) scale(1.025);filter:blur(0)}100%{transform:none}}
+@keyframes giftBurst{0%{opacity:0;transform:translate(-50%,-30%) scale(.3) rotate(0)}15%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.2) rotate(35deg)}}
+@keyframes endingContentIn{from{opacity:0;transform:translateY(24px) scale(.96);filter:blur(5px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+@keyframes endingHeartBeat{0%,100%{transform:scale(.94);filter:drop-shadow(0 0 14px #f4a8d7)}50%{transform:scale(1.12);filter:drop-shadow(0 0 34px #f4a8d7)}}
+@keyframes endingSparkDrift{0%{transform:translateY(20vh) rotate(0deg);opacity:0}20%{opacity:.65}100%{transform:translateY(-100vh) rotate(180deg);opacity:0}}
+@keyframes cinemaIn{from{opacity:0;transform:translateY(16px);filter:blur(3px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@media(max-width:520px){.intro-copy{font-size:14px}.intro-eyebrow{letter-spacing:.22em}.intro-foot{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.cinematic-intro,.intro-inner,.intro-stars,.cinematic-intro:before,.cinematic-intro:after,.gift-box.drawing,.gift-result.reveal,.gift-burst,.cinema-overlay.show .cinema-content,.cinema-overlay.show .cinema-heart,.cinema-overlay.show .cinema-spark{animation:none!important;transition:none!important}}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -79,7 +587,272 @@
   <button class="music-toggle" id="musicToggle" type="button" aria-label="Putar musik dari YouTube" aria-pressed="false" title="Putar atau hentikan musik">♫</button>
   <div class="music-label">Lagu untuk BBY<small id="musicStatus">autoplay dicoba · sentuh ♫ jika belum berbunyi</small></div>
 </div>
-<!-- Original inline script moved to script-1.js -->
+<script>
+// Memuat lagu YouTube saat pengguna menekan tombol. Klik lagi untuk menghentikannya.
+const youtubeVideoId='2KIBAsqj7aQ';
+let musicPlaying=false;
+function toggleMusic(){
+ const btn=document.getElementById('musicToggle');
+ const dock=document.getElementById('musicDock');
+ const status=document.getElementById('musicStatus');
+ const panel=document.getElementById('youtubeMusicPanel');
+ const host=document.getElementById('youtubePlayerHost');
+ if(!musicPlaying){
+  const frame=document.createElement('iframe');
+  frame.title='Musik romantis untuk BBY';
+  frame.allow='autoplay; encrypted-media; picture-in-picture; web-share';
+  frame.referrerPolicy='strict-origin-when-cross-origin';
+  frame.allowFullscreen=true;
+  frame.src='https://www.youtube-nocookie.com/embed/'+youtubeVideoId+'?autoplay=1&playsinline=1&loop=1&playlist='+youtubeVideoId;
+  host.replaceChildren(frame);
+  panel.classList.remove('show');musicPlaying=true;dock.classList.add('playing');
+  btn.textContent='Ⅱ';btn.setAttribute('aria-label','Hentikan musik');btn.setAttribute('aria-pressed','true');status.textContent='lagu YouTube diputar ♡';hearts(7);
+ }else{
+  host.replaceChildren();panel.classList.remove('show');musicPlaying=false;dock.classList.remove('playing');
+  btn.textContent='♫';btn.setAttribute('aria-label','Putar musik dari YouTube');btn.setAttribute('aria-pressed','false');status.textContent='autoplay dicoba · sentuh ♫ jika belum berbunyi';
+ }
+}
+document.getElementById('musicToggle').addEventListener('click',toggleMusic);
+
+function hearts(n=5){
+ const colors=['🩷','🩵','♡','💗','🤍','💖','💕','✧'];
+ for(let i=0;i<n;i++){
+  setTimeout(()=>{
+   const e=document.createElement('span');e.className='heart';e.setAttribute('aria-hidden','true');e.textContent=colors[Math.floor(Math.random()*colors.length)];
+   e.style.left=(5+Math.random()*90)+'vw';e.style.bottom=(5+Math.random()*18)+'vh';
+   e.style.fontSize=(15+Math.random()*23)+'px';e.style.setProperty('--duration',(2.8+Math.random()*2)+'s');e.style.setProperty('--sway',(-35+Math.random()*70)+'px');document.body.appendChild(e);
+   e.addEventListener('animationend',()=>e.remove(),{once:true});setTimeout(()=>e.remove(),5200);
+  },i*95);
+ }
+}
+// Hati kecil sesekali melayang di latar, tanpa menutupi isi halaman.
+function ambientHeart(){
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||document.hidden)return;
+ const e=document.createElement('span');e.className='heart ambient';e.setAttribute('aria-hidden','true');e.textContent=['♡','🩷','🩵','✧'][Math.floor(Math.random()*4)];
+ e.style.left=(Math.random()*96)+'vw';e.style.bottom='-28px';e.style.fontSize=(12+Math.random()*13)+'px';e.style.setProperty('--duration',(8+Math.random()*6)+'s');document.body.appendChild(e);e.addEventListener('animationend',()=>e.remove(),{once:true});setTimeout(()=>e.remove(),15000);
+}
+setInterval(ambientHeart,1450);
+function reveal(){
+ const el=document.getElementById('pesan');el.classList.add('show');hearts(15);
+ setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'center'}),100);
+}
+
+
+
+// Pembuka floral yang elegan saat amplop cinta pertama kali dibuka.
+let flowerRevealShown=false;
+function showFlowerReveal(){
+ if(flowerRevealShown)return;
+ flowerRevealShown=true;
+ const overlay=document.createElement('div');overlay.className='flower-reveal';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-label','Pembuka bunga untukmu');
+ overlay.innerHTML='<div class="flower-glow" aria-hidden="true"></div><div class="flower-copy"><div class="flower-eyebrow">SEBUAH PESAN UNTUKMU</div><h2 class="flower-title">Untuk kamu,<br>yang selalu istimewa.</h2><p class="flower-subtitle">Semoga hari-harimu selalu menemukan alasan untuk mekar.</p><button class="flower-continue" type="button">Buka surat cintaku&nbsp; →</button></div>';
+ const blooms=[[-8,8,155,-18,0],[18,4,110,22,.12],[50,1,135,-10,.18],[82,8,160,25,.05],[106,29,112,-25,.2],[1,45,135,15,.12],[99,55,145,-18,.25],[8,88,150,25,.08],[42,99,118,-15,.24],[77,92,160,12,.16],[29,69,78,18,.34],[68,32,84,-24,.28],[48,76,96,12,.3]];
+ blooms.forEach(([x,y,size,rot,delay])=>{const flower=document.createElement('span');flower.className='flower-bloom';flower.setAttribute('aria-hidden','true');flower.style.setProperty('--x',x+'%');flower.style.setProperty('--y',y+'%');flower.style.setProperty('--size',size+'px');flower.style.setProperty('--rot',rot+'deg');flower.style.setProperty('--delay',delay+'s');flower.innerHTML='<i></i><i></i><i></i><i></i><i></i><i></i><b></b>';overlay.appendChild(flower)});
+ for(let i=0;i<24;i++){const petal=document.createElement('span');petal.className='flower-petal';petal.setAttribute('aria-hidden','true');petal.style.setProperty('--x',(Math.random()*100)+'vw');petal.style.setProperty('--dur',(4.4+Math.random()*3.2)+'s');petal.style.setProperty('--delay',(Math.random()*.9)+'s');petal.style.setProperty('--rot',(Math.random()*220)+'deg');petal.style.setProperty('--drift',(-90+Math.random()*180)+'px');overlay.appendChild(petal)}
+ document.body.appendChild(overlay);requestAnimationFrame(()=>overlay.classList.add('show'));
+ const close=()=>{overlay.classList.add('leaving');setTimeout(()=>overlay.remove(),1000)};
+ overlay.querySelector('.flower-continue').addEventListener('click',close);
+ // Beri waktu animasi mekar, lalu lanjut otomatis jika tombol belum ditekan.
+ window.setTimeout(()=>{if(document.body.contains(overlay))close()},6200);
+}
+
+// Fitur cerita interaktif: surat, kuis jahil, hadiah virtual, dan ending rahasia.
+(function addRomanticInteractions(){
+ const styleButton=(label,fn)=>{const b=document.createElement('button');b.className='story-action';b.type='button';b.textContent=label;b.addEventListener('click',fn);return b};
+ const surat=document.getElementById('surat');
+ if(surat&&!document.getElementById('envelopeCard')){
+  const card=document.createElement('div');card.className='interactive-card';card.id='envelopeCard';
+  card.innerHTML='<div class="section-tag">PESAN RAHASIA</div><h3 style="font:500 23px Georgia;color:#a85f82;margin:0">Ada surat untukmu 💌</h3><div class="envelope" id="loveEnvelope" role="button" tabindex="0" aria-label="Buka amplop cinta"><span>♡</span></div><div class="envelope-hint" id="envelopeHint">Ketuk amplopnya pelan-pelan untuk membuka surat</div>';
+  const note=surat.querySelector('.note'); if(note){note.style.display='none';card.appendChild(styleButton('Buka surat cintaku ♡',()=>{if(!musicPlaying)toggleMusic();showFlowerReveal();note.style.display='block';note.scrollIntoView({behavior:'smooth',block:'nearest'});document.getElementById('loveEnvelope').classList.add('open');document.getElementById('envelopeHint').textContent='Kelopak bunga akan mengantarmu ke surat ini 🤍';hearts(8)}));note.style.transition='opacity .3s';}
+  surat.appendChild(card);
+  const open=()=>{if(!musicPlaying)toggleMusic();showFlowerReveal();const env=document.getElementById('loveEnvelope');env.classList.add('open');document.getElementById('envelopeHint').textContent='Musik cinta mulai mengiringi suratmu ♡';hearts(5)};
+  document.getElementById('loveEnvelope').addEventListener('click',open);document.getElementById('loveEnvelope').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}});
+ }
+ const footer=document.querySelector('footer');
+ if(footer&&!document.getElementById('quizStage')){
+  const quiz=document.createElement('section');quiz.id='quizStage';quiz.innerHTML='<div class="section-tag">SEDIKIT UJIAN CINTA 😚</div><h2>Kuis kecil tentang kita</h2><p class="sub">Nggak ada nilai jelek kok… kecuali kalau kamu nggak pilih aku 😌💕</p><div class="interactive-card"><div id="quizQuestion" style="font:500 21px Georgia;color:#a85f82">Kalau aku lagi kangen, aku paling pengin…</div><div class="quiz-options" id="quizOptions"></div><div class="quiz-feedback" id="quizFeedback" aria-live="polite"></div><button class="story-action" id="quizNext" type="button" style="display:none">Pertanyaan berikutnya →</button></div>';
+  footer.parentNode.insertBefore(quiz,footer);
+  const qs=[{q:'Kalau aku lagi kangen, aku paling pengin…',a:['Dipeluk lamaaa 🤗','Dikirimin pesan manis 💌','Ditemenin walau cuma diam 🩷','Semua boleh, asal sama kamu 😚'],f:['Peluk virtual terkirim!','Satu pesan manis segera menyusul 💌','Kadang ditemani saja sudah cukup 🤍','Jawaban paling bikin hati meleleh! 💗']},{q:'Kalau kita punya satu hari bebas, pilih yang mana?',a:['Jalan-jalan berdua 🌷','Makan enak sampai kenyang 🍰','Nonton sambil rebahan 🧸','Apa saja, asal bareng kamu 💞'],f:['Petualangan kecil kita, yuk!','Aku sudah membayangkan dessert-nya 😋','Selimut dan film, sempurna.','Aduh, jawabanmu bikin senyum sendiri 🥹']},{q:'Pertanyaan terakhir… kamu sayang aku nggak?',a:['Sayang banget! 💗','Sayang polll 😭💗','Aku klik ini dua kali boleh?','Aku sayang, jangan ge-er 😏'],f:['Aku juga sayang kamu! 🩷','Peluk virtual paling besar buatmu!','Klik sekali cukup, rasa sayangnya dihitung berkali-kali.','Ketahuan malu-malu tapi sayang 😏💕']}];let qi=0;
+  function renderQuiz(){document.getElementById('quizQuestion').textContent=qs[qi].q;const opts=document.getElementById('quizOptions');opts.replaceChildren();document.getElementById('quizFeedback').textContent='';document.getElementById('quizNext').style.display='none';qs[qi].a.forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.textContent=a;b.addEventListener('click',()=>{document.getElementById('quizFeedback').textContent=qs[qi].f[i];Array.from(opts.children).forEach(x=>x.disabled=true);document.getElementById('quizNext').style.display='inline-block';hearts(4)});opts.appendChild(b)})}
+  document.getElementById('quizNext').addEventListener('click',()=>{qi++;if(qi>=qs.length){document.getElementById('quizQuestion').textContent='LULUS DENGAN NILAI CINTA 1000% 💗';document.getElementById('quizOptions').replaceChildren();document.getElementById('quizFeedback').textContent='Hadiah kelulusanmu: satu peluk virtual dan banyak sayang.';document.getElementById('quizNext').style.display='none';}else renderQuiz()});renderQuiz();
+ }
+ if(footer&&!document.getElementById('giftStage')){
+  const gift=document.createElement('section');gift.id='giftStage';gift.innerHTML='<div class="section-tag">HADIAH KECIL UNTUKMU</div><h2>Mesin hadiah sayang 🎁</h2><p class="sub">Klik kotaknya dan lihat hadiah manis apa yang kamu dapat hari ini.</p><div class="interactive-card"><button type="button" class="gift-box" id="giftDraw" aria-label="Ambil hadiah virtual">🎁</button><div class="gift-result" id="giftResult" aria-live="polite">Satu klik kecil, satu kejutan manis ♡</div><p style="font-size:12px;color:#a88799">Boleh dicoba berkali-kali, hadiahnya random!</p></div>';
+  footer.parentNode.insertBefore(gift,footer);
+  const gifts=['Voucher 1 pelukan lamaaa 🤗','Voucher pilih film untuk movie date 🎬','Satu traktiran camilan dari aku 🍰','1000 cium jauh 😘😘😘','Hak untuk minta kata-kata manis kapan saja 💌','Satu hari penuh perhatian ekstra 🩷','Voucher jalan berdua, tujuan kamu yang pilih 🌷','Hadiah rahasia: aku makin sayang kamu 💗'];document.getElementById('giftDraw').addEventListener('click',()=>{document.getElementById('giftResult').textContent=gifts[Math.floor(Math.random()*gifts.length)];hearts(8)});
+ }
+ if(footer&&!document.getElementById('moodJarStage')){
+  const mood=document.createElement('section');mood.id='moodJarStage';mood.innerHTML='<div class="section-tag">UNTUK HARI-HARIMU</div><h2>Toples kecil untuk hatimu 💌</h2><p class="sub">Pilih yang paling menggambarkan perasaanmu sekarang. Ada pesan kecil dariku di dalamnya.</p><div class="interactive-card"><div class="mood-grid"><button class="mood-choice" type="button" data-mood="kangen"><span>🥺</span>Aku kangen kamu</button><button class="mood-choice" type="button" data-mood="sedih"><span>🌧️</span>Aku lagi sedih</button><button class="mood-choice" type="button" data-mood="ngambek"><span>😤</span>Aku lagi ngambek</button><button class="mood-choice" type="button" data-mood="sayang"><span>🥰</span>Ingin disayang</button></div><div class="mood-note" id="moodNote" aria-live="polite"></div></div>';
+  footer.parentNode.insertBefore(mood,footer);
+  const moodMessages={kangen:'Kalau aku bisa, sekarang aku sudah ada di sampingmu, menggenggam tanganmu dan bilang: sebentar lagi kita bikin kenangan baru, ya. Sampai saat itu, anggap ini peluk paling erat dariku. 🤍',sedih:'Hei, sayang. Kamu nggak harus kuat setiap saat. Istirahat dulu, tarik napas pelan-pelan. Aku bangga sama kamu, bahkan di hari ketika kamu merasa belum melakukan apa-apa. Kamu tetap layak disayang. 🌷',ngambek:'Oke, aku siap menerima protesnya 😭 Tapi setelah kamu siap, sini cerita pelan-pelan, ya. Perasaanmu penting buat aku. Aku mungkin nggak selalu langsung paham, tapi aku mau belajar memahami kamu. 🩷',sayang:'Ini pengingat kecil: kamu berharga, kamu cukup, dan kamu nggak perlu melakukan apa pun untuk pantas disayang. Aku suka kamu sebagai dirimu sendiri—hari ini, besok, dan di hari-hari biasa yang sederhana. 💗'};
+  mood.querySelectorAll('[data-mood]').forEach(b=>b.addEventListener('click',()=>{const note=document.getElementById('moodNote');note.textContent=moodMessages[b.dataset.mood];note.classList.remove('show');requestAnimationFrame(()=>note.classList.add('show'));hearts(5)}));
+ }
+ 
+if(footer&&!document.getElementById('moodBoosterStage')){
+ const boost=document.createElement('section');boost.id='moodBoosterStage';boost.innerHTML='<div class="section-tag">SEDIKIT PELUK UNTUK HARI INI</div><h2>Mood booster buat BBY 🌷</h2><p class="sub">Kalau hari ini terasa berat, kamu nggak harus pura-pura baik-baik saja. Pilih yang kamu butuhkan sekarang, ya.</p><div class="boost-card"><div class="boost-message" id="boostMessage" aria-live="polite">Hai, sayang. Berhenti sebentar, tarik napas. Kamu nggak harus menyelesaikan semuanya hari ini. 🤍</div><div class="boost-actions"><button class="boost-action" type="button" data-boost="hug">🫂 Peluk virtual</button><button class="boost-action" type="button" data-boost="kiss">😘 Cium jauh</button><button class="boost-action" type="button" data-boost="compliment">🌸 Ingat hal baik</button><button class="boost-action" type="button" data-boost="breathe">☁️ Tenang sebentar</button><button class="boost-action" type="button" data-boost="laugh">💌 Pesan random</button></div><p class="boost-breath" id="boostBreath">Kamu boleh istirahat. Kamu tetap berharga, bahkan di hari yang tidak mudah.</p></div>';
+ footer.parentNode.insertBefore(boost,footer);
+ const boostMessages={
+  hug:['Anggap ini peluk yang lama dan hangat dari aku. Nggak perlu cerita dulu kalau belum siap. Kita diam sebentar juga nggak apa-apa. 🫂','Sini, aku peluk dari jauh. Semoga sedikit rasa beratnya bisa kamu taruh sebentar di sini. 🤍'],
+  compliment:['Aku harap kamu tahu betapa banyak hal baik dalam dirimu. Cara kamu berusaha, peduli, dan tetap melangkah itu berarti—meski nggak selalu kamu sadari. 🌷','Kamu nggak harus jadi sempurna supaya pantas disayang. Jadi dirimu sendiri saja sudah lebih dari cukup. 💗'],
+  breathe:['Coba pelan-pelan: tarik napas selama 4 hitungan, tahan 2 hitungan, lalu hembuskan selama 6 hitungan. Ulangi kalau terasa nyaman. Nggak perlu buru-buru. ☁️','Lepaskan bahumu sebentar. Minum sedikit air, cari posisi nyaman, dan beri dirimu izin untuk berhenti sejenak. Satu langkah kecil sudah cukup. 🤍'],
+  kiss:['Satu cium jauh yang lembut di kening—semoga kamu merasa disayang, bahkan dari jauh. 😘💗','Mwah! Satu cium kecil buat BBY, semoga hari ini terasa sedikit lebih ringan. 💋🌷'],
+  laugh:['Pengumuman penting: BBY diwajibkan menerima satu peluk, satu camilan enak, dan pujian tanpa membantah. Ini peraturan resmi dari aku. 😌💗','Kalau hari ini kamu jadi awan, aku mau jadi langitnya. Kalau jadi kucing, aku tetap sayang—tapi tolong jangan cakar hati aku. 🐈💌','Tugasmu sekarang cuma satu: bertahan dengan lembut pada diri sendiri. Bonus tugas: senyum tipis kalau pesan ini berhasil bikin kamu senyum. 🌸']
+ };
+ function showAffectionAnimation(kind){
+   let overlay=document.getElementById('affectionOverlay');
+   if(!overlay){overlay=document.createElement('div');overlay.id='affectionOverlay';overlay.className='affection-overlay';overlay.innerHTML='<div class="affection-card" role="dialog" aria-modal="true" aria-labelledby="affectionTitle"><div class="affection-kicker">KIRIMAN SAYANG UNTUK BBY</div><div class="affection-stage"><div class="affection-scene cinematic-scene" aria-label="Ilustrasi pasangan saling mendekat lalu berpelukan"><div class="scene-glow"></div><svg class="couple-art" viewBox="0 0 340 220" role="img" aria-label="Pasangan romantis saat senja"><defs><linearGradient id="skyGlow" x1="0" y1="0" x2="0.9" y2="1"><stop offset="0" stop-color="#f9dce5"/><stop offset="1" stop-color="#e8b9cc"/></linearGradient><linearGradient id="boyCoat" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#54404f"/><stop offset="1" stop-color="#302b3b"/></linearGradient><linearGradient id="girlCoat" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f3d9d5"/><stop offset="1" stop-color="#c99aa9"/></linearGradient><linearGradient id="skinTone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f3c9b7"/><stop offset="1" stop-color="#dba18e"/></linearGradient></defs><circle cx="170" cy="86" r="77" fill="url(#skyGlow)" opacity=".68"/><circle cx="170" cy="86" r="28" fill="#fff0d7" opacity=".7"/><path d="M0 170 Q60 144 112 168 T220 163 T340 155 V220 H0Z" fill="#d9a5bb" opacity=".35"/><g class="svg-person svg-boy"><path class="boy-legs" d="M111 142 L119 198 Q120 205 130 204 L137 203 L138 157 L154 157 L158 202 Q161 208 170 204 L178 201 L174 139Z" fill="#383343"/><path d="M106 69 Q103 52 116 40 Q132 26 149 39 Q160 48 157 69 L153 89 L116 89Z" fill="#3a2d3a"/><path d="M117 53 Q128 37 145 47 Q153 53 151 70 L148 80 L118 80Z" fill="url(#skinTone)"/><path d="M112 48 Q118 29 140 34 Q158 37 161 57 L153 53 L147 43 Q133 50 116 51Z" fill="#352a37"/><path d="M109 78 Q126 70 151 80 Q168 91 171 124 L177 158 L103 158 L104 112 Q103 91 109 78Z" fill="url(#boyCoat)"/><path d="M111 86 Q99 99 93 119 L81 148 Q78 157 86 162 Q94 166 99 156 L117 127 L130 98Z" fill="#4b3949"/><path class="boy-arm" d="M153 91 Q169 97 177 119 L190 142 Q194 151 186 156 Q179 160 173 150 L154 128 L139 103Z" fill="#493747"/><path d="M126 48 Q136 45 145 50" stroke="#bd857e" stroke-width="1.5" fill="none" opacity=".6"/></g><g class="svg-person svg-girl"><path d="M204 142 L199 198 Q198 205 188 204 L181 202 L182 157 L165 157 L164 202 Q162 208 153 204 L145 201 L150 139Z" fill="#9e7189"/><path d="M185 43 Q201 29 218 42 Q232 53 226 78 L220 91 L184 87 L179 64Z" fill="#684754"/><path d="M189 51 Q199 39 213 48 Q222 55 218 73 L213 82 L188 79Z" fill="url(#skinTone)"/><path d="M181 57 Q181 36 201 34 Q223 33 229 55 L222 49 L214 43 Q202 51 185 50Z" fill="#684754"/><path d="M184 79 Q200 73 218 81 Q232 90 235 120 L237 158 L169 158 L171 111 Q171 91 184 79Z" fill="url(#girlCoat)"/><path d="M180 88 Q167 96 161 118 L151 144 Q148 153 156 158 Q164 162 169 151 L184 126 L197 98Z" fill="#d8b0bd"/><path class="girl-arm" d="M219 91 Q234 94 241 113 L253 141 Q257 150 249 155 Q241 159 236 149 L219 127 L206 102Z" fill="#e5c2c9"/><path d="M191 49 Q200 45 211 50" stroke="#bd857e" stroke-width="1.5" fill="none" opacity=".6"/></g><g class="embrace-arms"><path d="M120 98 Q139 121 166 130 Q191 137 215 109" stroke="#493747" stroke-width="17" stroke-linecap="round" fill="none"/><path d="M218 103 Q201 130 176 136 Q146 142 123 119" stroke="#d9aab8" stroke-width="15" stroke-linecap="round" fill="none"/></g><g class="kiss-hearts"><path d="M169 43 C159 32 146 44 169 61 C192 44 179 32 169 43Z" fill="#c77d9f"/><circle cx="194" cy="29" r="3" fill="#fff8fc"/><circle cx="143" cy="31" r="2.5" fill="#fff8fc"/></g></svg><span class="affection-hug-heart">♡</span><span class="petal petal-one">✿</span><span class="petal petal-two">✧</span><span class="petal petal-three">♡</span></div></div><h3 class="affection-title" id="affectionTitle">Peluk yang hangat</h3><p class="affection-copy" id="affectionCopy">Bayangkan kita bertemu setelah lama saling rindu, lalu berpelukan erat. 🤍</p><button class="affection-close" type="button" id="affectionClose">Makasih, sayang ♡</button></div>';document.body.appendChild(overlay);overlay.addEventListener('click',e=>{if(e.target===overlay||e.target.closest('#affectionClose'))overlay.classList.remove('show')});document.addEventListener('keydown',e=>{if(e.key==='Escape')overlay.classList.remove('show')});}
+   overlay.dataset.kind=kind;overlay.querySelector('.affection-hug-heart').textContent=kind==='kiss'?'💋':'♡';overlay.querySelector('#affectionTitle').textContent=kind==='kiss'?'Cium jauh buat BBY':'Akhirnya, peluk kamu';overlay.querySelector('#affectionCopy').textContent=kind==='kiss'?'Dua hati mendekat, lalu satu cium lembut di kening. Semoga kamu merasa disayang, bahkan dari jauh. 💗':'Bayangkan kita berlari kecil saling mendekat, lalu berpelukan erat tanpa ingin buru-buru melepas. Kamu aman di sini. 🤍';overlay.classList.remove('show');void overlay.offsetWidth;overlay.classList.add('show');
+ }
+ const breath=document.getElementById('boostBreath');
+ boost.querySelectorAll('[data-boost]').forEach(b=>b.addEventListener('click',()=>{const list=boostMessages[b.dataset.boost];const msg=list[Math.floor(Math.random()*list.length)];const target=document.getElementById('boostMessage');target.textContent=msg;target.style.animation='none';void target.offsetWidth;target.style.animation='cinemaIn .65s ease both';breath.textContent=b.dataset.boost==='breathe'?'Lakukan hanya kalau terasa nyaman. Jika tidak ingin latihan napas, kamu boleh langsung memilih pesan lain.':'Kamu boleh tekan tombol lain kapan saja untuk menerima pesan berbeda. Aku ada di sini untuk mengingatkanmu bahwa kamu disayang. ♡';if(b.dataset.boost==='hug'||b.dataset.boost==='kiss')showAffectionAnimation(b.dataset.boost);if(typeof hearts==='function')hearts(3);if(typeof romanticRecordAnswer==='function')romanticRecordAnswer('mood_booster_'+b.dataset.boost,'Pilihan Mood Booster',b.textContent.trim()+' — '+msg)}));
+}
+
+if(footer&&!document.getElementById('voucherStage')){
+  const vouchers=document.createElement('section');vouchers.id='voucherStage';vouchers.innerHTML='<div class="section-tag">KUPON KHUSUS BUAT KAMU</div><h2>Buku voucher cinta 🎟️</h2><p class="sub">Pilih voucher yang ingin kamu klaim. Simpan baik-baik ya—nanti kita wujudkan di dunia nyata. ♡</p><div class="interactive-card"><div class="voucher-list"><button type="button" class="voucher" data-voucher="peluk"><span class="v-icon">🤗</span><span><strong>Voucher peluk 10 menit</strong><small>Peluk lama, tanpa buru-buru</small></span></button><button type="button" class="voucher" data-voucher="makan"><span class="v-icon">🍰</span><span><strong>Voucher camilan favorit</strong><small>Kamu pilih, aku traktir</small></span></button><button type="button" class="voucher" data-voucher="film"><span class="v-icon">🎬</span><span><strong>Voucher movie date</strong><small>Kamu pilih film dan camilannya</small></span></button><button type="button" class="voucher" data-voucher="jalan"><span class="v-icon">🌷</span><span><strong>Voucher jalan berdua</strong><small>Tujuan kecil pilihanmu</small></span></button><button type="button" class="voucher" data-voucher="manis"><span class="v-icon">💌</span><span><strong>Voucher kata-kata manis</strong><small>Bisa ditukar kapan saja saat butuh</small></span></button></div><div class="voucher-status" id="voucherStatus" aria-live="polite">Belum ada voucher yang diklaim ♡</div></div>';
+  footer.parentNode.insertBefore(vouchers,footer);
+  const voucherMessages={peluk:'Voucher peluk berhasil diklaim! Nanti aku peluk kamu erat-erat selama 10 menit. 🤗',makan:'Voucher camilan berhasil diklaim! Siapkan daftar makanan favoritmu ya. 🍰',film:'Movie date berhasil diklaim! Kamu yang pilih filmnya, aku yang siapkan camilan. 🎬',jalan:'Voucher jalan berdua berhasil diklaim! Kita cari hari yang pas dan bikin kenangan baru. 🌷',manis:'Voucher kata-kata manis berhasil diklaim. Kalau butuh diingatkan bahwa kamu disayang, bilang saja ya. 💌'};
+  vouchers.querySelectorAll('[data-voucher]').forEach(b=>b.addEventListener('click',()=>{const claimed=b.classList.toggle('claimed');b.setAttribute('aria-pressed',String(claimed));document.getElementById('voucherStatus').textContent=claimed?voucherMessages[b.dataset.voucher]:'Voucher dilepas dulu. Kamu bisa klaim lagi kapan saja ♡';if(claimed)hearts(5)}));
+ }
+ if(!document.getElementById('cinemaEnding')){
+  const overlay=document.createElement('div');overlay.id='cinemaEnding';overlay.className='cinema-overlay';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-label','Ending romantis');overlay.innerHTML='<div class="finale-stars" aria-hidden="true"></div><div class="finale-vignette" aria-hidden="true"></div><span class="cinema-spark" style="left:8%;bottom:-10%;animation-delay:-2s">✧</span><span class="cinema-spark" style="left:84%;bottom:-15%;animation-delay:-5s">♡</span><span class="cinema-spark" style="left:48%;bottom:-20%;animation-delay:-3s">✦</span><div class="finale-orbit" aria-hidden="true"><span>♡</span></div><div class="cinema-content"><div class="cinema-kicker">A LITTLE UNIVERSE, MADE FOR YOU</div><div class="finale-overline">✦ UNTUK ORANG FAVORITKU ✦</div><div class="cinema-heart">♥</div><h2 class="cinema-title">Di antara miliaran kemungkinan,<br><em>aku memilih kamu.</em></h2><div class="finale-divider"><span>✧</span></div><p class="cinema-copy">Kalau semesta memutar waktu dari awal, aku tetap ingin menemukanmu—mengenalmu pelan-pelan, menertawakan hal-hal kecil bersamamu, dan jatuh cinta kepadamu lagi. Bukan karena kisah kita selalu sempurna, tapi karena kamu adalah seseorang yang ingin terus aku pilih, bahkan di hari-hari biasa.</p><p class="finale-promise">Ini bukan akhir cerita kita.<br><strong>Ini cuma jeda sebelum kenangan berikutnya. ♡</strong></p><div class="finale-signature">dengan seluruh sayangku, untuk BBY 🤍</div><div class="finale-actions"><button type="button" class="finale-voice" id="finaleVoice"><span>♫</span> Dengarkan pesan suaraku</button><button type="button" class="cinema-close" id="closeCinema"><span>♡</span> Simpan momen ini selamanya</button></div><p class="finale-voice-status" id="finaleVoiceStatus" aria-live="polite">Ada satu hal lagi yang ingin kamu dengar… 💌</p></div>';
+  document.body.appendChild(overlay);document.getElementById('closeCinema').addEventListener('click',()=>{overlay.classList.remove('show');setTimeout(()=>{overlay.style.display='none'},1200)});
+ }
+ if(footer&&!document.getElementById('secretStage')){
+  const secret=document.createElement('section');secret.id='secretStage';secret.innerHTML='<div class="section-tag">HALAMAN TERAKHIR</div><h2>Rahasia kecil yang terkunci 🔐</h2><p class="sub">Ada pesan terakhir yang cuma bisa dibuka dengan kata rahasia. Coba ketik kata yang paling pas untuk kita.</p><div class="interactive-card"><div class="lock-icon" id="lockIcon">🔒</div><form id="secretForm"><input class="lock-input" id="secretWord" autocomplete="off" placeholder="Kata rahasianya…" aria-label="Kata rahasia"><div><button class="story-action" type="submit">Buka rahasia ♡</button></div></form><div id="secretFeedback" class="quiz-feedback" aria-live="polite"></div><div id="secretMessage" class="secret-message">Kalau kamu sampai di sini, berarti kamu sudah membuka semua bagian kecil yang aku siapkan. Aku harap kamu tahu, kamu bukan cuma bagian dari website ini—kamu bagian dari banyak hal indah yang ingin aku jalani. Terima kasih sudah hadir, BBY. Semoga kita terus saling memilih, saling menjaga, dan punya banyak cerita untuk dikenang. Aku sayang kamu. Selalu, dengan cara yang lembut dan tulus. 🩷🩵🤍</div></div>';
+  footer.parentNode.insertBefore(secret,footer);
+  document.getElementById('secretForm').addEventListener('submit',e=>{e.preventDefault();const val=document.getElementById('secretWord').value.trim().toLowerCase();if(['sayang','sayangku','bby','cinta'].includes(val)){document.getElementById('secretMessage').classList.add('unlocked');document.getElementById('lockIcon').textContent='💖';document.getElementById('secretFeedback').textContent='Berhasil dibuka! Ini pesan paling spesial untukmu 🥹';hearts(16);const finale=document.getElementById('cinemaEnding');if(finale){finale.style.display='flex';requestAnimationFrame(()=>finale.classList.add('show'));if(!finale.dataset.celebrated){finale.dataset.celebrated='1';const symbols=['✦','♡','✧','♥','✿','✨'];for(let i=0;i<54;i++){const bit=document.createElement('span');bit.className='finale-firework';bit.textContent=symbols[i%symbols.length];bit.style.setProperty('--fx',(Math.random()*100)+'vw');bit.style.setProperty('--fy',(Math.random()*100)+'vh');bit.style.setProperty('--fd',(Math.random()*1.1)+'s');bit.style.setProperty('--fr',(Math.random()*360)+'deg');bit.style.setProperty('--dx',((Math.random()-.5)*180)+'px');bit.style.setProperty('--dy',((Math.random()-.5)*180)+'px');finale.appendChild(bit);setTimeout(()=>bit.remove(),3600)}}}}else{document.getElementById('secretFeedback').textContent='Belum cocok, coba kata: sayang, sayangku, bby, atau cinta ♡';document.getElementById('lockIcon').textContent='🔐'}});
+ }
+ // Maskot hati kecil hidup, bisa diketuk untuk kalimat penyemangat.
+ if(!document.getElementById('livingHeart')){const heart=document.createElement('button');heart.id='livingHeart';heart.className='living-heart';heart.type='button';heart.textContent='💗';heart.setAttribute('aria-label','Ketuk hati kecil');const bubble=document.createElement('div');bubble.id='heartBubble';bubble.className='heart-bubble';bubble.textContent='Hai, BBY! Kamu lucu banget kalau senyum 🤍';document.body.append(heart,bubble);const lines=['Psst… kamu disayang, lho 🩷','Jangan lupa minum air ya, sayang 💧','Senyummu adalah plot twist favoritku ✨','Aku kirim peluk virtual dulu 🤗','Kamu sudah sampai sejauh ini, hebat! 💗','Klik menu berikutnya, ada hal manis menunggu…'];let bi=0;heart.addEventListener('click',()=>{bubble.textContent=lines[bi++%lines.length];bubble.classList.add('show');hearts(3);setTimeout(()=>bubble.classList.remove('show'),3200)})}
+})();
+
+// Navigasi cerita: setiap bagian dibuka dengan klik, bukan scroll panjang.
+(function setupJourney(){
+ const stages=[document.getElementById('atas'),...Array.from(document.querySelectorAll('section')),document.querySelector('footer')].filter(Boolean);
+ if(!stages.length)return;
+ const progress=document.createElement('div');progress.className='journey-progress';progress.innerHTML='<span></span>';document.body.appendChild(progress);
+ const fill=progress.querySelector('span');let current=0;
+ stages.forEach((stage,i)=>{
+  stage.classList.add('story-stage');stage.classList.toggle('active',i===0);
+  const controls=document.createElement('div');controls.className='journey-controls';
+  if(i>0){const back=document.createElement('button');back.className='journey-btn';back.type='button';back.textContent='← Kembali';back.addEventListener('click',()=>go(i-1));controls.appendChild(back)}
+  const next=document.createElement('button');next.className='journey-btn next';next.type='button';next.textContent=i===stages.length-1?'♡ Baca dari awal':'Lanjut pelan-pelan ♡';next.addEventListener('click',()=>go(i===stages.length-1?0:i+1));controls.appendChild(next);
+  const counter=document.createElement('div');counter.className='stage-counter';counter.textContent=(i+1)+' / '+stages.length+' · cerita kecil kita';
+  stage.appendChild(controls);stage.appendChild(counter);
+ });
+ function go(i){current=Math.max(0,Math.min(stages.length-1,i));stages.forEach((stage,j)=>stage.classList.toggle('active',j===current));
+  const twelfth=stages[11];
+  if(twelfth){twelfth.classList.toggle('page-twelve',current===11);if(current===11&&!twelfth.dataset.page12Stars){twelfth.dataset.page12Stars='1';const glyphs=['✦','✧','♡','⋆','✿','✴'];for(let k=0;k<24;k++){const star=document.createElement('span');star.className='page12-star';star.setAttribute('aria-hidden','true');star.textContent=glyphs[k%glyphs.length];star.style.setProperty('--x',(4+Math.random()*92)+'%');star.style.setProperty('--y',(8+Math.random()*82)+'%');star.style.setProperty('--size',(10+Math.random()*19)+'px');star.style.setProperty('--dur',(2.4+Math.random()*3.5)+'s');star.style.setProperty('--delay',(-Math.random()*4)+'s');twelfth.prepend(star)}}}
+  fill.style.width=((current+1)/stages.length*100)+'%';window.scrollTo({top:0,behavior:'smooth'});hearts(current===11?18:(current===stages.length-1?9:3));}
+ // Tombol utama di halaman pembuka diarahkan ke tahap berikutnya.
+ const opener=document.querySelector('#atas .primary');if(opener){opener.onclick=()=>go(1);}
+ fill.style.width=(100/stages.length)+'%';
+})();
+
+// Coba mulai musik saat halaman dibuka. Browser tertentu tetap mewajibkan sentuhan pengguna.
+(function tryAutoplay(){
+ const host=document.getElementById('youtubePlayerHost');
+ const panel=document.getElementById('youtubeMusicPanel');
+ if(!host||!panel)return;
+ const frame=document.createElement('iframe');
+ frame.title='Musik romantis untuk BBY';
+ frame.allow='autoplay; encrypted-media; picture-in-picture; web-share';
+ frame.referrerPolicy='strict-origin-when-cross-origin';
+ frame.allowFullscreen=true;
+ frame.src='https://www.youtube-nocookie.com/embed/'+youtubeVideoId+'?autoplay=1&playsinline=1&loop=1&playlist='+youtubeVideoId;
+ host.replaceChildren(frame);
+ // Tampilkan panel agar pengguna bisa menekan play bila autoplay diblokir.
+ panel.classList.add('show');
+})();
+
+
+// Pencatatan jawaban ke Google Sheets. Isi URL setelah deploy Apps Script.
+const ROMANTIC_SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzUcKt4fT1vhzNzAzrTYrVE9IW7WrsFPi_rI7ySq_pe_HYMdpf_ZncF8-D3KoSuGYCidw/exec';
+const ROMANTIC_TRACKING_CONSENT_KEY = 'romanticAnswersConsentV1';
+let romanticSessionId = '';
+let romanticTrackingAllowed = false;
+
+function romanticGetSessionId(){
+  try {
+    let id = sessionStorage.getItem('romanticAnswerSessionId');
+    if(!id){id = 'sesi-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,10);sessionStorage.setItem('romanticAnswerSessionId',id)}
+    return id;
+  } catch(e) { return 'sesi-' + Date.now().toString(36); }
+}
+function romanticActiveStage(){
+  const active = document.querySelector('.story-stage.active');
+  if(!active) return document.title || 'Website romantis';
+  const heading = active.querySelector('h1,h2,h3');
+  return (heading && heading.textContent.trim()) || active.id || 'Tahap website';
+}
+function romanticRecordAnswer(eventName, question, answer){
+  if(!romanticTrackingAllowed || !ROMANTIC_SHEETS_ENDPOINT || ROMANTIC_SHEETS_ENDPOINT.includes('PASTE_GOOGLE_APPS_SCRIPT')) return;
+  const payload = {
+    sessionId: romanticSessionId,
+    stage: String(romanticActiveStage()).slice(0,180),
+    event: String(eventName || 'interaksi').slice(0,80),
+    question: String(question || '').slice(0,500),
+    answer: String(answer || '').slice(0,1500),
+    timestamp: new Date().toISOString()
+  };
+  try {
+    const body = new URLSearchParams({payload: JSON.stringify(payload)}).toString();
+    fetch(ROMANTIC_SHEETS_ENDPOINT, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
+      body
+    }).then(()=>{
+      const status=document.getElementById('romanticSaveStatus');
+      if(status) status.textContent='Pilihanmu sedang dikirim dengan aman. ♡';
+    }).catch(()=>{
+      const status=document.getElementById('romanticSaveStatus');
+      if(status) status.textContent='Koneksi belum berhasil. Kamu tetap bisa melanjutkan cerita. ♡';
+    });
+  } catch(e) { /* Website tetap berfungsi meski pencatatan tidak tersedia. */ }
+}
+function romanticShowConsent(){
+  romanticSessionId = romanticGetSessionId();
+  const overlay=document.createElement('div');
+  overlay.id='romanticConsentDialog';
+  overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-labelledby','romanticConsentTitle');
+  overlay.innerHTML = '<div class="romantic-consent-card"><div class="romantic-consent-kicker">CATATAN KECIL ♡</div><h2 id="romanticConsentTitle">Sebelum kita mulai</h2><p>Kalau kamu setuju, pilihan di kuis dan fitur interaktif di halaman ini akan dikirim ke Google Sheets milik pembuat website agar bisa dibaca nanti. Kalau tidak, kamu tetap bisa menikmati seluruh website tanpa menyimpan jawaban.</p><p class="romantic-consent-small">Yang dicatat: jawaban/pilihan, nama tahap, dan waktu. Jangan masukkan informasi yang sangat pribadi.</p><div class="romantic-consent-actions"><button type="button" id="romanticConsentYes">Setuju, simpan jawabanku</button><button type="button" id="romanticConsentNo">Lanjut tanpa menyimpan</button></div><div id="romanticSaveStatus" role="status" aria-live="polite"></div></div>';
+  document.body.appendChild(overlay);
+  const close=(allow)=>{romanticTrackingAllowed=allow;try{sessionStorage.setItem(ROMANTIC_TRACKING_CONSENT_KEY,allow?'yes':'no')}catch(e){}overlay.classList.add('romantic-consent-hide');setTimeout(()=>overlay.remove(),260);};
+  document.getElementById('romanticConsentYes').addEventListener('click',()=>close(true));
+  document.getElementById('romanticConsentNo').addEventListener('click',()=>close(false));
+}
+(function initRomanticAnswerTracking(){
+  const style=document.createElement('style');
+  style.textContent = '#romanticConsentDialog{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;padding:22px;background:rgba(37,25,33,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:1;transition:opacity .26s ease}#romanticConsentDialog.romantic-consent-hide{opacity:0;pointer-events:none}.romantic-consent-card{width:min(100%,440px);padding:clamp(24px,6vw,38px);background:#fbf7f5;color:#46333e;border:1px solid rgba(255,255,255,.72);box-shadow:0 28px 90px #160d1540;border-radius:5px;text-align:left}.romantic-consent-kicker{font-size:10px;letter-spacing:.22em;color:#a46d84;font-weight:700}.romantic-consent-card h2{font:normal clamp(27px,6vw,36px)/1.15 Georgia,serif;margin:14px 0;color:#4a3340}.romantic-consent-card p{font-size:14px;line-height:1.75;color:#75616c}.romantic-consent-card .romantic-consent-small{font-size:12px;color:#927f88}.romantic-consent-actions{display:grid;gap:10px;margin-top:22px}.romantic-consent-actions button{width:100%;border:1px solid #d9b8c6;background:#563c4b;color:#fffafc;padding:13px 16px;cursor:pointer;font:inherit;font-size:13px;letter-spacing:.02em}.romantic-consent-actions button+button{background:transparent;color:#6e5662;border-color:#e5d7dd}.romantic-consent-actions button:focus-visible{outline:2px solid #b67f99;outline-offset:3px}#romanticSaveStatus{font-size:11px;color:#967284;margin-top:12px;min-height:1em}@media(prefers-reduced-motion:reduce){#romanticConsentDialog{transition:none}}';
+  document.head.appendChild(style);
+  let choice='';try{choice=sessionStorage.getItem(ROMANTIC_TRACKING_CONSENT_KEY)||''}catch(e){}
+  romanticTrackingAllowed=choice==='yes';
+  if(!choice) romanticShowConsent(); else romanticSessionId=romanticGetSessionId();
+
+  // Kuis: simpan pertanyaan dan pilihan yang diketuk.
+  document.addEventListener('click',function(e){
+    const quizButton=e.target.closest('#quizOptions button');
+    if(quizButton){const q=document.getElementById('quizQuestion');romanticRecordAnswer('jawaban_kuis',q?q.textContent.trim():'Kuis',quizButton.textContent.trim());return;}
+    const moodButton=e.target.closest('[data-mood]');
+    if(moodButton){romanticRecordAnswer('pilihan_suasana_hati','Suasana hati saat ini',moodButton.textContent.trim());return;}
+    const voucherButton=e.target.closest('[data-voucher]');
+    if(voucherButton){const claimed=voucherButton.classList.contains('claimed');romanticRecordAnswer(claimed?'klaim_voucher':'batalkan_voucher','Buku voucher pasangan',voucherButton.textContent.trim()+' — '+(claimed?'diklaim':'dibatalkan'));return;}
+    const giftButton=e.target.closest('#giftDraw');
+    if(giftButton){const result=document.getElementById('giftResult');romanticRecordAnswer('hadiah_virtual','Hadiah apa yang didapat?',result?result.textContent.trim():'Hadiah virtual');return;}
+    const surpriseButton=e.target.closest('button.primary');
+    if(surpriseButton && /kejutan/i.test(surpriseButton.textContent)){const result=document.getElementById('pesan');romanticRecordAnswer('membuka_kejutan','Pesan kejutan',result?result.textContent.trim():'Membuka kejutan');return;}
+  },false);
+  document.addEventListener('submit',function(e){
+    if(e.target && e.target.id==='secretForm'){
+      const input=document.getElementById('secretWord');
+      const value=input?input.value.trim().toLowerCase():'';
+      const accepted=['sayang','sayangku','bby','cinta'].includes(value);
+      romanticRecordAnswer('jawaban_kata_rahasia','Kata rahasia untuk membuka ending',accepted?'Berhasil membuka ending (kata cocok)':'Percobaan belum cocok');
+    }
+  },true);
+})();
+
+</script>
 
 
 <section class="future-section" id="surat-masa-depan" aria-labelledby="futureHeading">
@@ -105,7 +878,33 @@
   </article>
  </div>
 </section>
-<!-- Original inline script moved to script-2.js -->
+<script>
+(function(){
+ const letters={
+  today:{title:'Untuk kamu, hari ini',text:`Hai, sayang.
+
+Kalau hari ini kamu merasa belum cukup baik, berhenti sebentar, ya. Kamu bukan daftar hal yang berhasil kamu selesaikan. Kamu juga bukan kesalahan yang pernah kamu buat. Kamu adalah seseorang yang sedang belajar, bertumbuh, dan mencoba lagi—dan itu layak dihargai.
+
+Aku nggak ingin kamu hanya menyayangi dirimu saat semuanya berjalan baik. Tolong tetap lembut pada dirimu saat kamu sedang berjuang. Kamu berharga, bahkan di hari ketika kamu sendiri sulit mempercayainya.`},
+  hard:{title:'Kamu boleh beristirahat',text:`Sayang, kamu nggak harus menyelesaikan semuanya malam ini. Kamu boleh berhenti, menarik napas, menangis kalau memang perlu, atau meminta ditemani tanpa harus punya penjelasan yang rapi.
+
+Aku nggak bisa menghapus semua hal sulit dari hidupmu, dan aku nggak mau berpura-pura bisa. Tapi aku ingin menjadi seseorang yang mau mendengarkanmu, bukan menghakimimu. Kita bisa mengambil satu langkah kecil dulu. Hari ini, itu sudah cukup.`},
+  distance:{title:'Jarak bukan berarti kamu sendirian',text:`Kalau aku belum bisa ada di sampingmu sekarang, aku tahu pesan di layar ini nggak sama dengan pelukan sungguhan. Aku nggak akan berpura-pura itu sama.
+
+Tapi rasa sayangku nggak berhenti hanya karena kita sedang berjauhan. Kamu boleh merindukanku, dan kamu juga boleh menjalani harimu sendiri. Nanti, saat kita bertemu, ceritakan semuanya—yang lucu, yang melelahkan, bahkan hal kecil yang kamu pikir nggak penting. Aku ingin mendengarnya.`},
+  future:{title:'Untuk kita yang belum sampai di sana',text:`Aku nggak tahu persis seperti apa hidup kita nanti. Aku nggak bisa menebak semua jalan yang akan kita lewati. Tapi aku berharap, saat kita berubah, kita tetap memberi ruang untuk saling mengenal lagi.
+
+Aku berharap kita belajar meminta maaf tanpa mencari menang, mendengar tanpa buru-buru membela diri, dan merayakan hal kecil yang sering luput. Aku nggak menjanjikan hubungan yang selalu mudah. Aku ingin ikut membangun hubungan yang aman untuk berkata jujur, bertumbuh, dan tetap menjadi diri sendiri.
+
+Terima kasih sudah menjadi bagian dari ceritaku sekarang.`}
+ };
+ const card=document.getElementById('futureLetter'),title=document.getElementById('futureLetterTitle'),body=document.getElementById('futureLetterBody'),last=document.getElementById('futureLast');
+ document.querySelectorAll('[data-future]').forEach(btn=>btn.addEventListener('click',()=>{const item=letters[btn.dataset.future];if(!item)return;title.textContent=item.title;body.textContent=item.text;card.classList.add('show');last.classList.remove('show');card.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});}));
+ document.getElementById('futureVoice').addEventListener('click',()=>{const player=document.getElementById('personalVoicePlayer');if(player){player.scrollIntoView({behavior:'smooth',block:'center'});player.play().catch(()=>{});}});
+ document.getElementById('futureContinue').addEventListener('click',()=>{last.classList.add('show');last.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});});
+ document.getElementById('futureCloseLast').addEventListener('click',()=>{last.classList.remove('show');const hug=document.getElementById('comfortAffection');if(hug)hug.classList.add('show');});
+})();
+</script>
 
 <section class="comfort-section" id="ruang-nyaman" aria-labelledby="comfortHeading">
   <div class="comfort-kicker">A LITTLE PLACE FOR YOU</div>
@@ -139,26 +938,162 @@
     <p style="line-height:1.8;color:#927c8b;margin:0">Tarik napas pelan, sayang. Bayangkan aku sedang memelukmu dan membiarkanmu istirahat sebentar. Kamu nggak harus menghadapi semuanya sekaligus.</p>
   </div>
 </div>
-<!-- Original inline script moved to script-3.js -->
+<script>
+(function(){
+ const messages={
+  miss:{title:'Kalau kamu lagi kangen aku…',text:'Andai aku bisa, sekarang aku sudah ada di sampingmu. Untuk sementara, anggap pesan ini sebagai peluk kecil dariku. Jarak mungkin bikin kita nggak bisa bertemu kapan saja, tapi kamu tetap punya tempat di hatiku. Aku juga menantikan saat kita bisa bertemu lagi. 🤍'},
+  sad:{title:'Kalau hari ini terasa berat…',text:'Sayang, kamu nggak harus kuat setiap saat. Kamu boleh capek, boleh menangis, boleh istirahat dan nggak melakukan apa-apa sebentar. Hari yang sulit bukan berarti kamu gagal. Ambil waktu untuk dirimu, ya. Aku bangga kamu sudah melewati sejauh ini.'},
+  doubt:{title:'Kalau kamu lupa betapa berharganya dirimu…',text:'Aku sayang kamu bukan karena kamu harus selalu ceria, selalu sempurna, atau selalu punya jawaban. Aku sayang kamu sebagai dirimu sendiri—termasuk bagian dirimu yang sedang lelah dan belum baik-baik saja. Kamu pantas diperlakukan dengan lembut, terutama oleh dirimu sendiri. 🌷'},
+  sleep:{title:'Untuk malam yang terasa panjang…',text:'Letakkan dulu semua yang bisa menunggu sampai besok. Longgarkan bahumu, tarik napas perlahan, lalu hembuskan. Kamu nggak perlu menyelesaikan semua hal malam ini. Semoga kamu merasa aman, hangat, dan bisa beristirahat. Selamat tidur, sayang. ☾'},
+  fight:{title:'Kalau kita sedang nggak baik-baik saja…',text:'Kalau ada yang menyakitimu, aku ingin mendengarkannya dengan sungguh-sungguh. Kita nggak harus langsung menyelesaikan semuanya saat emosi masih tinggi. Kita bisa berhenti sebentar, lalu bicara lagi dengan lebih tenang dan saling menghargai. Perasaanmu penting buat aku. 💌'},
+  hug:{title:'Sini, aku peluk dulu…',text:'Nggak perlu menjelaskan apa-apa kalau kamu belum siap. Bayangkan aku merangkulmu, membiarkanmu bersandar sebentar, dan mengingatkanmu bahwa kamu nggak harus melewati hari ini dengan sempurna. Satu napas dulu, ya. 🫂'}
+ };
+ const letter=document.getElementById('comfortLetter');
+ document.querySelectorAll('[data-comfort]').forEach(btn=>btn.addEventListener('click',()=>{const m=messages[btn.dataset.comfort];if(!m)return;document.getElementById('comfortLetterTitle').textContent=m.title;document.getElementById('comfortLetterText').textContent=m.text;letter.classList.add('show');letter.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});if(typeof window.romanticRecordAnswer==='function'){try{window.romanticRecordAnswer('mood_letter',m.title,'Pesan dibuka');}catch(e){}}}));
+ document.getElementById('comfortClose').addEventListener('click',()=>letter.classList.remove('show'));
+ const overlay=document.getElementById('comfortAffection');function closeHug(){overlay.classList.remove('show')}
+ document.getElementById('comfortHug').addEventListener('click',()=>overlay.classList.add('show'));document.getElementById('closeComfortAffection').addEventListener('click',closeHug);overlay.addEventListener('click',e=>{if(e.target===overlay)closeHug()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeHug()});
+ const input=document.getElementById('personalVoice'),player=document.getElementById('personalVoicePlayer'),status=document.getElementById('voiceStatus');let objectUrl='';
+ input.addEventListener('change',()=>{const file=input.files&&input.files[0];if(!file)return;if(!file.type.startsWith('audio/')){status.textContent='Pilih file audio yang valid ya.';return}if(objectUrl)URL.revokeObjectURL(objectUrl);objectUrl=URL.createObjectURL(file);player.src=objectUrl;player.hidden=false;status.textContent='Siap diputar: '+file.name+' · hanya di perangkat ini.';});
+ const bedtime=document.getElementById('bedtimeToggle'),section=document.getElementById('ruang-nyaman');bedtime.addEventListener('click',()=>{const active=section.classList.toggle('bedtime-mode');bedtime.textContent=active?'Kembali ke tampilan biasa ♡':'Masuk mode sebelum tidur ☾';document.body.style.overflow=active?'hidden':'';if(active)section.scrollTop=0;});
+})();
+</script>
 
 
-<!-- Original inline script moved to script-4.js -->
+<script>
+(function(){
+  const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Reveal each page section gently as it enters the viewport.
+  const revealTargets=document.querySelectorAll('section,.hero');
+  revealTargets.forEach((el,i)=>{if(i>0)el.classList.add('reveal-on-scroll')});
+  if('IntersectionObserver' in window && !reduced){
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('revealed');observer.unobserve(entry.target)}}),{threshold:.08,rootMargin:'0px 0px -4% 0px'});
+    document.querySelectorAll('.reveal-on-scroll').forEach(el=>observer.observe(el));
+  } else document.querySelectorAll('.reveal-on-scroll').forEach(el=>el.classList.add('revealed'));
+  // Tiny hearts on every deliberate interactive click/tap, without blocking the control.
+  const symbols=['💗','💕','💖','♡','💘','💞'];
+  let lastBurst=0;
+  function burst(x,y){
+    const now=Date.now(); if(now-lastBurst<55)return; lastBurst=now;
+    const count=reduced?1:4;
+    for(let i=0;i<count;i++){
+      const heart=document.createElement('span'); heart.className='love-burst'; heart.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+      heart.style.left=(x+(Math.random()*32-16))+'px'; heart.style.top=(y+(Math.random()*20-10))+'px';
+      heart.style.setProperty('--size',(15+Math.random()*17)+'px');heart.style.setProperty('--drift',(Math.random()*90-45)+'px');heart.style.setProperty('--turn',(Math.random()*90-45)+'deg');
+      document.body.appendChild(heart);heart.addEventListener('animationend',()=>heart.remove(),{once:true});setTimeout(()=>heart.remove(),1400);
+    }
+  }
+  document.addEventListener('pointerdown',e=>{
+    const target=e.target.closest('button,a,[role="button"],summary,label,input[type="checkbox"],input[type="radio"],.polaroid,.future-timecard,.comfort-choice');
+    if(!target)return;
+    // Avoid triggering on the hidden file input itself; the visible label gets the hearts.
+    if(target.matches('input[type="file"]'))return;
+    burst(e.clientX,e.clientY);
+  },{passive:true});
+  // A soft transition when internal links jump to another section.
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{
+    const id=a.getAttribute('href');if(!id||id==='#')return;const dest=document.querySelector(id);if(dest){dest.classList.remove('section-arrive');void dest.offsetWidth;dest.classList.add('section-arrive');setTimeout(()=>dest.classList.remove('section-arrive'),700)}
+  }));
+})();
+</script>
+<style>.section-arrive{animation:sectionArrive .7s cubic-bezier(.2,.75,.25,1)}@keyframes sectionArrive{0%{filter:brightness(1.08);transform:translateY(12px)}100%{filter:brightness(1);transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.section-arrive{animation:none}}</style>
 
 
+<script>
+/* Cinematic opening + gift reveal enhancement. Existing interactions and assets remain intact. */
+(function(){
+ if(!document.getElementById('cinematicIntro')){
+  const intro=document.createElement('div');intro.id='cinematicIntro';intro.className='cinematic-intro';intro.setAttribute('role','dialog');intro.setAttribute('aria-modal','true');intro.setAttribute('aria-labelledby','introTitle');
+  intro.innerHTML='<div class="intro-stars" aria-hidden="true"></div><div class="intro-inner"><div class="intro-eyebrow">A LITTLE FILM MADE OF US</div><h1 class="intro-title" id="introTitle">Untuk kamu,<br><em>pemeran favoritku.</em></h1><p class="intro-copy">Ada cerita kecil yang kusimpan di sini. Tentang hal-hal sederhana, tentang kamu, dan tentang betapa senangnya aku karena semesta mempertemukan kita.</p><button class="intro-start" id="startLoveFilm" type="button">MULAI CERITA KITA ♡</button><div class="intro-foot">tekan untuk membuka kenangan · chapter one</div></div>';
+  document.body.appendChild(intro);
+  const start=()=>{intro.classList.add('dismissed');document.body.style.overflow='';setTimeout(()=>intro.remove(),1100);try{if(typeof toggleMusic==='function'&&!window.musicPlaying)toggleMusic()}catch(e){};try{if(typeof hearts==='function')hearts(18)}catch(e){};const first=document.querySelector('.story-stage.active')||document.querySelector('#atas');if(first)first.scrollIntoView({behavior:'smooth',block:'start'});};
+  document.body.style.overflow='hidden';document.getElementById('startLoveFilm').addEventListener('click',start);
+  intro.addEventListener('keydown',e=>{if(e.key==='Escape')start()});
+ }
+ const giftButton=document.getElementById('giftDraw'), result=document.getElementById('giftResult');
+ if(giftButton&&result&&!giftButton.dataset.cinematicEnhanced){giftButton.dataset.cinematicEnhanced='true';giftButton.addEventListener('click',()=>{
+   giftButton.classList.remove('drawing');result.classList.remove('reveal');void giftButton.offsetWidth;giftButton.classList.add('drawing');
+   const finish=()=>{result.classList.remove('reveal');void result.offsetWidth;result.classList.add('reveal');giftBurst();};
+   setTimeout(finish,650);
+ });}
+ function giftBurst(){const symbols=['♡','✦','💗','✨','🌷','💕'];for(let i=0;i<22;i++){const el=document.createElement('span');el.className='gift-burst';el.textContent=symbols[Math.floor(Math.random()*symbols.length)];el.style.left=(35+Math.random()*30)+'vw';el.style.top=(40+Math.random()*20)+'vh';el.style.setProperty('--dx',(Math.random()*440-220)+'px');el.style.setProperty('--dy',(Math.random()*-420-60)+'px');el.style.animationDelay=(Math.random()*.25)+'s';document.body.appendChild(el);setTimeout(()=>el.remove(),2100)}}
+})();
+</script>
 
-<!-- Original inline script moved to script-5.js -->
 
+<style>
+/* Finale polish: voice message and cinematic action layout */
+.finale-actions{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin:14px auto 8px}
+.finale-voice{border:1px solid #f6c9e588;border-radius:999px;padding:13px 20px;background:#ffffff0b;color:#ffe6f3;font-weight:600;cursor:pointer;backdrop-filter:blur(8px);transition:transform .25s,background .25s,box-shadow .25s}
+.finale-voice:hover{transform:translateY(-2px);background:#ffffff18;box-shadow:0 8px 28px #e8a8d633}
+.finale-voice span{margin-right:7px}.finale-voice-status{font-size:11px;color:#e8c9df;min-height:1.5em;margin:8px auto 0}
+.cinema-overlay.show .finale-voice,.cinema-overlay.show .finale-voice-status{animation:finaleFadeUp 1s 1.3s both}
+@media(max-width:520px){.finale-actions{flex-direction:column;width:100%}.finale-actions button{width:min(100%,310px)}}
+@media(prefers-reduced-motion:reduce){.cinema-overlay.show .finale-voice,.cinema-overlay.show .finale-voice-status{animation:none!important}}
+</style>
+<script>
+(function finaleVoiceButton(){
+ const btn=document.getElementById('finaleVoice'),status=document.getElementById('finaleVoiceStatus');
+ if(!btn||btn.dataset.ready)return;btn.dataset.ready='1';
+ btn.addEventListener('click',async()=>{
+  const audio=document.getElementById('personalVoicePlayer');
+  if(!audio){if(status)status.textContent='File pesan-suara.wav belum ditemukan di website ini 💗';return;}
+  try{
+   if(!audio.paused){audio.pause();btn.innerHTML='<span>♫</span> Dengarkan pesan suaraku';if(status)status.textContent='Pesan suara dijeda. Ketuk lagi untuk melanjutkan.';return;}
+   audio.currentTime=0;await audio.play();btn.innerHTML='<span>Ⅱ</span> Jeda pesan suaraku';if(status)status.textContent='Dengarkan sampai selesai ya… pesan ini khusus untukmu. 💗';
+   audio.onended=()=>{btn.innerHTML='<span>♫</span> Putar lagi pesan suaraku';if(status)status.textContent='Semoga suaraku bisa memelukmu dari jauh. 🤍';};
+  }catch(e){if(status)status.textContent='Browser belum bisa memutar audio. Coba tekan tombol putar pada pemutar suara di halaman.';}
+ });
+})();
+</script>
 
-
-<!-- Original inline script moved to script-6.js -->
-
-<script src="script-1.js"></script>
-<script src="script-2.js"></script>
-<script src="script-3.js"></script>
-<script src="script-4.js"></script>
-<script src="script-5.js"></script>
-<script src="script-6.js"></script>
-<script src="script-7.js"></script>
 </body></html>
-
-<!-- Original inline script moved to script-7.js -->
+<style>
+/* Upgrade fitur 3 & 5: maskot responsif dan mesin hadiah tanpa pengulangan sampai semua hadiah keluar */
+#livingHeart{transform-origin:center;transition:filter .2s}#livingHeart:hover{filter:drop-shadow(0 0 10px #f3a8cb);transform:scale(1.12)}#livingHeart.mascot-pop{animation:mascotPop .55s cubic-bezier(.2,1.5,.4,1)}
+@keyframes mascotPop{0%{transform:scale(1) rotate(0)}35%{transform:scale(1.42) rotate(-12deg)}65%{transform:scale(.88) rotate(10deg)}100%{transform:scale(1) rotate(0)}}
+#heartBubble.show{max-width:min(260px,72vw);line-height:1.6;box-shadow:0 12px 30px #ba8ba744}
+.gift-machine-caption{font-size:12px;color:#a88799;margin-top:8px}.gift-result.reveal{box-shadow:0 8px 24px #e9b7d044}
+</style>
+<script>
+(function upgradeHeartAndGiftMachine(){
+ const heart=document.getElementById('livingHeart'), bubble=document.getElementById('heartBubble');
+ if(heart&&bubble&&!heart.dataset.reactionsUpgraded){
+  heart.dataset.reactionsUpgraded='1';let taps=0,hideTimer;
+  const reactions=[
+   ['Psst… kamu itu rumah kecil yang selalu ingin aku pulangi. 🏡💗','💗'],
+   ['Kalau hari ini terasa berat, istirahat dulu ya. Kamu nggak harus kuat setiap saat. 🫶','🥺'],
+   ['Senyummu masih jadi notifikasi favoritku. ✨','😍'],
+   ['Peluk virtual terkirim! Bayangkan aku memelukmu erat sebentar. 🤗','🫂'],
+   ['Satu fakta penting: kamu berharga, bahkan di hari ketika kamu merasa biasa saja. 🌷','💖'],
+   ['Misi kecil hari ini: minum air, tarik napas, lalu ingat ada yang sayang kamu. 💧','🥰'],
+   ['Kamu menemukan easter egg hati! Hadiah rahasianya: satu cium jauh. Muah! 😘','😘'],
+   ['Terima kasih sudah sampai sejauh ini di cerita kecil kita. Aku senang kamu ada. 💌','💝']
+  ];
+  heart.addEventListener('click',()=>{taps++;const active=document.querySelector('.story-stage.active');let pick=reactions[(taps-1)%reactions.length];if(active&&(/surat|letter/i.test((active.innerText||'').slice(0,120))))pick=['Kalau surat ini bisa memelukmu, pasti aku sudah menyelipkan seribu peluk di dalamnya. 💌','🥹'];if(taps%4===0)pick=['BONUS HATI KE-' + taps + '! Kamu berhak mendapat pelukan ekstra dan semua hal baik hari ini. 🎉💗','💘'];heart.textContent=pick[1];bubble.textContent=pick[0];bubble.classList.add('show');heart.classList.remove('mascot-pop');void heart.offsetWidth;heart.classList.add('mascot-pop');if(typeof hearts==='function')hearts(taps%4===0?10:4);clearTimeout(hideTimer);hideTimer=setTimeout(()=>bubble.classList.remove('show'),4300)});
+ }
+ const oldButton=document.getElementById('giftDraw'), oldResult=document.getElementById('giftResult');
+ if(oldButton&&oldResult&&!oldButton.dataset.noRepeatUpgrade){
+  const button=oldButton.cloneNode(true);oldButton.replaceWith(button);button.dataset.noRepeatUpgrade='1';
+  const result=oldResult;const caption=document.createElement('div');caption.className='gift-machine-caption';caption.id='giftMachineCaption';caption.textContent='Mesin siap! Setiap putaran memberi kejutan baru ♡';result.parentNode.insertBefore(caption,result.nextSibling);
+  const prizes=[
+   {icon:'💌',title:'Surat mini untukmu',message:'Kalau aku bisa memilih satu hal untuk diulang, aku ingin mengulang momen saat aku sadar kamu begitu spesial.'},
+   {icon:'🤗',title:'Voucher pelukan hangat',message:'Kupon satu pelukan lamaaa—tanpa buru-buru melepas. Bisa ditagih kapan saja kita bertemu.'},
+   {icon:'🌷',title:'Alasan kamu istimewa',message:'Kamu membuat hal sederhana terasa punya arti. Terima kasih sudah menjadi dirimu sendiri.'},
+   {icon:'🍰',title:'Voucher camilan favorit',message:'Hari camilan! Kamu pilih yang kamu suka, dan kita nikmati sambil cerita tentang apa saja.'},
+   {icon:'🎬',title:'Movie date pilihanmu',message:'Kamu yang pilih filmnya, camilannya, dan tempat duduk ternyaman. Tugasku menemani kamu.'},
+   {icon:'✨',title:'Permintaan kecil',message:'Hari ini kamu boleh minta satu hal manis dariku: pujian, kata penyemangat, atau pesan suara.'},
+   {icon:'🌙',title:'Janji malam ini',message:'Sebelum tidur, semoga kamu ingat tiga hal: kamu dicintai, kamu berharga, dan kamu tidak sendirian.'},
+   {icon:'💗',title:'Hadiah paling rahasia',message:'Di antara banyak kemungkinan, aku tetap ingin mengenalmu lagi, memilihmu lagi, dan merawat cerita kita.'},
+   {icon:'🧸',title:'Hari manja gratis',message:'Voucher untuk hari ketika kamu ingin dimanja: boleh minta perhatian ekstra dan peluk virtual sebanyak yang kamu mau.'},
+   {icon:'🌈',title:'Pengingat kecil',message:'Kamu nggak perlu sempurna untuk disayang. Kamu yang sekarang pun sudah sangat berarti.'}
+  ];let bag=[],draws=0,busy=false;
+  function refill(){bag=prizes.map((_,i)=>i);for(let i=bag.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[bag[i],bag[j]]=[bag[j],bag[i]]}}
+  refill();
+  button.addEventListener('click',()=>{if(busy)return;busy=true;button.disabled=true;button.classList.remove('drawing');result.classList.remove('reveal');void button.offsetWidth;button.classList.add('drawing');caption.textContent='Mesin sedang memilih kejutan khusus buat kamu… ✨';
+   setTimeout(()=>{if(!bag.length)refill();const prize=prizes[bag.pop()];draws++;result.innerHTML='<div style="font-size:34px;margin-bottom:5px">'+prize.icon+'</div><strong>'+prize.title+'</strong><div style="margin-top:7px">'+prize.message+'</div>';result.classList.remove('reveal');void result.offsetWidth;result.classList.add('reveal');caption.textContent=bag.length+' hadiah berbeda tersisa sebelum mesin mengacak ulang. Putaran ke-'+draws+' 💞';button.textContent='🎁';button.disabled=false;button.classList.remove('drawing');busy=false;if(typeof hearts==='function')hearts(12);const mascot=document.getElementById('livingHeart'),mb=document.getElementById('heartBubble');if(mascot&&mb){mb.textContent='Hadiah baru terbuka! '+prize.title+' '+prize.icon;mb.classList.add('show');setTimeout(()=>mb.classList.remove('show'),3500)}burstGift();},650);
+  });
+  function burstGift(){const symbols=['♡','✦','💗','✨','🌷','💕'];for(let i=0;i<20;i++){const el=document.createElement('span');el.className='gift-burst';el.textContent=symbols[Math.floor(Math.random()*symbols.length)];el.style.left=(35+Math.random()*30)+'vw';el.style.top=(40+Math.random()*20)+'vh';el.style.setProperty('--dx',(Math.random()*440-220)+'px');el.style.setProperty('--dy',(Math.random()*-420-60)+'px');el.style.animationDelay=(Math.random()*.25)+'s';document.body.appendChild(el);setTimeout(()=>el.remove(),2100)}}
+ }
+})();
+</script>

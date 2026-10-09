@@ -1,11 +1,19 @@
-# Website Romantis — versi multi-file diperbaiki
+# Website Romantis untuk BBY ♡
 
-Pemisahan ini mempertahankan setiap blok JavaScript sebagai file terpisah agar batas parsing dan urutan eksekusi sama seperti versi asli.
+Website statis romantis untuk GitHub Pages. Fitur lama tetap dipertahankan, termasuk galeri/kenangan, surat, kejutan, musik, fitur ruang nyaman, mode sebelum tidur, dan pemutar rekaman suara pribadi.
 
-## Isi
-- `index.html` — halaman utama
-- `style.css` — seluruh CSS asli, urutan blok dipertahankan
-- `script-1.js` sampai `script-7.js` — blok JavaScript asli, dipanggil berurutan
-- `pesan-suara.wav` — rekaman suara (jika tersedia)
+## File yang diperlukan
+- `index.html`
+- `pesan-suara.wav`
 
-Unggah semua file ke folder root repository GitHub Pages yang sama. Jangan mengganti nama file.
+Simpan kedua file tersebut di folder yang sama dalam repositori GitHub Pages agar pemutar suara bekerja. Jika nama file rekaman diganti, perbarui atribut `src` pada elemen `audio#personalVoicePlayer` di `index.html`.
+
+## Fitur tambahan
+Bagian **Surat dari masa depan** menyediakan empat surat interaktif dan satu pesan penutup emosional. Tombol dengarkan suaraku mengarahkan pengunjung ke rekaman suara yang sudah disertakan.
+
+Website tidak mengirim rekaman ke server lain. Namun, bila repositori/website publik, siapa pun yang memiliki akses ke halaman dan file audio mungkin dapat mendengarkannya.
+
+## Upgrade cinematic
+- Opening film interaktif dengan tombol mulai; musik tetap mengikuti kebijakan autoplay browser.
+- Mesin hadiah mendapat animasi pengocokan dan ledakan dekoratif saat hadiah muncul.
+- Foto tetap tertanam di HTML; rekaman suara disertakan sebagai `pesan-suara.wav`.
