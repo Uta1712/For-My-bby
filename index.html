@@ -518,6 +518,140 @@ button:active,a:active,[role="button"]:active{transform:scale(.97)}
 @media(max-width:520px){.intro-copy{font-size:14px}.intro-eyebrow{letter-spacing:.22em}.intro-foot{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.cinematic-intro,.intro-inner,.intro-stars,.cinematic-intro:before,.cinematic-intro:after,.gift-box.drawing,.gift-result.reveal,.gift-burst,.cinema-overlay.show .cinema-content,.cinema-overlay.show .cinema-heart,.cinema-overlay.show .cinema-spark{animation:none!important;transition:none!important}}
 </style>
+<style id="premium-pink-refresh">
+/* BLUSH PINK PREMIUM — visual refresh only; existing content and scripts are preserved. */
+:root{
+  --pink:#e9a9c5;--pink2:#fff0f6;--ink:#573b4b;--muted:#987d8c;--white:#fffdfd;
+  --rose-gold:#bd879d;--plum:#69445a;--premium-line:#f0dce6;
+  --premium-shadow:0 18px 48px rgba(157,91,125,.10);
+}
+html{scroll-behavior:smooth;background:#fff8fb}
+body{
+  background:
+    radial-gradient(ellipse at 8% 6%,rgba(255,220,235,.72),transparent 32%),
+    radial-gradient(ellipse at 94% 24%,rgba(250,226,238,.62),transparent 30%),
+    linear-gradient(155deg,#fff8fb 0%,#fffdfd 47%,#fff4f8 100%);
+  color:#573b4b;
+}
+::selection{background:#f5c8dc;color:#684256}
+.wrap{width:min(100% - 36px,700px)}
+nav{color:#a66e88;border-bottom:1px solid rgba(222,177,198,.38);padding:20px 0 17px}
+.brand{color:#98617c}
+.hero{min-height:88svh;padding:42px 0 62px}
+.hero-inner{max-width:500px}
+.blob{filter:blur(34px);opacity:.62}
+.b1{background:#f9d8e6}.b2{background:#f5e0eb}
+.eyebrow,.section-tag{color:#b17a94;letter-spacing:.24em}
+.hero-photo{
+  width:clamp(150px,39vw,180px);height:clamp(185px,48vw,222px);
+  border:7px solid rgba(255,255,255,.96);border-radius:110px 110px 76px 76px;
+  box-shadow:0 22px 54px rgba(157,91,125,.16),0 0 0 1px #f1dce5;
+  transform:rotate(-1.5deg);transition:transform .5s ease,box-shadow .5s ease;
+}
+.hero-photo:hover{transform:rotate(0) translateY(-4px);box-shadow:0 28px 64px rgba(157,91,125,.2),0 0 0 1px #f1dce5}
+h1,h2,.flower-title,.cinema-title,.future-title,.comfort-title{
+  font-family:"Bodoni 72",Didot,"Iowan Old Style",Georgia,"Times New Roman",serif;
+  font-weight:400;letter-spacing:-.035em;
+}
+h1{color:#925a76;font-size:clamp(46px,12vw,72px)}
+h1 span{color:#d18eac}
+h2{color:#925a76;line-height:1.13}
+.lead,.sub{color:#8d7181}
+.lead{font-family:Georgia,"Times New Roman",serif;font-size:16px;line-height:1.95}
+.sub{font-family:Georgia,"Times New Roman",serif;font-size:15px;line-height:1.9}
+.primary,.journey-btn.next,.story-action,.intro-start,.future-actions button,.comfort-btn,.mood-choice,
+button.primary,button.main{
+  transition:transform .25s ease,box-shadow .25s ease,filter .25s ease,background .25s ease;
+}
+.primary,.journey-btn.next,.story-action{
+  background:linear-gradient(115deg,#d99bb6 0%,#bf829f 100%);color:#fffafd;
+  border:1px solid #d7a7bc;box-shadow:0 11px 26px rgba(177,108,143,.2),inset 0 1px rgba(255,255,255,.35);
+  border-radius:999px;font-weight:650;letter-spacing:.02em;
+}
+.primary{padding:15px 28px}
+.primary:hover,.journey-btn:hover,.story-action:hover,.intro-start:hover{transform:translateY(-2px);box-shadow:0 15px 32px rgba(177,108,143,.25)}
+button{transition:transform .22s ease,box-shadow .22s ease,background-color .22s ease}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #d99bb6;outline-offset:4px}
+.tiny{color:#aa8b9b;letter-spacing:.04em}
+section{padding:clamp(42px,8vw,66px) 0}
+.gallery{gap:clamp(12px,3vw,22px)}
+.polaroid{background:rgba(255,255,255,.94);border:1px solid #f2e4ea;border-radius:12px;padding:9px 9px 16px;box-shadow:0 16px 36px rgba(122,76,98,.10);transition:transform .35s ease,box-shadow .35s ease}
+.polaroid:hover{transform:translateY(-5px) rotate(0deg);box-shadow:0 22px 42px rgba(122,76,98,.15)}
+.polaroid img{border-radius:7px}
+.caption{color:#a4758d}
+.note,.interactive-card,.surprise,.reason,.gift-result,.mood-note,.future-letter,.future-last,.comfort-letter,.voice-box,.romantic-consent-card{
+  border:1px solid rgba(235,207,221,.86);border-radius:24px;
+  box-shadow:0 15px 42px rgba(128,76,102,.075);
+}
+.note,.interactive-card{background:rgba(255,253,253,.86);backdrop-filter:blur(12px)}
+.note{padding:clamp(23px,5vw,34px)}
+.note:before{color:#e5b4ca}
+.note p{color:#765a6b;line-height:2.05}
+.reasons{gap:14px}
+.reason,.reason:nth-child(2),.reason:nth-child(3){background:rgba(255,253,253,.9);border:1px solid #f0dfe7;border-radius:20px;box-shadow:0 10px 28px rgba(128,76,102,.055);transition:transform .25s ease,box-shadow .25s ease}
+.reason:hover{transform:translateY(-3px);box-shadow:0 15px 32px rgba(128,76,102,.10)}
+.reason .emoji{filter:none}
+.surprise{background:linear-gradient(145deg,#fff0f6 0%,#fff9fb 58%,#f9edf3 100%);padding:clamp(25px,5vw,38px)}
+.surprise p{color:#8d7181}
+.hidden-message{border:1px solid #f0dce6;color:#a05e80;background:rgba(255,255,255,.92);border-radius:20px}
+.journey-progress{background:#f6e3ec}
+.journey-progress span{background:linear-gradient(90deg,#e6a9c4,#bd819e,#e6a9c4)}
+.journey-btn{border-color:#ebd5e0;background:#fffafd;color:#986580;border-radius:999px;box-shadow:0 6px 18px rgba(128,76,102,.07)}
+.stage-counter{color:#ad8198}
+.music-dock{border:1px solid #efd9e4;border-radius:999px;background:rgba(255,251,253,.92);color:#93617b;box-shadow:0 12px 32px rgba(128,76,102,.13);backdrop-filter:blur(16px)}
+.music-toggle{background:linear-gradient(135deg,#edc1d4,#d89eb9);color:white;border-radius:50%}
+.youtube-music-panel{border-radius:20px;border-color:#efd9e4;background:rgba(255,251,253,.96)}
+.envelope{box-shadow:0 16px 32px rgba(128,76,102,.16)}
+.quiz-options button,.lock-input,.mood-choice,.voucher,.future-timecard,.comfort-choice{
+  border-radius:17px!important;border-color:#efdce5!important;
+}
+.quiz-options button:hover,.future-timecard:hover,.comfort-choice:hover{background:#fff0f6!important;transform:translateY(-2px)}
+.gift-result,.gift-result.reveal{background:linear-gradient(145deg,#fff1f7,#fffafb);color:#86566f;border-color:#efd5e2;border-radius:20px}
+.voucher{background:#fffafd;border-color:#d8a8bd!important;color:#76586a}
+.voucher.claimed{background:#f9e8f0}
+#livingHeart{filter:drop-shadow(0 8px 16px rgba(188,112,151,.22))}
+#heartBubble.show{background:rgba(255,251,253,.97);border:1px solid #efd9e4;color:#895d75;border-radius:18px}
+.future-section,.comfort-section{position:relative}
+.future-title,.comfort-title{color:#925a76}
+.future-intro,.comfort-intro{color:#8d7181}
+.future-timecard,.comfort-choice{background:rgba(255,253,253,.9)!important;box-shadow:0 10px 28px rgba(128,76,102,.06)!important}
+.future-letter,.future-last,.comfort-letter,.voice-box{background:rgba(255,252,253,.92);border-color:#efdce5}
+.future-letter h3,.future-last h3,.comfort-letter h3{color:#925a76}
+.future-actions button,.comfort-btn{border-radius:999px;border-color:#dcb3c6;background:#c58aa5;color:#fffafd;box-shadow:0 8px 20px rgba(177,108,143,.14)}
+.future-actions button:hover,.comfort-btn:hover{transform:translateY(-2px);box-shadow:0 12px 25px rgba(177,108,143,.2)}
+.future-actions button.secondary,.comfort-btn.secondary{background:#fff8fb;color:#986580}
+.romantic-consent-card{background:rgba(255,250,253,.97);border-color:#edcfdd;color:#76586a;backdrop-filter:blur(18px)}
+.romantic-consent-card h2{color:#925a76}
+.romantic-consent-actions button{border-radius:999px}
+footer{color:#a78698}
+/* Keep cinematic scenes dramatic while tinting their highlights to the site's pink palette. */
+.cinematic-intro{background:radial-gradient(ellipse at 50% 42%,#74425e 0%,#382336 50%,#19121c 100%)}
+.intro-eyebrow,.intro-title em{color:#f4c1d8}
+.intro-start{background:linear-gradient(120deg,#f3c2d8,#dba5c3);border-radius:999px}
+.flower-reveal{background:radial-gradient(ellipse at 50% 48%,rgba(255,249,252,.99) 0%,rgba(255,225,238,.98) 46%,rgba(232,177,202,.99) 100%)}
+.flower-continue{border-radius:999px;box-shadow:0 8px 22px rgba(157,91,125,.10)}
+.cinema-overlay{background-color:#211521}
+.finale-voice,.cinema-close{border-radius:999px}
+/* Slightly more breathing room and clean stacking on small screens. */
+@media(max-width:600px){
+  .wrap{width:min(100% - 28px,700px)}
+  nav{font-size:9px;letter-spacing:.1em;padding-top:17px}
+  .hero{min-height:84svh;padding:34px 0 48px}
+  .hero-photo{margin:24px auto 26px}
+  section{padding:40px 0}
+  .gallery{gap:11px}
+  .polaroid{padding:7px 7px 13px}
+  .note p{font-size:16px}
+  .reasons{gap:10px}
+  .reason,.reason:nth-child(2),.reason:nth-child(3){padding:17px 12px}
+  .music-dock{right:12px;bottom:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{scroll-behavior:auto!important;transition:none!important}
+  .polaroid:hover,.reason:hover,.primary:hover,.journey-btn:hover,.story-action:hover{transform:none!important}
+}
+</style>
+
 </head>
 <body>
 <div class="wrap">
