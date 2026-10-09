@@ -714,7 +714,7 @@ if(footer&&!document.getElementById('voucherStage')){
   vouchers.querySelectorAll('[data-voucher]').forEach(b=>b.addEventListener('click',()=>{const claimed=b.classList.toggle('claimed');b.setAttribute('aria-pressed',String(claimed));document.getElementById('voucherStatus').textContent=claimed?voucherMessages[b.dataset.voucher]:'Voucher dilepas dulu. Kamu bisa klaim lagi kapan saja ♡';if(claimed)hearts(5)}));
  }
  if(!document.getElementById('cinemaEnding')){
-  const overlay=document.createElement('div');overlay.id='cinemaEnding';overlay.className='cinema-overlay';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-label','Ending romantis');overlay.innerHTML='<div class="finale-stars" aria-hidden="true"></div><div class="finale-vignette" aria-hidden="true"></div><span class="cinema-spark" style="left:8%;bottom:-10%;animation-delay:-2s">✧</span><span class="cinema-spark" style="left:84%;bottom:-15%;animation-delay:-5s">♡</span><span class="cinema-spark" style="left:48%;bottom:-20%;animation-delay:-3s">✦</span><div class="finale-orbit" aria-hidden="true"><span>♡</span></div><div class="cinema-content"><div class="cinema-kicker">A LITTLE UNIVERSE, MADE FOR YOU</div><div class="finale-overline">✦ UNTUK ORANG FAVORITKU ✦</div><div class="cinema-heart">♥</div><h2 class="cinema-title">Di antara miliaran kemungkinan,<br><em>aku memilih kamu.</em></h2><div class="finale-divider"><span>✧</span></div><p class="cinema-copy">Kalau semesta memutar waktu dari awal, aku tetap ingin menemukanmu—mengenalmu pelan-pelan, menertawakan hal-hal kecil bersamamu, dan jatuh cinta kepadamu lagi. Bukan karena kisah kita selalu sempurna, tapi karena kamu adalah seseorang yang ingin terus aku pilih, bahkan di hari-hari biasa.</p><p class="finale-promise">Ini bukan akhir cerita kita.<br><strong>Ini cuma jeda sebelum kenangan berikutnya. ♡</strong></p><div class="finale-signature">dengan seluruh sayangku, untuk BBY 🤍</div><button type="button" class="cinema-close" id="closeCinema"><span>♡</span> Simpan momen ini selamanya</button></div>';
+  const overlay=document.createElement('div');overlay.id='cinemaEnding';overlay.className='cinema-overlay';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-label','Ending romantis');overlay.innerHTML='<div class="finale-stars" aria-hidden="true"></div><div class="finale-vignette" aria-hidden="true"></div><span class="cinema-spark" style="left:8%;bottom:-10%;animation-delay:-2s">✧</span><span class="cinema-spark" style="left:84%;bottom:-15%;animation-delay:-5s">♡</span><span class="cinema-spark" style="left:48%;bottom:-20%;animation-delay:-3s">✦</span><div class="finale-orbit" aria-hidden="true"><span>♡</span></div><div class="cinema-content"><div class="cinema-kicker">A LITTLE UNIVERSE, MADE FOR YOU</div><div class="finale-overline">✦ UNTUK ORANG FAVORITKU ✦</div><div class="cinema-heart">♥</div><h2 class="cinema-title">Di antara miliaran kemungkinan,<br><em>aku memilih kamu.</em></h2><div class="finale-divider"><span>✧</span></div><p class="cinema-copy">Kalau semesta memutar waktu dari awal, aku tetap ingin menemukanmu—mengenalmu pelan-pelan, menertawakan hal-hal kecil bersamamu, dan jatuh cinta kepadamu lagi. Bukan karena kisah kita selalu sempurna, tapi karena kamu adalah seseorang yang ingin terus aku pilih, bahkan di hari-hari biasa.</p><p class="finale-promise">Ini bukan akhir cerita kita.<br><strong>Ini cuma jeda sebelum kenangan berikutnya. ♡</strong></p><div class="finale-signature">dengan seluruh sayangku, untuk BBY 🤍</div><div class="finale-actions"><button type="button" class="finale-voice" id="finaleVoice"><span>♫</span> Dengarkan pesan suaraku</button><button type="button" class="cinema-close" id="closeCinema"><span>♡</span> Simpan momen ini selamanya</button></div><p class="finale-voice-status" id="finaleVoiceStatus" aria-live="polite">Ada satu hal lagi yang ingin kamu dengar… 💌</p></div>';
   document.body.appendChild(overlay);document.getElementById('closeCinema').addEventListener('click',()=>{overlay.classList.remove('show');setTimeout(()=>{overlay.style.display='none'},1200)});
  }
  if(footer&&!document.getElementById('secretStage')){
@@ -1017,6 +1017,33 @@ Terima kasih sudah menjadi bagian dari ceritaku sekarang.`}
    setTimeout(finish,650);
  });}
  function giftBurst(){const symbols=['♡','✦','💗','✨','🌷','💕'];for(let i=0;i<22;i++){const el=document.createElement('span');el.className='gift-burst';el.textContent=symbols[Math.floor(Math.random()*symbols.length)];el.style.left=(35+Math.random()*30)+'vw';el.style.top=(40+Math.random()*20)+'vh';el.style.setProperty('--dx',(Math.random()*440-220)+'px');el.style.setProperty('--dy',(Math.random()*-420-60)+'px');el.style.animationDelay=(Math.random()*.25)+'s';document.body.appendChild(el);setTimeout(()=>el.remove(),2100)}}
+})();
+</script>
+
+
+<style>
+/* Finale polish: voice message and cinematic action layout */
+.finale-actions{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin:14px auto 8px}
+.finale-voice{border:1px solid #f6c9e588;border-radius:999px;padding:13px 20px;background:#ffffff0b;color:#ffe6f3;font-weight:600;cursor:pointer;backdrop-filter:blur(8px);transition:transform .25s,background .25s,box-shadow .25s}
+.finale-voice:hover{transform:translateY(-2px);background:#ffffff18;box-shadow:0 8px 28px #e8a8d633}
+.finale-voice span{margin-right:7px}.finale-voice-status{font-size:11px;color:#e8c9df;min-height:1.5em;margin:8px auto 0}
+.cinema-overlay.show .finale-voice,.cinema-overlay.show .finale-voice-status{animation:finaleFadeUp 1s 1.3s both}
+@media(max-width:520px){.finale-actions{flex-direction:column;width:100%}.finale-actions button{width:min(100%,310px)}}
+@media(prefers-reduced-motion:reduce){.cinema-overlay.show .finale-voice,.cinema-overlay.show .finale-voice-status{animation:none!important}}
+</style>
+<script>
+(function finaleVoiceButton(){
+ const btn=document.getElementById('finaleVoice'),status=document.getElementById('finaleVoiceStatus');
+ if(!btn||btn.dataset.ready)return;btn.dataset.ready='1';
+ btn.addEventListener('click',async()=>{
+  const audio=document.getElementById('personalVoicePlayer');
+  if(!audio){if(status)status.textContent='File pesan-suara.wav belum ditemukan di website ini 💗';return;}
+  try{
+   if(!audio.paused){audio.pause();btn.innerHTML='<span>♫</span> Dengarkan pesan suaraku';if(status)status.textContent='Pesan suara dijeda. Ketuk lagi untuk melanjutkan.';return;}
+   audio.currentTime=0;await audio.play();btn.innerHTML='<span>Ⅱ</span> Jeda pesan suaraku';if(status)status.textContent='Dengarkan sampai selesai ya… pesan ini khusus untukmu. 💗';
+   audio.onended=()=>{btn.innerHTML='<span>♫</span> Putar lagi pesan suaraku';if(status)status.textContent='Semoga suaraku bisa memelukmu dari jauh. 🤍';};
+  }catch(e){if(status)status.textContent='Browser belum bisa memutar audio. Coba tekan tombol putar pada pemutar suara di halaman.';}
+ });
 })();
 </script>
 
