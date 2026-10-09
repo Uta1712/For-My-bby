@@ -725,11 +725,10 @@ function romanticShowConsent(){
   <div class="voice-box">
     <div class="comfort-kicker">DENGARKAN SAAT KAMU BUTUH AKU</div>
     <h3 class="comfort-title" style="font-size:1.55rem">Pesan suara dariku 🎧</h3>
-    <p>Kalau kamu punya rekaman suara dari aku, kamu bisa memilihnya di sini untuk didengarkan. File diputar langsung di perangkat ini dan tidak diunggah ke mana pun.</p>
-    <label for="personalVoice" class="comfort-btn secondary" style="display:inline-block;cursor:pointer">Pilih rekaman suara ♡</label>
-    <input class="voice-file" type="file" id="personalVoice" accept="audio/*" aria-label="Pilih file rekaman suara" />
-    <audio class="voice-player" id="personalVoicePlayer" controls hidden></audio>
-    <p id="voiceStatus" aria-live="polite" style="font-size:.82rem">Belum ada rekaman dipilih.</p>
+    <p>Aku titipkan suaraku di sini, ya, sayang. Tekan tombol putar kalau kamu ingin mendengarkannya. ♡</p>
+    <audio class="voice-player" id="personalVoicePlayer" controls preload="metadata" src="pesan-suara.wav">Browser kamu belum mendukung pemutar audio.</audio>
+    <p id="voiceStatus" aria-live="polite" style="font-size:.82rem">Pesan suara dariku sudah siap diputar. 🤍</p>
+    <details style="margin-top:14px"><summary style="cursor:pointer;color:#927c8b;font-size:.85rem">Ganti rekaman ini (opsional)</summary><label for="personalVoice" class="comfort-btn secondary" style="display:inline-block;cursor:pointer;margin-top:10px">Pilih rekaman lain ♡</label><input class="voice-file" type="file" id="personalVoice" accept="audio/*" aria-label="Pilih file rekaman suara pengganti" /></details>
   </div>
   <div class="comfort-actions"><button class="comfort-btn" id="bedtimeToggle" type="button">Masuk mode sebelum tidur ☾</button></div>
   <p id="bedtimeHint" style="text-align:center;font-size:.82rem;margin-top:10px;color:#a08796">Cahaya lebih redup, suasana lebih tenang. Tekan lagi untuk kembali.</p>
