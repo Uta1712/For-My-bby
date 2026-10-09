@@ -112,6 +112,16 @@ footer.story-stage.active{display:flex!important;flex-direction:column;justify-c
 @media(max-width:480px){.interactive-card{padding:18px 14px}.living-heart{left:10px;bottom:12px}.music-dock{right:10px;bottom:12px}}
 
 
+
+/* Mood booster: ruang kecil untuk mengangkat semangat dengan lembut */
+.boost-card{background:linear-gradient(145deg,#fffdfa,#fcf1f6);border:1px solid #ead9e1;border-radius:20px;padding:22px 18px;box-shadow:0 14px 35px #6c4a5809}
+.boost-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.boost-action{border:1px solid #ead7e0;background:#fffdfc;color:#76596a;border-radius:14px;padding:13px 10px;min-height:58px;cursor:pointer;transition:transform .2s,background .2s}
+.boost-action:active{transform:scale(.98)}
+.boost-message{min-height:112px;padding:20px 16px;border-radius:16px;background:#fff;color:#80566b;border:1px solid #f0e2e8;text-align:center;font:17px/1.8 Georgia,serif;display:flex;align-items:center;justify-content:center}
+.boost-breath{font-size:12px;color:#a18793;text-align:center;line-height:1.7;margin:12px 0 0}
+@media(max-width:390px){.boost-actions{gap:8px}.boost-action{font-size:13px;padding:12px 7px}}
+
 /* Tambahan: toples suasana hati, voucher, dan finale sinematik */
 .mood-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
 .mood-choice{border:1px solid #f0d4e2;background:linear-gradient(145deg,#fff,#fff2f8);border-radius:18px;padding:16px 10px;color:#815d73;cursor:pointer;min-height:84px;box-shadow:0 7px 20px #d7b8c51c;transition:transform .2s,box-shadow .2s}
@@ -231,6 +241,27 @@ button:focus-visible{outline:2px solid #b58a9b;outline-offset:4px}
 #envelopeCard .envelope-hint{position:relative;z-index:4;min-height:22px;line-height:1.6;margin-top:4px}
 #envelopeCard .story-action{position:relative;z-index:4;margin-top:12px}
 @media(max-width:480px){#envelopeCard{padding:24px 16px}#envelopeCard .envelope{margin-top:72px}}
+
+/* Animasi afeksi untuk Mood Booster: hangat, manis, dan tidak berlebihan */
+.affection-overlay{position:fixed;inset:0;z-index:1200;display:flex;align-items:center;justify-content:center;padding:22px;background:radial-gradient(ellipse at center,#fff8fbf5,#ead4e1f2);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
+.affection-overlay.show{opacity:1;visibility:visible}
+.affection-card{width:min(360px,100%);padding:28px 22px 22px;text-align:center;background:#fffdfd;border:1px solid #ecd8e2;border-radius:24px;box-shadow:0 22px 70px #79546a24;position:relative;overflow:hidden}
+.affection-kicker{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#ad8298}
+.affection-stage{height:168px;display:flex;align-items:center;justify-content:center;position:relative;margin:12px 0 8px}
+.affection-emoji{font-size:76px;filter:drop-shadow(0 8px 12px #bd91a533);display:inline-block;animation:affectionPop .75s cubic-bezier(.2,.8,.2,1) both}
+.affection-emoji.secondary{font-size:68px;margin-left:-19px;animation:affectionMeet .85s cubic-bezier(.2,.8,.2,1) both}
+.affection-overlay[data-kind="kiss"] .affection-emoji{animation:affectionPop .75s ease both}
+.affection-overlay[data-kind="kiss"] .affection-emoji.secondary{animation:kissMeet .9s cubic-bezier(.2,.8,.2,1) both}
+.affection-floating{position:absolute;left:50%;top:15px;font-size:24px;opacity:0;animation:affectionFloat 2.2s ease-in-out infinite}
+.affection-title{font:28px/1.25 Georgia,serif;color:#80566b;margin:4px 0 10px}
+.affection-copy{font-size:13px;line-height:1.8;color:#987e8d;margin:0 auto 18px;max-width:270px}
+.affection-close{border:0;border-radius:999px;background:#ad8298;color:white;font-weight:600;padding:12px 22px;cursor:pointer}
+@keyframes affectionPop{0%{opacity:0;transform:translateY(18px) scale(.55) rotate(-8deg)}65%{opacity:1;transform:translateY(-4px) scale(1.12) rotate(3deg)}100%{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+@keyframes affectionMeet{0%{opacity:0;transform:translateX(42px) scale(.6)}70%{opacity:1;transform:translateX(-5px) scale(1.08)}100%{opacity:1;transform:translateX(0) scale(1)}}
+@keyframes kissMeet{0%{opacity:0;transform:translateX(35px) rotate(10deg) scale(.6)}65%{opacity:1;transform:translateX(-10px) rotate(-7deg) scale(1.15)}100%{opacity:1;transform:translateX(-4px) rotate(0) scale(1)}}
+@keyframes affectionFloat{0%{opacity:0;transform:translate(-50%,12px) scale(.7)}25%{opacity:.95}100%{opacity:0;transform:translate(calc(-50% + 28px),-100px) scale(1.2)}}
+@media(prefers-reduced-motion:reduce){.affection-emoji,.affection-floating{animation:none!important}.affection-overlay{transition:none}}
+
 </style>
 </head>
 <body>
@@ -401,7 +432,27 @@ function showFlowerReveal(){
   const moodMessages={kangen:'Kalau aku bisa, sekarang aku sudah ada di sampingmu, menggenggam tanganmu dan bilang: sebentar lagi kita bikin kenangan baru, ya. Sampai saat itu, anggap ini peluk paling erat dariku. 🤍',sedih:'Hei, sayang. Kamu nggak harus kuat setiap saat. Istirahat dulu, tarik napas pelan-pelan. Aku bangga sama kamu, bahkan di hari ketika kamu merasa belum melakukan apa-apa. Kamu tetap layak disayang. 🌷',ngambek:'Oke, aku siap menerima protesnya 😭 Tapi setelah kamu siap, sini cerita pelan-pelan, ya. Perasaanmu penting buat aku. Aku mungkin nggak selalu langsung paham, tapi aku mau belajar memahami kamu. 🩷',sayang:'Ini pengingat kecil: kamu berharga, kamu cukup, dan kamu nggak perlu melakukan apa pun untuk pantas disayang. Aku suka kamu sebagai dirimu sendiri—hari ini, besok, dan di hari-hari biasa yang sederhana. 💗'};
   mood.querySelectorAll('[data-mood]').forEach(b=>b.addEventListener('click',()=>{const note=document.getElementById('moodNote');note.textContent=moodMessages[b.dataset.mood];note.classList.remove('show');requestAnimationFrame(()=>note.classList.add('show'));hearts(5)}));
  }
- if(footer&&!document.getElementById('voucherStage')){
+ 
+if(footer&&!document.getElementById('moodBoosterStage')){
+ const boost=document.createElement('section');boost.id='moodBoosterStage';boost.innerHTML='<div class="section-tag">SEDIKIT PELUK UNTUK HARI INI</div><h2>Mood booster buat BBY 🌷</h2><p class="sub">Kalau hari ini terasa berat, kamu nggak harus pura-pura baik-baik saja. Pilih yang kamu butuhkan sekarang, ya.</p><div class="boost-card"><div class="boost-message" id="boostMessage" aria-live="polite">Hai, sayang. Berhenti sebentar, tarik napas. Kamu nggak harus menyelesaikan semuanya hari ini. 🤍</div><div class="boost-actions"><button class="boost-action" type="button" data-boost="hug">🫂 Peluk virtual</button><button class="boost-action" type="button" data-boost="kiss">😘 Cium jauh</button><button class="boost-action" type="button" data-boost="compliment">🌸 Ingat hal baik</button><button class="boost-action" type="button" data-boost="breathe">☁️ Tenang sebentar</button><button class="boost-action" type="button" data-boost="laugh">💌 Pesan random</button></div><p class="boost-breath" id="boostBreath">Kamu boleh istirahat. Kamu tetap berharga, bahkan di hari yang tidak mudah.</p></div>';
+ footer.parentNode.insertBefore(boost,footer);
+ const boostMessages={
+  hug:['Anggap ini peluk yang lama dan hangat dari aku. Nggak perlu cerita dulu kalau belum siap. Kita diam sebentar juga nggak apa-apa. 🫂','Sini, aku peluk dari jauh. Semoga sedikit rasa beratnya bisa kamu taruh sebentar di sini. 🤍'],
+  compliment:['Aku harap kamu tahu betapa banyak hal baik dalam dirimu. Cara kamu berusaha, peduli, dan tetap melangkah itu berarti—meski nggak selalu kamu sadari. 🌷','Kamu nggak harus jadi sempurna supaya pantas disayang. Jadi dirimu sendiri saja sudah lebih dari cukup. 💗'],
+  breathe:['Coba pelan-pelan: tarik napas selama 4 hitungan, tahan 2 hitungan, lalu hembuskan selama 6 hitungan. Ulangi kalau terasa nyaman. Nggak perlu buru-buru. ☁️','Lepaskan bahumu sebentar. Minum sedikit air, cari posisi nyaman, dan beri dirimu izin untuk berhenti sejenak. Satu langkah kecil sudah cukup. 🤍'],
+  kiss:['Satu cium jauh yang lembut di kening—semoga kamu merasa disayang, bahkan dari jauh. 😘💗','Mwah! Satu cium kecil buat BBY, semoga hari ini terasa sedikit lebih ringan. 💋🌷'],
+  laugh:['Pengumuman penting: BBY diwajibkan menerima satu peluk, satu camilan enak, dan pujian tanpa membantah. Ini peraturan resmi dari aku. 😌💗','Kalau hari ini kamu jadi awan, aku mau jadi langitnya. Kalau jadi kucing, aku tetap sayang—tapi tolong jangan cakar hati aku. 🐈💌','Tugasmu sekarang cuma satu: bertahan dengan lembut pada diri sendiri. Bonus tugas: senyum tipis kalau pesan ini berhasil bikin kamu senyum. 🌸']
+ };
+ function showAffectionAnimation(kind){
+   let overlay=document.getElementById('affectionOverlay');
+   if(!overlay){overlay=document.createElement('div');overlay.id='affectionOverlay';overlay.className='affection-overlay';overlay.innerHTML='<div class="affection-card" role="dialog" aria-modal="true" aria-labelledby="affectionTitle"><div class="affection-kicker">KIRIMAN SAYANG UNTUK BBY</div><div class="affection-stage"><span class="affection-emoji" id="affectionEmojiA">🫂</span><span class="affection-emoji secondary" id="affectionEmojiB">🤍</span><span class="affection-floating" id="affectionFloating">♡</span></div><h3 class="affection-title" id="affectionTitle">Peluk yang hangat</h3><p class="affection-copy" id="affectionCopy">Bayangkan aku sedang memelukmu erat-erat. Kamu boleh istirahat sebentar di sini. 🤍</p><button class="affection-close" type="button" id="affectionClose">Makasih, sayang ♡</button></div>';document.body.appendChild(overlay);overlay.addEventListener('click',e=>{if(e.target===overlay||e.target.closest('#affectionClose'))overlay.classList.remove('show')});document.addEventListener('keydown',e=>{if(e.key==='Escape')overlay.classList.remove('show')});}
+   overlay.dataset.kind=kind;overlay.querySelector('#affectionEmojiA').textContent=kind==='kiss'?'😘':'🫂';overlay.querySelector('#affectionEmojiB').textContent=kind==='kiss'?'💋':'🤍';overlay.querySelector('#affectionFloating').textContent=kind==='kiss'?'💗':'♡';overlay.querySelector('#affectionTitle').textContent=kind==='kiss'?'Cium jauh buat BBY':'Peluk yang hangat';overlay.querySelector('#affectionCopy').textContent=kind==='kiss'?'Mwah! Satu cium kecil di kening dari jauh. Semoga kamu merasa disayang dan hari ini sedikit lebih ringan. 💗':'Sini, peluk dulu. Nggak perlu cerita atau pura-pura kuat. Ambil waktu sebanyak yang kamu butuhkan. 🤍';overlay.classList.remove('show');void overlay.offsetWidth;overlay.classList.add('show');
+ }
+ const breath=document.getElementById('boostBreath');
+ boost.querySelectorAll('[data-boost]').forEach(b=>b.addEventListener('click',()=>{const list=boostMessages[b.dataset.boost];const msg=list[Math.floor(Math.random()*list.length)];const target=document.getElementById('boostMessage');target.textContent=msg;target.style.animation='none';void target.offsetWidth;target.style.animation='cinemaIn .65s ease both';breath.textContent=b.dataset.boost==='breathe'?'Lakukan hanya kalau terasa nyaman. Jika tidak ingin latihan napas, kamu boleh langsung memilih pesan lain.':'Kamu boleh tekan tombol lain kapan saja untuk menerima pesan berbeda. Aku ada di sini untuk mengingatkanmu bahwa kamu disayang. ♡';if(b.dataset.boost==='hug'||b.dataset.boost==='kiss')showAffectionAnimation(b.dataset.boost);if(typeof hearts==='function')hearts(3);if(typeof romanticRecordAnswer==='function')romanticRecordAnswer('mood_booster_'+b.dataset.boost,'Pilihan Mood Booster',b.textContent.trim()+' — '+msg)}));
+}
+
+if(footer&&!document.getElementById('voucherStage')){
   const vouchers=document.createElement('section');vouchers.id='voucherStage';vouchers.innerHTML='<div class="section-tag">KUPON KHUSUS BUAT KAMU</div><h2>Buku voucher cinta 🎟️</h2><p class="sub">Pilih voucher yang ingin kamu klaim. Simpan baik-baik ya—nanti kita wujudkan di dunia nyata. ♡</p><div class="interactive-card"><div class="voucher-list"><button type="button" class="voucher" data-voucher="peluk"><span class="v-icon">🤗</span><span><strong>Voucher peluk 10 menit</strong><small>Peluk lama, tanpa buru-buru</small></span></button><button type="button" class="voucher" data-voucher="makan"><span class="v-icon">🍰</span><span><strong>Voucher camilan favorit</strong><small>Kamu pilih, aku traktir</small></span></button><button type="button" class="voucher" data-voucher="film"><span class="v-icon">🎬</span><span><strong>Voucher movie date</strong><small>Kamu pilih film dan camilannya</small></span></button><button type="button" class="voucher" data-voucher="jalan"><span class="v-icon">🌷</span><span><strong>Voucher jalan berdua</strong><small>Tujuan kecil pilihanmu</small></span></button><button type="button" class="voucher" data-voucher="manis"><span class="v-icon">💌</span><span><strong>Voucher kata-kata manis</strong><small>Bisa ditukar kapan saja saat butuh</small></span></button></div><div class="voucher-status" id="voucherStatus" aria-live="polite">Belum ada voucher yang diklaim ♡</div></div>';
   footer.parentNode.insertBefore(vouchers,footer);
   const voucherMessages={peluk:'Voucher peluk berhasil diklaim! Nanti aku peluk kamu erat-erat selama 10 menit. 🤗',makan:'Voucher camilan berhasil diklaim! Siapkan daftar makanan favoritmu ya. 🍰',film:'Movie date berhasil diklaim! Kamu yang pilih filmnya, aku yang siapkan camilan. 🎬',jalan:'Voucher jalan berdua berhasil diklaim! Kita cari hari yang pas dan bikin kenangan baru. 🌷',manis:'Voucher kata-kata manis berhasil diklaim. Kalau butuh diingatkan bahwa kamu disayang, bilang saja ya. 💌'};
