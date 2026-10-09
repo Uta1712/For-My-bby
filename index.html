@@ -797,7 +797,7 @@ function showFlowerReveal(){
  if(surat&&!document.getElementById('envelopeCard')){
   const card=document.createElement('div');card.className='interactive-card';card.id='envelopeCard';
   card.innerHTML='<div class="section-tag">PESAN RAHASIA</div><h3 style="font:500 23px Georgia;color:#a85f82;margin:0">Ada surat untukmu 💌</h3><div class="envelope" id="loveEnvelope" role="button" tabindex="0" aria-label="Buka amplop cinta"><span>♡</span></div><div class="envelope-hint" id="envelopeHint">Ketuk amplopnya pelan-pelan untuk membuka surat</div>';
-  const note=surat.querySelector('.note'); if(note){note.style.display='none';card.appendChild(styleButton('Buka surat cintaku ♡',()=>{if(!musicPlaying)toggleMusic();showFlowerReveal();note.style.display='block';note.scrollIntoView({behavior:'smooth',block:'nearest'});document.getElementById('loveEnvelope').classList.add('open');document.getElementById('envelopeHint').textContent='Kelopak bunga akan mengantarmu ke surat ini 🤍';hearts(8)}));note.style.transition='opacity .3s';}
+  const note=surat.querySelector('.note'); if(note){note.style.display='none';card.appendChild(styleButton('Buka surat cintaku ♡',()=>{if(!musicPlaying)toggleMusic();const env=document.getElementById('loveEnvelope');env.classList.add('open');note.style.display='block';document.getElementById('envelopeHint').textContent='Suratmu sudah terbuka. Baca pelan-pelan, ya 🤍';hearts(5);requestAnimationFrame(()=>note.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'}))}));note.style.transition='opacity .3s';}
   surat.appendChild(card);
   const open=()=>{if(!musicPlaying)toggleMusic();showFlowerReveal();const env=document.getElementById('loveEnvelope');env.classList.add('open');document.getElementById('envelopeHint').textContent='Musik cinta mulai mengiringi suratmu ♡';hearts(5)};
   document.getElementById('loveEnvelope').addEventListener('click',open);document.getElementById('loveEnvelope').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}});
@@ -854,7 +854,38 @@ if(footer&&!document.getElementById('voucherStage')){
  if(footer&&!document.getElementById('secretStage')){
   const secret=document.createElement('section');secret.id='secretStage';secret.innerHTML='<div class="section-tag">HALAMAN TERAKHIR</div><h2>Rahasia kecil yang terkunci 🔐</h2><p class="sub">Ada pesan terakhir yang cuma bisa dibuka dengan kata rahasia. Coba ketik kata yang paling pas untuk kita.</p><div class="interactive-card"><div class="lock-icon" id="lockIcon">🔒</div><form id="secretForm"><input class="lock-input" id="secretWord" autocomplete="off" placeholder="Kata rahasianya…" aria-label="Kata rahasia"><div><button class="story-action" type="submit">Buka rahasia ♡</button></div></form><div id="secretFeedback" class="quiz-feedback" aria-live="polite"></div><div id="secretMessage" class="secret-message">Kalau kamu sampai di sini, berarti kamu sudah membuka semua bagian kecil yang aku siapkan. Aku harap kamu tahu, kamu bukan cuma bagian dari website ini—kamu bagian dari banyak hal indah yang ingin aku jalani. Terima kasih sudah hadir, BBY. Semoga kita terus saling memilih, saling menjaga, dan punya banyak cerita untuk dikenang. Aku sayang kamu. Selalu, dengan cara yang lembut dan tulus. 🩷🩵🤍</div></div>';
   footer.parentNode.insertBefore(secret,footer);
-  document.getElementById('secretForm').addEventListener('submit',e=>{e.preventDefault();const val=document.getElementById('secretWord').value.trim().toLowerCase();if(['sayang','sayangku','bby','cinta'].includes(val)){document.getElementById('secretMessage').classList.add('unlocked');document.getElementById('lockIcon').textContent='💖';document.getElementById('secretFeedback').textContent='Berhasil dibuka! Ini pesan paling spesial untukmu 🥹';hearts(16);const finale=document.getElementById('cinemaEnding');if(finale){finale.style.display='flex';requestAnimationFrame(()=>finale.classList.add('show'));if(!finale.dataset.celebrated){finale.dataset.celebrated='1';const symbols=['✦','♡','✧','♥','✿','✨'];for(let i=0;i<54;i++){const bit=document.createElement('span');bit.className='finale-firework';bit.textContent=symbols[i%symbols.length];bit.style.setProperty('--fx',(Math.random()*100)+'vw');bit.style.setProperty('--fy',(Math.random()*100)+'vh');bit.style.setProperty('--fd',(Math.random()*1.1)+'s');bit.style.setProperty('--fr',(Math.random()*360)+'deg');bit.style.setProperty('--dx',((Math.random()-.5)*180)+'px');bit.style.setProperty('--dy',((Math.random()-.5)*180)+'px');finale.appendChild(bit);setTimeout(()=>bit.remove(),3600)}}}}else{document.getElementById('secretFeedback').textContent='Belum cocok, coba kata: sayang, sayangku, bby, atau cinta ♡';document.getElementById('lockIcon').textContent='🔐'}});
+  document.getElementById('secretForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const val=document.getElementById('secretWord').value.trim().toLowerCase();
+  const feedback=document.getElementById('secretFeedback');
+  const message=document.getElementById('secretMessage');
+  const lock=document.getElementById('lockIcon');
+  if(['sayang','sayangku','bby','cinta'].includes(val)){
+   message.classList.add('unlocked');lock.textContent='💖';
+   feedback.textContent='Berhasil dibuka! Ini pesan paling spesial untukmu 🥹';
+   const finale=document.getElementById('cinemaEnding');
+   if(finale){
+    finale.style.display='flex';requestAnimationFrame(()=>finale.classList.add('show'));
+    if(!finale.dataset.celebrated){
+     finale.dataset.celebrated='1';
+     const symbols=['✧','♡','✦','✿'];
+     for(let i=0;i<18;i++){
+      const bit=document.createElement('span');bit.className='finale-firework';bit.setAttribute('aria-hidden','true');
+      bit.textContent=symbols[i%symbols.length];
+      bit.style.setProperty('--fx',(8+Math.random()*84)+'vw');
+      bit.style.setProperty('--fy',(10+Math.random()*78)+'vh');
+      bit.style.setProperty('--fd',(Math.random()*.35)+'s');
+      bit.style.setProperty('--fr',(Math.random()*120-60)+'deg');
+      bit.style.setProperty('--dx',((Math.random()-.5)*90)+'px');
+      bit.style.setProperty('--dy',((Math.random()-.5)*90)+'px');
+      finale.appendChild(bit);setTimeout(()=>bit.remove(),2300);
+     }
+    }
+   }
+  }else{
+   feedback.textContent='Belum cocok, coba kata: sayang, sayangku, bby, atau cinta ♡';lock.textContent='🔐';
+  }
+ });
  }
  // Maskot hati kecil hidup, bisa diketuk untuk kalimat penyemangat.
  if(!document.getElementById('livingHeart')){const heart=document.createElement('button');heart.id='livingHeart';heart.className='living-heart';heart.type='button';heart.textContent='💗';heart.setAttribute('aria-label','Ketuk hati kecil');const bubble=document.createElement('div');bubble.id='heartBubble';bubble.className='heart-bubble';bubble.textContent='Hai, BBY! Kamu lucu banget kalau senyum 🤍';document.body.append(heart,bubble);const lines=['Psst… kamu disayang, lho 🩷','Jangan lupa minum air ya, sayang 💧','Senyummu adalah plot twist favoritku ✨','Aku kirim peluk virtual dulu 🤗','Kamu sudah sampai sejauh ini, hebat! 💗','Klik menu berikutnya, ada hal manis menunggu…'];let bi=0;heart.addEventListener('click',()=>{bubble.textContent=lines[bi++%lines.length];bubble.classList.add('show');hearts(3);setTimeout(()=>bubble.classList.remove('show'),3200)})}
@@ -1089,7 +1120,23 @@ Terima kasih sudah menjadi bagian dari ceritaku sekarang.`}
  document.getElementById('comfortHug').addEventListener('click',()=>overlay.classList.add('show'));document.getElementById('closeComfortAffection').addEventListener('click',closeHug);overlay.addEventListener('click',e=>{if(e.target===overlay)closeHug()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeHug()});
  const input=document.getElementById('personalVoice'),player=document.getElementById('personalVoicePlayer'),status=document.getElementById('voiceStatus');let objectUrl='';
  input.addEventListener('change',()=>{const file=input.files&&input.files[0];if(!file)return;if(!file.type.startsWith('audio/')){status.textContent='Pilih file audio yang valid ya.';return}if(objectUrl)URL.revokeObjectURL(objectUrl);objectUrl=URL.createObjectURL(file);player.src=objectUrl;player.hidden=false;status.textContent='Siap diputar: '+file.name+' · hanya di perangkat ini.';});
- const bedtime=document.getElementById('bedtimeToggle'),section=document.getElementById('ruang-nyaman');bedtime.addEventListener('click',()=>{const active=section.classList.toggle('bedtime-mode');bedtime.textContent=active?'Kembali ke tampilan biasa ♡':'Masuk mode sebelum tidur ☾';document.body.style.overflow=active?'hidden':'';if(active)section.scrollTop=0;});
+ const bedtime=document.getElementById('bedtimeToggle'),section=document.getElementById('ruang-nyaman');
+ let bedtimeActive=false,bedtimeParent=null,bedtimeNext=null,bodyOverflowBefore='',scrollBefore=0;
+ function setBedtimeMode(active){
+  if(active===bedtimeActive)return;
+  if(active){
+   bedtimeActive=true;bedtimeParent=section.parentNode;bedtimeNext=section.nextSibling;bodyOverflowBefore=document.body.style.overflow;scrollBefore=window.scrollY;
+   document.body.appendChild(section);section.classList.add('bedtime-mode');document.body.classList.add('bedtime-active');document.body.style.overflow='hidden';
+   bedtime.textContent='Kembali ke tampilan biasa ♡';bedtime.setAttribute('aria-pressed','true');section.scrollTop=0;
+  }else{
+   bedtimeActive=false;section.classList.remove('bedtime-mode');document.body.classList.remove('bedtime-active');
+   if(bedtimeParent&&bedtimeParent.isConnected){if(bedtimeNext&&bedtimeNext.parentNode===bedtimeParent)bedtimeParent.insertBefore(section,bedtimeNext);else bedtimeParent.appendChild(section);}
+   document.body.style.overflow=bodyOverflowBefore;bedtime.textContent='Masuk mode sebelum tidur ☾';bedtime.setAttribute('aria-pressed','false');
+   requestAnimationFrame(()=>window.scrollTo({top:scrollBefore,behavior:'auto'}));
+  }
+ }
+ bedtime.addEventListener('click',()=>setBedtimeMode(!bedtimeActive));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&bedtimeActive)setBedtimeMode(false)});
 })();
 </script>
 
@@ -1239,6 +1286,46 @@ Terima kasih sudah menjadi bagian dari ceritaku sekarang.`}
 @media(prefers-reduced-motion:reduce){.svg-boy,.svg-girl,.svg-boy>path,.svg-girl>path,.embrace-arms,.scene-glow,.affection-hug-heart,.petal-one,.petal-two,.petal-three{animation:none!important}.embrace-arms{opacity:1}.affection-close{transition:none!important}}
 
 </style>
+
+<style id="targeted-polish-fixes">
+/* Night/bedtime mode: a real viewport overlay, independent of the story-page layout. */
+body.bedtime-active{overflow:hidden!important}
+#ruang-nyaman.bedtime-mode{position:fixed!important;inset:0!important;z-index:99999!important;width:100vw!important;max-width:none!important;height:100vh!important;height:100dvh!important;min-height:100vh!important;min-height:100dvh!important;box-sizing:border-box!important;margin:0!important;padding:clamp(26px,5vh,48px) clamp(18px,5vw,42px)!important;overflow-x:hidden!important;overflow-y:auto!important;border-radius:0!important;overscroll-behavior:contain!important;isolation:isolate!important;}
+#ruang-nyaman.bedtime-mode .comfort-actions,#ruang-nyaman.bedtime-mode #bedtimeHint{position:relative;z-index:2}
+#ruang-nyaman.bedtime-mode #bedtimeToggle{min-height:48px}
+/* Hug: one coherent movement per character (rather than two animations fighting over transform). */
+.affection-person.left{animation:hugJourneyLeft 4.8s cubic-bezier(.22,.72,.22,1) both!important}
+.affection-person.right{animation:hugJourneyRight 4.8s cubic-bezier(.22,.72,.22,1) both!important}
+@keyframes hugJourneyLeft{
+  0%{opacity:0;transform:translateX(-64px) translateY(5px)}
+  18%{opacity:1;transform:translateX(5px) translateY(0)}
+  30%{transform:translateX(17px) translateY(-1px)}
+  40%{transform:translateX(17px) translateY(0)}
+  52%{transform:translateX(19px) translateY(-1px)}
+  64%{transform:translateX(17px) translateY(0)}
+  78%{transform:translateX(18px) translateY(-1px)}
+  100%{opacity:1;transform:translateX(17px) translateY(0)}
+}
+@keyframes hugJourneyRight{
+  0%{opacity:0;transform:translateX(64px) translateY(5px)}
+  18%{opacity:1;transform:translateX(-5px) translateY(0)}
+  30%{transform:translateX(-17px) translateY(-1px)}
+  40%{transform:translateX(-17px) translateY(0)}
+  52%{transform:translateX(-19px) translateY(-1px)}
+  64%{transform:translateX(-17px) translateY(0)}
+  78%{transform:translateX(-18px) translateY(-1px)}
+  100%{opacity:1;transform:translateX(-17px) translateY(0)}
+}
+.affection-person.left .person-head{animation:headSettleLeft 4.8s ease-in-out both!important;transform-origin:75% 85%}
+.affection-person.right .person-head{animation:headSettleRight 4.8s ease-in-out both!important;transform-origin:25% 85%}
+@keyframes headSettleLeft{0%,24%{transform:rotate(-4deg)}42%,74%{transform:rotate(7deg)}100%{transform:rotate(5deg)}}
+@keyframes headSettleRight{0%,24%{transform:rotate(4deg)}42%,74%{transform:rotate(-7deg)}100%{transform:rotate(-5deg)}}
+.affection-hug-heart{animation:heartBloom 2.2s 1.45s ease-in-out 2!important}
+@media(prefers-reduced-motion:reduce){.affection-person.left,.affection-person.right,.affection-person.left .person-head,.affection-person.right .person-head,.affection-hug-heart{animation:none!important;opacity:1!important;transform:none!important}}
+/* A soft, short sparkle effect rather than a dense burst of symbols. */
+.finale-firework{animation-duration:2.1s!important;text-shadow:0 0 10px #ffb8d8!important;pointer-events:none!important}
+</style>
+
 </body></html>
 <style>
 /* Upgrade fitur 3 & 5: maskot responsif dan mesin hadiah tanpa pengulangan sampai semua hadiah keluar */
