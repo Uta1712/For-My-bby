@@ -15,3 +15,14 @@ Website romantis interaktif berbasis HTML, CSS, dan JavaScript. Setiap bagian di
 
 ## Catatan musik
 Musik menggunakan pemutar YouTube. Website akan mencoba memutar musik saat dibuka. Namun, autoplay bersuara tidak bisa dijamin karena Chrome, Safari, dan browser lain sering memblokirnya sampai pengunjung berinteraksi. Jika musik tidak berbunyi, tekan tombol putar pada pemutar YouTube. Pemutaran juga bergantung pada apakah video mengizinkan embed.
+
+
+## Fitur interaktif terbaru
+- Surat cinta dengan amplop animasi.
+- Kuis kecil hubungan dengan respons lucu.
+- Mesin hadiah virtual acak.
+- Ending rahasia terkunci (kata pembuka: `sayang`, `sayangku`, `bby`, atau `cinta`).
+- Maskot hati kecil yang bisa diketuk.
+- Navigasi tahap menggunakan tombol lanjut/kembali.
+
+Catatan: autoplay musik YouTube bisa diblokir browser; jika tidak terdengar, tekan tombol musik atau play pada pemutar.

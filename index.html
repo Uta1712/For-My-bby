@@ -94,6 +94,23 @@ footer.story-stage.active{display:flex!important;flex-direction:column;justify-c
 @keyframes stageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.story-stage.active{animation:none}}
 
+
+/* Bab interaktif romantis */
+.interactive-card{max-width:520px;margin:22px auto;padding:22px;border:1px solid #f3d8e6;border-radius:24px;background:linear-gradient(145deg,#fffdfd,#fff1f7);box-shadow:0 12px 34px #bd8eaa1c;text-align:center}
+.story-action{border:0;border-radius:999px;padding:12px 19px;margin:5px;background:linear-gradient(135deg,#eaa9c9,#b9d8f4);color:#67475b;font-weight:700;cursor:pointer;box-shadow:0 6px 16px #d9abc333;transition:transform .2s}
+.story-action:hover{transform:translateY(-2px)}.story-action:focus-visible{outline:3px solid #bc7da1;outline-offset:3px}
+.envelope{position:relative;width:150px;height:100px;margin:24px auto 18px;background:#f3bfd6;border-radius:8px;cursor:pointer;box-shadow:0 10px 22px #b77d9b33;display:grid;place-items:center;font-size:36px;transition:transform .3s}
+.envelope:before{content:"";position:absolute;top:0;left:0;width:0;height:0;border-left:75px solid transparent;border-right:75px solid transparent;border-top:58px solid #e9a9c8;transform-origin:top;transition:transform .5s;z-index:2}
+.envelope.open:before{transform:rotateX(180deg)}.envelope span{position:relative;z-index:3}.envelope-hint{font-size:13px;color:#9b7188}
+.quiz-options{display:grid;grid-template-columns:1fr;gap:9px;margin-top:18px}.quiz-options button{width:100%;text-align:left;background:#fff;border:1px solid #f1d6e4;border-radius:15px;padding:13px;color:#76566a;cursor:pointer}.quiz-options button:hover{background:#fff0f7}.quiz-feedback{min-height:28px;margin-top:14px;color:#a35e84;font-weight:700}
+.gift-box{font-size:64px;cursor:pointer;display:inline-block;filter:drop-shadow(0 8px 10px #d5a3bf44);animation:giftBob 2s ease-in-out infinite}@keyframes giftBob{50%{transform:translateY(-7px) rotate(3deg)}}
+.gift-result{min-height:60px;margin:16px auto 0;padding:14px;border-radius:16px;background:#fff4f9;color:#9b5e7e;line-height:1.7}
+.lock-icon{font-size:44px;margin:8px}.lock-input{padding:12px 14px;border:1px solid #e9c8d9;border-radius:14px;width:min(100%,280px);font:inherit;text-align:center;background:#fff}
+.secret-message{display:none;margin-top:18px;padding:18px;border-radius:18px;background:#fff1f7;color:#945c7a;line-height:1.8}.secret-message.unlocked{display:block;animation:stageIn .5s ease}
+.living-heart{position:fixed;left:16px;bottom:18px;z-index:48;border:1px solid #f0d3e2;border-radius:50%;width:49px;height:49px;background:#fff7fb;box-shadow:0 7px 22px #ba8ba733;font-size:24px;cursor:pointer;animation:heartBeat 1.6s infinite}
+@keyframes heartBeat{0%,100%{transform:scale(1)}12%{transform:scale(1.13)}22%{transform:scale(1)}}.heart-bubble{position:fixed;left:14px;bottom:74px;z-index:48;max-width:220px;padding:10px 13px;background:#fff;border:1px solid #f0d3e2;border-radius:16px;box-shadow:0 8px 24px #ba8ba733;font-size:12px;color:#9b5e7e;display:none}.heart-bubble.show{display:block;animation:pop .25s ease}
+@media(max-width:480px){.interactive-card{padding:18px 14px}.living-heart{left:10px;bottom:12px}.music-dock{right:10px;bottom:12px}}
+
 </style>
 </head>
 <body>
@@ -213,6 +230,41 @@ function reveal(){
  const el=document.getElementById('pesan');el.classList.add('show');hearts(15);
  setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'center'}),100);
 }
+
+
+// Fitur cerita interaktif: surat, kuis jahil, hadiah virtual, dan ending rahasia.
+(function addRomanticInteractions(){
+ const styleButton=(label,fn)=>{const b=document.createElement('button');b.className='story-action';b.type='button';b.textContent=label;b.addEventListener('click',fn);return b};
+ const surat=document.getElementById('surat');
+ if(surat&&!document.getElementById('envelopeCard')){
+  const card=document.createElement('div');card.className='interactive-card';card.id='envelopeCard';
+  card.innerHTML='<div class="section-tag">PESAN RAHASIA</div><h3 style="font:500 23px Georgia;color:#a85f82;margin:0">Ada surat untukmu 💌</h3><div class="envelope" id="loveEnvelope" role="button" tabindex="0" aria-label="Buka amplop cinta"><span>♡</span></div><div class="envelope-hint" id="envelopeHint">Ketuk amplopnya pelan-pelan untuk membuka surat</div>';
+  const note=surat.querySelector('.note'); if(note){note.style.display='none';card.appendChild(styleButton('Buka surat cintaku ♡',()=>{note.style.display='block';note.scrollIntoView({behavior:'smooth',block:'nearest'});document.getElementById('loveEnvelope').classList.add('open');document.getElementById('envelopeHint').textContent='Suratnya terbuka… semoga kamu ikut tersenyum 🤍';hearts(8)}));note.style.transition='opacity .3s';}
+  surat.appendChild(card);
+  const open=()=>{const env=document.getElementById('loveEnvelope');env.classList.add('open');document.getElementById('envelopeHint').textContent='Amplopnya sudah terbuka! Tekan tombol di bawah untuk membaca surat ♡';hearts(5)};
+  document.getElementById('loveEnvelope').addEventListener('click',open);document.getElementById('loveEnvelope').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}});
+ }
+ const footer=document.querySelector('footer');
+ if(footer&&!document.getElementById('quizStage')){
+  const quiz=document.createElement('section');quiz.id='quizStage';quiz.innerHTML='<div class="section-tag">SEDIKIT UJIAN CINTA 😚</div><h2>Kuis kecil tentang kita</h2><p class="sub">Nggak ada nilai jelek kok… kecuali kalau kamu nggak pilih aku 😌💕</p><div class="interactive-card"><div id="quizQuestion" style="font:500 21px Georgia;color:#a85f82">Kalau aku lagi kangen, aku paling pengin…</div><div class="quiz-options" id="quizOptions"></div><div class="quiz-feedback" id="quizFeedback" aria-live="polite"></div><button class="story-action" id="quizNext" type="button" style="display:none">Pertanyaan berikutnya →</button></div>';
+  footer.parentNode.insertBefore(quiz,footer);
+  const qs=[{q:'Kalau aku lagi kangen, aku paling pengin…',a:['Dipeluk lamaaa 🤗','Dikirimin pesan manis 💌','Ditemenin walau cuma diam 🩷','Semua boleh, asal sama kamu 😚'],f:['Peluk virtual terkirim!','Satu pesan manis segera menyusul 💌','Kadang ditemani saja sudah cukup 🤍','Jawaban paling bikin hati meleleh! 💗']},{q:'Kalau kita punya satu hari bebas, pilih yang mana?',a:['Jalan-jalan berdua 🌷','Makan enak sampai kenyang 🍰','Nonton sambil rebahan 🧸','Apa saja, asal bareng kamu 💞'],f:['Petualangan kecil kita, yuk!','Aku sudah membayangkan dessert-nya 😋','Selimut dan film, sempurna.','Aduh, jawabanmu bikin senyum sendiri 🥹']},{q:'Pertanyaan terakhir… kamu sayang aku nggak?',a:['Sayang banget! 💗','Sayang polll 😭💗','Aku klik ini dua kali boleh?','Aku sayang, jangan ge-er 😏'],f:['Aku juga sayang kamu! 🩷','Peluk virtual paling besar buatmu!','Klik sekali cukup, rasa sayangnya dihitung berkali-kali.','Ketahuan malu-malu tapi sayang 😏💕']}];let qi=0;
+  function renderQuiz(){document.getElementById('quizQuestion').textContent=qs[qi].q;const opts=document.getElementById('quizOptions');opts.replaceChildren();document.getElementById('quizFeedback').textContent='';document.getElementById('quizNext').style.display='none';qs[qi].a.forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.textContent=a;b.addEventListener('click',()=>{document.getElementById('quizFeedback').textContent=qs[qi].f[i];Array.from(opts.children).forEach(x=>x.disabled=true);document.getElementById('quizNext').style.display='inline-block';hearts(4)});opts.appendChild(b)})}
+  document.getElementById('quizNext').addEventListener('click',()=>{qi++;if(qi>=qs.length){document.getElementById('quizQuestion').textContent='LULUS DENGAN NILAI CINTA 1000% 💗';document.getElementById('quizOptions').replaceChildren();document.getElementById('quizFeedback').textContent='Hadiah kelulusanmu: satu peluk virtual dan banyak sayang.';document.getElementById('quizNext').style.display='none';}else renderQuiz()});renderQuiz();
+ }
+ if(footer&&!document.getElementById('giftStage')){
+  const gift=document.createElement('section');gift.id='giftStage';gift.innerHTML='<div class="section-tag">HADIAH KECIL UNTUKMU</div><h2>Mesin hadiah sayang 🎁</h2><p class="sub">Klik kotaknya dan lihat hadiah manis apa yang kamu dapat hari ini.</p><div class="interactive-card"><button type="button" class="gift-box" id="giftDraw" aria-label="Ambil hadiah virtual">🎁</button><div class="gift-result" id="giftResult" aria-live="polite">Satu klik kecil, satu kejutan manis ♡</div><p style="font-size:12px;color:#a88799">Boleh dicoba berkali-kali, hadiahnya random!</p></div>';
+  footer.parentNode.insertBefore(gift,footer);
+  const gifts=['Voucher 1 pelukan lamaaa 🤗','Voucher pilih film untuk movie date 🎬','Satu traktiran camilan dari aku 🍰','1000 cium jauh 😘😘😘','Hak untuk minta kata-kata manis kapan saja 💌','Satu hari penuh perhatian ekstra 🩷','Voucher jalan berdua, tujuan kamu yang pilih 🌷','Hadiah rahasia: aku makin sayang kamu 💗'];document.getElementById('giftDraw').addEventListener('click',()=>{document.getElementById('giftResult').textContent=gifts[Math.floor(Math.random()*gifts.length)];hearts(8)});
+ }
+ if(footer&&!document.getElementById('secretStage')){
+  const secret=document.createElement('section');secret.id='secretStage';secret.innerHTML='<div class="section-tag">HALAMAN TERAKHIR</div><h2>Rahasia kecil yang terkunci 🔐</h2><p class="sub">Ada pesan terakhir yang cuma bisa dibuka dengan kata rahasia. Coba ketik kata yang paling pas untuk kita.</p><div class="interactive-card"><div class="lock-icon" id="lockIcon">🔒</div><form id="secretForm"><input class="lock-input" id="secretWord" autocomplete="off" placeholder="Kata rahasianya…" aria-label="Kata rahasia"><div><button class="story-action" type="submit">Buka rahasia ♡</button></div></form><div id="secretFeedback" class="quiz-feedback" aria-live="polite"></div><div id="secretMessage" class="secret-message">Kalau kamu sampai di sini, berarti kamu sudah membuka semua bagian kecil yang aku siapkan. Aku harap kamu tahu, kamu bukan cuma bagian dari website ini—kamu bagian dari banyak hal indah yang ingin aku jalani. Terima kasih sudah hadir, BBY. Semoga kita terus saling memilih, saling menjaga, dan punya banyak cerita untuk dikenang. Aku sayang kamu. Selalu, dengan cara yang lembut dan tulus. 🩷🩵🤍</div></div>';
+  footer.parentNode.insertBefore(secret,footer);
+  document.getElementById('secretForm').addEventListener('submit',e=>{e.preventDefault();const val=document.getElementById('secretWord').value.trim().toLowerCase();if(['sayang','sayangku','bby','cinta'].includes(val)){document.getElementById('secretMessage').classList.add('unlocked');document.getElementById('lockIcon').textContent='💖';document.getElementById('secretFeedback').textContent='Berhasil dibuka! Ini pesan paling spesial untukmu 🥹';hearts(16)}else{document.getElementById('secretFeedback').textContent='Belum cocok, coba kata: sayang, sayangku, bby, atau cinta ♡';document.getElementById('lockIcon').textContent='🔐'}});
+ }
+ // Maskot hati kecil hidup, bisa diketuk untuk kalimat penyemangat.
+ if(!document.getElementById('livingHeart')){const heart=document.createElement('button');heart.id='livingHeart';heart.className='living-heart';heart.type='button';heart.textContent='💗';heart.setAttribute('aria-label','Ketuk hati kecil');const bubble=document.createElement('div');bubble.id='heartBubble';bubble.className='heart-bubble';bubble.textContent='Hai, BBY! Kamu lucu banget kalau senyum 🤍';document.body.append(heart,bubble);const lines=['Psst… kamu disayang, lho 🩷','Jangan lupa minum air ya, sayang 💧','Senyummu adalah plot twist favoritku ✨','Aku kirim peluk virtual dulu 🤗','Kamu sudah sampai sejauh ini, hebat! 💗','Klik menu berikutnya, ada hal manis menunggu…'];let bi=0;heart.addEventListener('click',()=>{bubble.textContent=lines[bi++%lines.length];bubble.classList.add('show');hearts(3);setTimeout(()=>bubble.classList.remove('show'),3200)})}
+})();
 
 // Navigasi cerita: setiap bagian dibuka dengan klik, bukan scroll panjang.
 (function setupJourney(){
