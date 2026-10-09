@@ -79,6 +79,21 @@ footer{text-align:center;padding:32px 0 42px;color:#a48d9c;font-size:12px}
 @media(max-width:420px){.music-dock{right:10px;bottom:10px}.music-label{font-size:11px}.music-label small{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.heart,.music-dock.playing .music-toggle{animation:none!important}}
 
+
+/* Mode cerita: satu halaman kecil setiap kali, lanjut dengan sentuhan */
+.story-stage{display:none!important;min-height:calc(100svh - 76px);padding-top:26px!important;padding-bottom:28px!important;align-content:center}
+.story-stage.active{display:block!important;animation:stageIn .45s ease both}
+header.story-stage.active{display:flex!important}
+footer.story-stage.active{display:flex!important;flex-direction:column;justify-content:center;align-items:center;min-height:calc(100svh - 76px)}
+.journey-controls{display:flex;gap:10px;justify-content:center;align-items:center;margin:28px auto 0;flex-wrap:wrap}
+.journey-btn{border:1px solid #f0d6e3;background:#fffdfd;color:#a85f82;border-radius:999px;padding:12px 18px;min-height:46px;font-weight:700;cursor:pointer;box-shadow:0 5px 16px #d8b7cc24}
+.journey-btn.next{border:0;background:linear-gradient(100deg,#eaaac8,#c5def7);color:#fff}
+.journey-progress{height:4px;position:fixed;z-index:45;top:0;left:0;right:0;background:#f7e7ef}
+.journey-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#eaaac8,#c5def7);transition:width .35s ease}
+.stage-counter{text-align:center;color:#ad8b9f;font-size:11px;letter-spacing:.1em;margin-top:12px}
+@keyframes stageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.story-stage.active{animation:none}}
+
 </style>
 </head>
 <body>
@@ -143,11 +158,11 @@ footer{text-align:center;padding:32px 0 42px;color:#a48d9c;font-size:12px}
 </div>
 <div class="youtube-music-panel" id="youtubeMusicPanel" aria-live="polite">
   <div id="youtubePlayerHost"></div>
-  <p>Musik dari YouTube untuk BBY ♡ Kalau tidak mulai otomatis, tekan tombol putar di pemutar.</p>
+  <p>Mencoba memutar otomatis ♡ Jika browser memblokirnya, tekan tombol putar di pemutar atau sentuh ♫.</p>
 </div>
 <div class="music-dock" id="musicDock">
   <button class="music-toggle" id="musicToggle" type="button" aria-label="Putar musik dari YouTube" aria-pressed="false" title="Putar atau hentikan musik">♫</button>
-  <div class="music-label">Lagu untuk BBY<small id="musicStatus">sentuh untuk memutar ♡</small></div>
+  <div class="music-label">Lagu untuk BBY<small id="musicStatus">autoplay dicoba · sentuh ♫ jika belum berbunyi</small></div>
 </div>
 <script>
 // Memuat lagu YouTube saat pengguna menekan tombol. Klik lagi untuk menghentikannya.
@@ -171,7 +186,7 @@ function toggleMusic(){
   btn.textContent='Ⅱ';btn.setAttribute('aria-label','Hentikan musik');btn.setAttribute('aria-pressed','true');status.textContent='lagu YouTube diputar ♡';hearts(7);
  }else{
   host.replaceChildren();panel.classList.remove('show');musicPlaying=false;dock.classList.remove('playing');
-  btn.textContent='♫';btn.setAttribute('aria-label','Putar musik dari YouTube');btn.setAttribute('aria-pressed','false');status.textContent='sentuh untuk memutar ♡';
+  btn.textContent='♫';btn.setAttribute('aria-label','Putar musik dari YouTube');btn.setAttribute('aria-pressed','false');status.textContent='autoplay dicoba · sentuh ♫ jika belum berbunyi';
  }
 }
 document.getElementById('musicToggle').addEventListener('click',toggleMusic);
@@ -198,5 +213,42 @@ function reveal(){
  const el=document.getElementById('pesan');el.classList.add('show');hearts(15);
  setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'center'}),100);
 }
+
+// Navigasi cerita: setiap bagian dibuka dengan klik, bukan scroll panjang.
+(function setupJourney(){
+ const stages=[document.getElementById('atas'),...Array.from(document.querySelectorAll('section')),document.querySelector('footer')].filter(Boolean);
+ if(!stages.length)return;
+ const progress=document.createElement('div');progress.className='journey-progress';progress.innerHTML='<span></span>';document.body.appendChild(progress);
+ const fill=progress.querySelector('span');let current=0;
+ stages.forEach((stage,i)=>{
+  stage.classList.add('story-stage');stage.classList.toggle('active',i===0);
+  const controls=document.createElement('div');controls.className='journey-controls';
+  if(i>0){const back=document.createElement('button');back.className='journey-btn';back.type='button';back.textContent='← Kembali';back.addEventListener('click',()=>go(i-1));controls.appendChild(back)}
+  const next=document.createElement('button');next.className='journey-btn next';next.type='button';next.textContent=i===stages.length-1?'♡ Baca dari awal':'Lanjut pelan-pelan ♡';next.addEventListener('click',()=>go(i===stages.length-1?0:i+1));controls.appendChild(next);
+  const counter=document.createElement('div');counter.className='stage-counter';counter.textContent=(i+1)+' / '+stages.length+' · cerita kecil kita';
+  stage.appendChild(controls);stage.appendChild(counter);
+ });
+ function go(i){current=Math.max(0,Math.min(stages.length-1,i));stages.forEach((stage,j)=>stage.classList.toggle('active',j===current));fill.style.width=((current+1)/stages.length*100)+'%';window.scrollTo({top:0,behavior:'smooth'});hearts(current===stages.length-1?9:3);}
+ // Tombol utama di halaman pembuka diarahkan ke tahap berikutnya.
+ const opener=document.querySelector('#atas .primary');if(opener){opener.onclick=()=>go(1);}
+ fill.style.width=(100/stages.length)+'%';
+})();
+
+// Coba mulai musik saat halaman dibuka. Browser tertentu tetap mewajibkan sentuhan pengguna.
+(function tryAutoplay(){
+ const host=document.getElementById('youtubePlayerHost');
+ const panel=document.getElementById('youtubeMusicPanel');
+ if(!host||!panel)return;
+ const frame=document.createElement('iframe');
+ frame.title='Musik romantis untuk BBY';
+ frame.allow='autoplay; encrypted-media; picture-in-picture; web-share';
+ frame.referrerPolicy='strict-origin-when-cross-origin';
+ frame.allowFullscreen=true;
+ frame.src='https://www.youtube-nocookie.com/embed/'+youtubeVideoId+'?autoplay=1&playsinline=1&loop=1&playlist='+youtubeVideoId;
+ host.replaceChildren(frame);
+ // Tampilkan panel agar pengguna bisa menekan play bila autoplay diblokir.
+ panel.classList.add('show');
+})();
+
 </script>
 </body></html>

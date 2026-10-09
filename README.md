@@ -1,6 +1,6 @@
 # Website Romantis 💗
 
-Website romantis sederhana berbasis HTML, CSS, dan JavaScript. Bisa dipublikasikan gratis menggunakan GitHub Pages.
+Website romantis interaktif berbasis HTML, CSS, dan JavaScript. Setiap bagian dibuka lewat tombol **Lanjut pelan-pelan ♡**, dilengkapi tombol kembali, indikator progres, animasi hati, kejutan, dan musik YouTube. Bisa dipublikasikan gratis menggunakan GitHub Pages.
 
 ## Cara upload ke GitHub
 1. Login ke https://github.com/
@@ -14,4 +14,4 @@ Website romantis sederhana berbasis HTML, CSS, dan JavaScript. Bisa dipublikasik
 9. Tunggu proses publikasi selesai. GitHub akan menampilkan alamat website di halaman Pages, biasanya berbentuk `https://USERNAME.github.io/website-romantis/`.
 
 ## Catatan musik
-Musik menggunakan pemutar YouTube. Pengunjung mungkin perlu menekan tombol musik terlebih dahulu karena browser dapat membatasi autoplay. Pemutaran juga bergantung pada apakah video mengizinkan embed.
+Musik menggunakan pemutar YouTube. Website akan mencoba memutar musik saat dibuka. Namun, autoplay bersuara tidak bisa dijamin karena Chrome, Safari, dan browser lain sering memblokirnya sampai pengunjung berinteraksi. Jika musik tidak berbunyi, tekan tombol putar pada pemutar YouTube. Pemutaran juga bergantung pada apakah video mengizinkan embed.
