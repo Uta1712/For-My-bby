@@ -1,14 +1,15 @@
-# Website Romantis
+# Website Romantis — Multi-file
 
-## File penting
-- `index.html` — halaman website.
-- `pesan-suara.wav` — rekaman suara personal yang diputar di bagian **Pesan suara dariku**.
+File utama:
+- `index.html`: struktur halaman
+- `style.css`: tampilan dan animasi
+- `script.js`: interaksi, maskot hati, mesin hadiah, dan ending
+- `pesan-suara.wav`: rekaman suara (jika disertakan)
 
-## Cara menerbitkan ke GitHub Pages
-1. Unduh dan ekstrak ZIP ini.
-2. Unggah **kedua file** (`index.html` dan `pesan-suara.wav`) ke folder/root repositori GitHub yang sama.
-3. Commit perubahan, lalu buka website GitHub Pages.
+## Deploy ke GitHub Pages
+1. Ekstrak ZIP.
+2. Unggah seluruh isi folder ini ke root repositori GitHub Pages.
+3. Pastikan `index.html`, `style.css`, dan `script.js` berada pada folder yang sama.
+4. Pastikan nama file audio cocok dengan referensi di HTML.
 
-Jangan ubah nama `pesan-suara.wav` kecuali kamu juga mengganti nilai `src="pesan-suara.wav"` di `index.html`.
-
-Rekaman ini disertakan sebagai aset website. Siapa pun yang memiliki akses ke situs publik dapat mendengarkannya, jadi pastikan kamu nyaman membagikan rekaman ini.
+Semua JavaScript inline dan CSS inline yang ditemukan pada versi sumber digabungkan dengan urutan aslinya ke `script.js` dan `style.css`.
