@@ -164,6 +164,65 @@ footer.story-stage.active{display:flex!important;flex-direction:column;justify-c
 @media(max-width:480px){.flower-bloom{width:calc(var(--size,100px)*.82);height:calc(var(--size,100px)*.82)}.flower-copy{max-width:330px}.flower-subtitle{font-size:15px}}
 @media(prefers-reduced-motion:reduce){.flower-reveal *{animation:none!important;transition:none!important}.flower-reveal.show .flower-bloom{opacity:.7;transform:translate(-50%,-50%) scale(1)}}
 
+
+/* Refined cinematic art direction: blush, ivory, rose-gold, deep plum */
+:root{--pink:#e7b8c9;--pink2:#fbf0f4;--blue:#e9e3eb;--ink:#493641;--muted:#8f7a85;--white:#fffdfb;--rose-gold:#b58a83;--plum:#402b39}
+html{background:#fbf7f5}
+body{background:radial-gradient(ellipse at 12% 5%,#f8e8ed 0,transparent 34%),radial-gradient(ellipse at 90% 34%,#f1eaf0 0,transparent 30%),linear-gradient(160deg,#fcf8f5 0%,#fffdfb 52%,#f7f0f3 100%);color:var(--ink);font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{width:min(100% - 36px,660px)}
+nav{padding:22px 0 18px;color:#98727f;font-size:10px;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid #e8d9dd}
+.brand{font-weight:650;letter-spacing:.19em}
+.hero{min-height:88svh;padding:38px 0 56px}
+.blob{filter:blur(24px);opacity:.48}
+.b1{background:#f0d6df;width:220px;height:220px;left:-130px;top:8%}.b2{background:#e9dfe8;width:210px;height:210px;right:-130px;bottom:5%}
+.eyebrow,.section-tag{font-size:9px;letter-spacing:.25em;color:#a37c8a;font-weight:650}
+.hero-photo{width:164px;height:202px;border:5px solid #fffdfb;border-radius:100px 100px 70px 70px;box-shadow:0 22px 55px #87657722,0 0 0 1px #e6d4db;margin:27px auto 30px;transform:rotate(-1.5deg)}
+h1{font-family:"Bodoni 72",Didot,Georgia,"Times New Roman",serif;font-size:clamp(45px,12vw,70px);font-weight:400;line-height:1.02;letter-spacing:-.045em;color:#80566b}
+h1 span{color:#b68d9b;font-weight:400}
+.lead{font-family:Georgia,"Times New Roman",serif;font-size:16px;line-height:1.9;color:#806d78;max-width:330px}
+.primary,.journey-btn.next{background:linear-gradient(115deg,#b98d9e,#9f7a8d);color:#fffafc;border:1px solid #c9a6b4;box-shadow:0 12px 28px #9d71851f, inset 0 1px #ffffff55;letter-spacing:.025em;font-weight:550}
+.primary{padding:15px 27px}.primary:hover,.journey-btn:hover,.story-action:hover{filter:brightness(1.025);transform:translateY(-2px)}
+.tiny{letter-spacing:.06em;color:#a18a94}
+section{padding:46px 0}
+h2{font-family:"Bodoni 72",Didot,Georgia,"Times New Roman",serif;font-size:clamp(32px,8vw,44px);font-weight:400;letter-spacing:-.025em;color:#80566b;line-height:1.12}
+.sub{font-family:Georgia,"Times New Roman",serif;font-size:15px;line-height:1.9;color:#8d7a84}
+.note,.interactive-card,.surprise{background:rgba(255,253,251,.78);border:1px solid #eadce1;border-radius:4px;box-shadow:0 18px 50px #5d3c4b0a,0 2px 8px #5d3c4b05;backdrop-filter:blur(10px)}
+.note{padding:30px 25px}.note:before{color:#d8b8c5;font-size:25px}.note p{font-family:Georgia,"Times New Roman",serif;color:#6e5964;font-size:17px;line-height:2.05}
+.reasons{gap:12px}.reason,.reason:nth-child(2),.reason:nth-child(3){background:#fffdfa;border:1px solid #eee1e4;border-radius:4px;padding:20px 15px;box-shadow:0 9px 24px #6b48580a}.reason .emoji{filter:saturate(.7);font-size:22px}.reason p{font-family:Georgia,serif;color:#7d6974;line-height:1.8}
+.polaroid{background:#fffdfa;padding:8px 8px 15px;border-radius:2px;box-shadow:0 14px 35px #6c4a5815;border:1px solid #f2e8e9}
+.caption{font-family:Georgia,serif;color:#987989;letter-spacing:.015em}
+.surprise{background:linear-gradient(145deg,#fbf0f3,#f8f4f2);padding:34px 22px}
+.interactive-card{padding:25px 22px;border-radius:5px}
+.story-action{background:linear-gradient(115deg,#b98d9e,#9f7a8d);color:#fffafc;border-radius:3px;box-shadow:0 8px 22px #9d71851b;font-weight:550;letter-spacing:.02em}
+.envelope{background:#d9aebe;border-radius:3px;box-shadow:0 15px 30px #7c50621c}.envelope:before{border-top-color:#c995a9}
+.quiz-options button{background:#fffdfa;border-color:#e9dbe0;border-radius:3px;color:#6e5964;padding:15px}.quiz-options button:hover{background:#fbf0f4}
+.gift-result{background:#f8eff2;border-radius:3px;color:#866174}
+.lock-input{border-color:#e4d2d9;border-radius:3px;background:#fffdfa}
+.mood-choice{background:#fffdfa;border-color:#e9dce0;border-radius:3px;box-shadow:0 8px 22px #6c4a5808;color:#765c6a}
+.mood-note{background:linear-gradient(135deg,#fcf3f6,#fffdfa);border-color:#e9dce0;border-radius:3px;color:#80566b}
+.voucher{background:#fffdfa;border:1px dashed #c9a5b3;border-radius:3px;color:#725a67;padding:16px}.voucher strong{color:#80566b;font-weight:500}.voucher:after{color:#cba5b4}
+.voucher.claimed{background:#f5e9ee}
+.journey-progress{height:3px;background:#eee2e6}.journey-progress span{background:linear-gradient(90deg,#c69aab,#8f6b7f)}
+.journey-btn{border-color:#e6d6dd;background:#fffdfa;color:#8c6579;border-radius:3px;box-shadow:0 5px 16px #6c4a5808;font-weight:550}
+.stage-counter{color:#a18793;letter-spacing:.18em;font-size:10px}
+.music-dock{background:#fffdfaee;border-color:#e9dbe0;color:#876276;box-shadow:0 12px 32px #6c4a5816;border-radius:4px}
+.music-toggle{background:linear-gradient(135deg,#e8c9d5,#c6a6b5);color:#fff;border-radius:3px;box-shadow:none}
+.living-heart{background:#fffdfa;border-color:#e6d6dd;box-shadow:0 8px 24px #6c4a5816;animation:heartBeat 2.4s infinite}
+.heart-bubble{background:#fffdfa;border-color:#e6d6dd;color:#876276;border-radius:4px}
+.cinema-overlay{background:radial-gradient(ellipse at 50% 42%,#634451 0%,#33222f 48%,#17121a 100%)}
+.cinema-heart{color:#e9c2d0;filter:drop-shadow(0 0 24px #d99ab855)}.cinema-title{font-family:"Bodoni 72",Didot,Georgia,serif;font-weight:400;letter-spacing:-.025em}.cinema-copy{font-family:Georgia,serif;font-weight:400;color:#ead9df}.cinema-close{border-color:#c8a1b0;background:#ffffff0d;letter-spacing:.03em}
+.flower-reveal{background:radial-gradient(ellipse at 50% 46%,#fffaf9 0%,#f8e9ed 42%,#dfc0cd 100%)}
+.flower-glow{background:#fffaf8;filter:blur(55px);opacity:.65}
+.flower-bloom{filter:drop-shadow(0 12px 16px #82536815)}
+.flower-bloom i{background:linear-gradient(155deg,#fffafc 0%,#f0d0dc 62%,#dcaabd 100%);border-color:#fff9fcaa}
+.flower-copy{color:#725060}.flower-eyebrow{color:#9e7888;letter-spacing:.32em;font-size:9px}.flower-title{font-family:"Bodoni 72",Didot,Georgia,serif;font-weight:400;letter-spacing:-.035em;color:#79566a}.flower-subtitle{font-family:Georgia,serif;color:#967987;font-size:15px}.flower-continue{border-color:#bd9aa8;background:#fffdfad9;color:#79566a;border-radius:3px;letter-spacing:.06em;text-transform:uppercase;font-size:10px;padding:14px 22px}
+.flower-petal{background:linear-gradient(145deg,#fffafd,#d9aabd);box-shadow:0 3px 8px #82536812}
+footer{color:#a28b95;letter-spacing:.04em}
+button{transition:transform .28s ease,box-shadow .28s ease,background .28s ease}
+button:focus-visible{outline:2px solid #b58a9b;outline-offset:4px}
+@media(max-width:480px){.wrap{width:min(100% - 30px,660px)}.hero{min-height:86svh}.hero-photo{width:150px;height:188px}.interactive-card{padding:21px 15px}.note{padding:25px 20px}.flower-continue{margin-top:25px}}
+@media(prefers-reduced-motion:reduce){button{transition:none!important}}
+
 </style>
 </head>
 <body>

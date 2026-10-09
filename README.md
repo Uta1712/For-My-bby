@@ -1,13 +1,11 @@
-# Website Romantis untuk BBY 💗
+# Website Romantis untuk BBY
 
-## Cara memasang di GitHub Pages
-1. Unggah `index.html` ke repository GitHub kamu (gantikan file lama).
-2. Pastikan GitHub Pages aktif melalui **Settings → Pages**.
-3. Buka URL GitHub Pages setelah perubahan selesai diterbitkan.
+Website romantis satu halaman dengan navigasi per tahap menggunakan tombol, foto yang disematkan di dalam HTML, surat cinta, kuis, mesin hadiah, toples pesan suasana hati, buku voucher pasangan, maskot hati, pembuka bunga pink, ending sinematik, dan musik YouTube.
 
-## Musik
-Musik YouTube akan dicoba mulai saat amplop cinta diketuk atau tombol **Buka surat cintaku** ditekan. Browser masih dapat menerapkan kebijakan pemutaran media masing-masing; jika suara belum terdengar, gunakan tombol ♫ pada website atau kontrol pemutar YouTube.
+## Publikasi dengan GitHub Pages
+1. Unggah `index.html` ke repository GitHub.
+2. Buka **Settings → Pages**.
+3. Pilih branch yang digunakan dan folder `/ (root)`, lalu simpan.
+4. Buka URL GitHub Pages setelah proses publikasi selesai.
 
-
-### Pembuka bunga pink
-Saat amplop cinta diketuk, animasi bunga pink memenuhi layar dengan gaya elegan dan sinematik. Ketuk tombol “Buka surat cintaku” untuk melanjutkan lebih cepat; jika tidak, animasi menutup sendiri setelah beberapa detik.
+Musik YouTube mencoba diputar setelah interaksi pengguna. Browser tetap dapat membatasi autoplay bersuara; gunakan tombol musik jika belum terdengar.
