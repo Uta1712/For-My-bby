@@ -242,25 +242,43 @@ button:focus-visible{outline:2px solid #b58a9b;outline-offset:4px}
 #envelopeCard .story-action{position:relative;z-index:4;margin-top:12px}
 @media(max-width:480px){#envelopeCard{padding:24px 16px}#envelopeCard .envelope{margin-top:72px}}
 
-/* Animasi afeksi untuk Mood Booster: hangat, manis, dan tidak berlebihan */
-.affection-overlay{position:fixed;inset:0;z-index:1200;display:flex;align-items:center;justify-content:center;padding:22px;background:radial-gradient(ellipse at center,#fff8fbf5,#ead4e1f2);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
+/* Animasi sinematik dua karakter bertemu lalu berpelukan */
+.affection-overlay{position:fixed;inset:0;z-index:1200;display:flex;align-items:center;justify-content:center;padding:22px;background:radial-gradient(ellipse at 50% 35%,#fffafd 0%,#f7e8ef 52%,#ead4e1 100%);backdrop-filter:blur(9px);opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease}
 .affection-overlay.show{opacity:1;visibility:visible}
-.affection-card{width:min(360px,100%);padding:28px 22px 22px;text-align:center;background:#fffdfd;border:1px solid #ecd8e2;border-radius:24px;box-shadow:0 22px 70px #79546a24;position:relative;overflow:hidden}
+.affection-card{width:min(390px,100%);padding:27px 22px 22px;text-align:center;background:linear-gradient(155deg,#fffefe,#fff8fb);border:1px solid #ecd8e2;border-radius:26px;box-shadow:0 24px 80px #79546a25;position:relative;overflow:hidden}
 .affection-kicker{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#ad8298}
-.affection-stage{height:168px;display:flex;align-items:center;justify-content:center;position:relative;margin:12px 0 8px}
-.affection-emoji{font-size:76px;filter:drop-shadow(0 8px 12px #bd91a533);display:inline-block;animation:affectionPop .75s cubic-bezier(.2,.8,.2,1) both}
-.affection-emoji.secondary{font-size:68px;margin-left:-19px;animation:affectionMeet .85s cubic-bezier(.2,.8,.2,1) both}
-.affection-overlay[data-kind="kiss"] .affection-emoji{animation:affectionPop .75s ease both}
-.affection-overlay[data-kind="kiss"] .affection-emoji.secondary{animation:kissMeet .9s cubic-bezier(.2,.8,.2,1) both}
-.affection-floating{position:absolute;left:50%;top:15px;font-size:24px;opacity:0;animation:affectionFloat 2.2s ease-in-out infinite}
+.affection-stage{height:218px;display:flex;align-items:center;justify-content:center;position:relative;margin:10px 0 4px;overflow:hidden;border-radius:20px;background:radial-gradient(ellipse at 50% 85%,#edcbd9aa,transparent 58%)}
+.affection-scene{position:relative;width:290px;height:190px;max-width:100%;}
+.affection-person{position:absolute;bottom:18px;width:100px;height:156px;filter:drop-shadow(0 8px 7px #80566b20)}
+.affection-person.left{left:23px;--skin:#f2c7b7;--hair:#79545c;--clothes:#bd829b;animation:walkFromLeft 1.45s cubic-bezier(.2,.8,.2,1) both}
+.affection-person.right{right:23px;--skin:#e9bda8;--hair:#4e3c4a;--clothes:#8f718f;animation:walkFromRight 1.45s cubic-bezier(.2,.8,.2,1) both}
+.person-head{position:absolute;top:9px;left:31px;width:39px;height:43px;border-radius:48% 48% 46% 46%;background:var(--skin);z-index:2;border:1px solid #bd8f8b55}
+.person-hair{position:absolute;top:2px;left:26px;width:49px;height:51px;border-radius:50% 50% 42% 45%;background:var(--hair);z-index:1}
+.person-hair:after{content:"";position:absolute;left:0;top:24px;width:13px;height:42px;border-radius:10px;background:var(--hair);transform:rotate(5deg)}
+.person-body{position:absolute;top:49px;left:16px;width:70px;height:83px;border-radius:28px 28px 14px 14px;background:var(--clothes);z-index:1}
+.person-body:after{content:"";position:absolute;bottom:-14px;left:13px;width:17px;height:31px;border-radius:9px;background:var(--clothes);box-shadow:28px 0 0 var(--clothes)}
+.person-arm{position:absolute;top:59px;left:12px;width:24px;height:70px;border-radius:16px;background:var(--clothes);transform-origin:14px 12px;z-index:3;border:1px solid #fff3}
+.person-arm.outer{left:66px;transform:rotate(-13deg)}
+.person-arm.inner{left:12px;transform:rotate(18deg)}
+.affection-person.right .person-arm.outer{transform:rotate(13deg)}
+.affection-person.right .person-arm.inner{transform:rotate(-18deg)}
+.affection-person.left .person-head{transform:rotate(-4deg)}
+.affection-person.right .person-head{transform:rotate(4deg)}
+.affection-hug-heart{position:absolute;z-index:5;left:50%;top:26px;transform:translateX(-50%) scale(.3);font-size:27px;opacity:0;animation:heartBloom 2.1s 1.05s ease-in-out infinite}
+.affection-overlay[data-kind="kiss"] .affection-person.left{animation:walkFromLeft 1.35s cubic-bezier(.2,.8,.2,1) both}
+.affection-overlay[data-kind="kiss"] .affection-person.right{animation:walkFromRight 1.35s cubic-bezier(.2,.8,.2,1) both}
+.affection-overlay[data-kind="kiss"] .affection-person.left .person-head{animation:leanForKiss 1.3s 1s ease-in-out both;transform-origin:70% 80%}
+.affection-overlay[data-kind="kiss"] .affection-person.right .person-head{animation:leanForKissOther 1.3s 1s ease-in-out both;transform-origin:25% 80%}
+.affection-overlay[data-kind="kiss"] .affection-hug-heart{content:"💋"}
 .affection-title{font:28px/1.25 Georgia,serif;color:#80566b;margin:4px 0 10px}
-.affection-copy{font-size:13px;line-height:1.8;color:#987e8d;margin:0 auto 18px;max-width:270px}
+.affection-copy{font-size:13px;line-height:1.8;color:#987e8d;margin:0 auto 18px;max-width:290px}
 .affection-close{border:0;border-radius:999px;background:#ad8298;color:white;font-weight:600;padding:12px 22px;cursor:pointer}
-@keyframes affectionPop{0%{opacity:0;transform:translateY(18px) scale(.55) rotate(-8deg)}65%{opacity:1;transform:translateY(-4px) scale(1.12) rotate(3deg)}100%{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
-@keyframes affectionMeet{0%{opacity:0;transform:translateX(42px) scale(.6)}70%{opacity:1;transform:translateX(-5px) scale(1.08)}100%{opacity:1;transform:translateX(0) scale(1)}}
-@keyframes kissMeet{0%{opacity:0;transform:translateX(35px) rotate(10deg) scale(.6)}65%{opacity:1;transform:translateX(-10px) rotate(-7deg) scale(1.15)}100%{opacity:1;transform:translateX(-4px) rotate(0) scale(1)}}
-@keyframes affectionFloat{0%{opacity:0;transform:translate(-50%,12px) scale(.7)}25%{opacity:.95}100%{opacity:0;transform:translate(calc(-50% + 28px),-100px) scale(1.2)}}
-@media(prefers-reduced-motion:reduce){.affection-emoji,.affection-floating{animation:none!important}.affection-overlay{transition:none}}
+@keyframes walkFromLeft{0%{opacity:0;transform:translateX(-75px) translateY(5px)}55%{opacity:1;transform:translateX(15px) translateY(-2px)}78%{transform:translateX(7px) translateY(0)}100%{opacity:1;transform:translateX(16px) translateY(0)}}
+@keyframes walkFromRight{0%{opacity:0;transform:translateX(75px) translateY(5px)}55%{opacity:1;transform:translateX(-15px) translateY(-2px)}78%{transform:translateX(-7px) translateY(0)}100%{opacity:1;transform:translateX(-16px) translateY(0)}}
+@keyframes heartBloom{0%,100%{opacity:0;transform:translateX(-50%) translateY(9px) scale(.55)}30%,70%{opacity:1;transform:translateX(-50%) translateY(-2px) scale(1)}}
+@keyframes leanForKiss{0%,65%{transform:rotate(-4deg)}100%{transform:rotate(15deg) translateX(3px)}}
+@keyframes leanForKissOther{0%,65%{transform:rotate(4deg)}100%{transform:rotate(-15deg) translateX(-3px)}}
+@media(prefers-reduced-motion:reduce){.affection-person,.affection-hug-heart,.affection-overlay[data-kind="kiss"] .person-head{animation:none!important}.affection-overlay{transition:none}}
 
 </style>
 </head>
@@ -445,8 +463,8 @@ if(footer&&!document.getElementById('moodBoosterStage')){
  };
  function showAffectionAnimation(kind){
    let overlay=document.getElementById('affectionOverlay');
-   if(!overlay){overlay=document.createElement('div');overlay.id='affectionOverlay';overlay.className='affection-overlay';overlay.innerHTML='<div class="affection-card" role="dialog" aria-modal="true" aria-labelledby="affectionTitle"><div class="affection-kicker">KIRIMAN SAYANG UNTUK BBY</div><div class="affection-stage"><span class="affection-emoji" id="affectionEmojiA">🫂</span><span class="affection-emoji secondary" id="affectionEmojiB">🤍</span><span class="affection-floating" id="affectionFloating">♡</span></div><h3 class="affection-title" id="affectionTitle">Peluk yang hangat</h3><p class="affection-copy" id="affectionCopy">Bayangkan aku sedang memelukmu erat-erat. Kamu boleh istirahat sebentar di sini. 🤍</p><button class="affection-close" type="button" id="affectionClose">Makasih, sayang ♡</button></div>';document.body.appendChild(overlay);overlay.addEventListener('click',e=>{if(e.target===overlay||e.target.closest('#affectionClose'))overlay.classList.remove('show')});document.addEventListener('keydown',e=>{if(e.key==='Escape')overlay.classList.remove('show')});}
-   overlay.dataset.kind=kind;overlay.querySelector('#affectionEmojiA').textContent=kind==='kiss'?'😘':'🫂';overlay.querySelector('#affectionEmojiB').textContent=kind==='kiss'?'💋':'🤍';overlay.querySelector('#affectionFloating').textContent=kind==='kiss'?'💗':'♡';overlay.querySelector('#affectionTitle').textContent=kind==='kiss'?'Cium jauh buat BBY':'Peluk yang hangat';overlay.querySelector('#affectionCopy').textContent=kind==='kiss'?'Mwah! Satu cium kecil di kening dari jauh. Semoga kamu merasa disayang dan hari ini sedikit lebih ringan. 💗':'Sini, peluk dulu. Nggak perlu cerita atau pura-pura kuat. Ambil waktu sebanyak yang kamu butuhkan. 🤍';overlay.classList.remove('show');void overlay.offsetWidth;overlay.classList.add('show');
+   if(!overlay){overlay=document.createElement('div');overlay.id='affectionOverlay';overlay.className='affection-overlay';overlay.innerHTML='<div class="affection-card" role="dialog" aria-modal="true" aria-labelledby="affectionTitle"><div class="affection-kicker">KIRIMAN SAYANG UNTUK BBY</div><div class="affection-stage"><div class="affection-scene" aria-label="Ilustrasi dua orang saling mendekat"><div class="affection-person left"><span class="person-hair"></span><span class="person-head"></span><span class="person-body"></span><span class="person-arm outer"></span><span class="person-arm inner"></span></div><div class="affection-person right"><span class="person-hair"></span><span class="person-head"></span><span class="person-body"></span><span class="person-arm outer"></span><span class="person-arm inner"></span></div><span class="affection-hug-heart">♡</span></div></div><h3 class="affection-title" id="affectionTitle">Peluk yang hangat</h3><p class="affection-copy" id="affectionCopy">Bayangkan kita bertemu setelah lama saling rindu, lalu berpelukan erat. 🤍</p><button class="affection-close" type="button" id="affectionClose">Makasih, sayang ♡</button></div>';document.body.appendChild(overlay);overlay.addEventListener('click',e=>{if(e.target===overlay||e.target.closest('#affectionClose'))overlay.classList.remove('show')});document.addEventListener('keydown',e=>{if(e.key==='Escape')overlay.classList.remove('show')});}
+   overlay.dataset.kind=kind;overlay.querySelector('.affection-hug-heart').textContent=kind==='kiss'?'💋':'♡';overlay.querySelector('#affectionTitle').textContent=kind==='kiss'?'Cium jauh buat BBY':'Akhirnya, peluk kamu';overlay.querySelector('#affectionCopy').textContent=kind==='kiss'?'Dua hati mendekat, lalu satu cium lembut di kening. Semoga kamu merasa disayang, bahkan dari jauh. 💗':'Bayangkan kita berlari kecil saling mendekat, lalu berpelukan erat tanpa ingin buru-buru melepas. Kamu aman di sini. 🤍';overlay.classList.remove('show');void overlay.offsetWidth;overlay.classList.add('show');
  }
  const breath=document.getElementById('boostBreath');
  boost.querySelectorAll('[data-boost]').forEach(b=>b.addEventListener('click',()=>{const list=boostMessages[b.dataset.boost];const msg=list[Math.floor(Math.random()*list.length)];const target=document.getElementById('boostMessage');target.textContent=msg;target.style.animation='none';void target.offsetWidth;target.style.animation='cinemaIn .65s ease both';breath.textContent=b.dataset.boost==='breathe'?'Lakukan hanya kalau terasa nyaman. Jika tidak ingin latihan napas, kamu boleh langsung memilih pesan lain.':'Kamu boleh tekan tombol lain kapan saja untuk menerima pesan berbeda. Aku ada di sini untuk mengingatkanmu bahwa kamu disayang. ♡';if(b.dataset.boost==='hug'||b.dataset.boost==='kiss')showAffectionAnimation(b.dataset.boost);if(typeof hearts==='function')hearts(3);if(typeof romanticRecordAnswer==='function')romanticRecordAnswer('mood_booster_'+b.dataset.boost,'Pilihan Mood Booster',b.textContent.trim()+' — '+msg)}));
