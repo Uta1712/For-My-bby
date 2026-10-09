@@ -352,6 +352,29 @@ button:focus-visible{outline:2px solid #b58a9b;outline-offset:4px}
 @media(max-width:390px){.affection-stage{height:205px}.cinematic-scene{height:205px}.couple-art{transform:scale(1.02)}}
 @media(prefers-reduced-motion:reduce){.svg-boy,.svg-girl,.embrace-arms,.kiss-hearts,.scene-glow,.petal-one,.petal-two,.petal-three{animation:none!important}.embrace-arms{opacity:1}}
 
+
+/* Ruang nyaman BBY: surat perasaan, pesan suara, dan mode malam */
+.comfort-section{max-width:900px;margin:42px auto;padding:clamp(22px,5vw,42px);border:1px solid #ead9e1;border-radius:28px;background:linear-gradient(145deg,#fffdfa 0%,#fcf1f6 58%,#f7edf5 100%);box-shadow:0 18px 55px #6c4a580d;color:#76596a;position:relative;overflow:hidden}
+.comfort-section:before{content:'✿';position:absolute;right:22px;top:8px;font-size:80px;color:#e7c5d3;opacity:.22;pointer-events:none}
+.comfort-kicker{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#ad8298;text-align:center}
+.comfort-title{font-family:Georgia,'Times New Roman',serif;font-weight:500;text-align:center;font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.2;color:#80566b;margin:10px 0}
+.comfort-intro{text-align:center;max-width:560px;margin:0 auto 22px;line-height:1.8;color:#927c8b}
+.comfort-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0}
+.comfort-choice{border:1px solid #ead7e0;background:#fffdfc;color:#76596a;border-radius:16px;padding:15px 12px;text-align:left;cursor:pointer;min-height:72px;transition:transform .2s,border-color .2s,background .2s}
+.comfort-choice:hover,.comfort-choice:focus-visible{transform:translateY(-2px);border-color:#c89bb0;background:#fff8fb;outline:2px solid #e7c5d3;outline-offset:2px}
+.comfort-choice strong{display:block;font-size:.96rem;margin-bottom:5px}.comfort-choice span{font-size:.82rem;color:#a08796;line-height:1.5}
+.comfort-letter{display:none;margin-top:18px;padding:clamp(18px,4vw,28px);border:1px solid #efdee6;border-radius:18px;background:#fffdfc;line-height:1.9;white-space:pre-line;animation:comfortIn .5s ease both}
+.comfort-letter.show{display:block}.comfort-letter h3{font-family:Georgia,serif;font-size:1.35rem;font-weight:500;color:#9b6e85;margin:0 0 10px}
+.comfort-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:16px}
+.comfort-btn{border:1px solid #d9b9c8;background:#a77b91;color:white;padding:12px 17px;border-radius:999px;cursor:pointer;font:inherit;transition:transform .2s}.comfort-btn:hover{transform:translateY(-2px)}.comfort-btn.secondary{background:#fffdfc;color:#80566b}
+.voice-box{border-top:1px solid #ead9e1;margin-top:28px;padding-top:24px;text-align:center}.voice-box p{line-height:1.7;color:#927c8b}.voice-file{display:block;max-width:100%;margin:12px auto;font-size:.85rem;color:#927c8b}.voice-player{width:min(100%,420px);margin:12px auto;display:block}
+.bedtime-mode{position:fixed!important;inset:0!important;z-index:3000!important;max-width:none!important;margin:0!important;border-radius:0!important;overflow-y:auto!important;background:radial-gradient(ellipse at 50% 15%,#453348 0%,#201c30 58%,#171725 100%)!important;color:#f8edf4!important;display:flex;flex-direction:column;justify-content:center;min-height:100dvh;box-shadow:none!important}
+.bedtime-mode:before{content:'✦  ·  ✧     ·    ✦     ·  ✧';position:absolute;inset:15% 0 auto;text-align:center;color:#edcfdf;letter-spacing:.5em;font-size:1.2rem;opacity:.8}
+.bedtime-mode .comfort-kicker,.bedtime-mode .comfort-title,.bedtime-mode .comfort-intro,.bedtime-mode .voice-box p{color:#f1dce8}.bedtime-mode .comfort-choice,.bedtime-mode .comfort-letter{background:#332a3d;border-color:#675064;color:#f8edf4}.bedtime-mode .comfort-choice span{color:#d2b8c9}.bedtime-mode .comfort-letter h3{color:#f1c9df}.bedtime-mode .comfort-btn{background:#d9b0c8;color:#332538;border-color:#d9b0c8}.bedtime-mode .comfort-btn.secondary{background:#332a3d;color:#f8edf4;border-color:#80647a}.bedtime-mode .voice-box{border-color:#675064}
+@keyframes comfortIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:520px){.comfort-grid{grid-template-columns:1fr}.comfort-section{margin:28px 12px;border-radius:22px}.comfort-section:before{font-size:56px}.comfort-choice{min-height:64px}}
+@media(prefers-reduced-motion:reduce){.comfort-letter,.comfort-choice,.comfort-btn{animation:none!important;transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -685,4 +708,59 @@ function romanticShowConsent(){
 })();
 
 </script>
+
+<section class="comfort-section" id="ruang-nyaman" aria-labelledby="comfortHeading">
+  <div class="comfort-kicker">A LITTLE PLACE FOR YOU</div>
+  <h2 class="comfort-title" id="comfortHeading">Sini dulu, sayang 🤍</h2>
+  <p class="comfort-intro">Kalau hari ini terasa berat, kamu nggak harus pura-pura baik-baik saja. Pilih yang paling kamu butuhkan sekarang—aku sudah meninggalkan sedikit bagian hatiku di sini.</p>
+  <div class="comfort-grid" aria-label="Pilih pesan sesuai perasaan">
+    <button class="comfort-choice" type="button" data-comfort="miss"><strong>♡ Aku lagi kangen kamu</strong><span>Untuk saat jarak terasa jauh.</span></button>
+    <button class="comfort-choice" type="button" data-comfort="sad"><strong>☁ Hari ini berat banget</strong><span>Kamu boleh istirahat sebentar.</span></button>
+    <button class="comfort-choice" type="button" data-comfort="doubt"><strong>🌷 Aku butuh diyakinkan</strong><span>Baca lagi betapa berharganya kamu.</span></button>
+    <button class="comfort-choice" type="button" data-comfort="sleep"><strong>☾ Aku susah tidur</strong><span>Pesan kecil untuk malam ini.</span></button>
+    <button class="comfort-choice" type="button" data-comfort="fight"><strong>💌 Kita lagi nggak baik-baik saja</strong><span>Pengingat untuk bicara dengan lembut.</span></button>
+    <button class="comfort-choice" type="button" data-comfort="hug"><strong>🫂 Aku butuh peluk</strong><span>Bayangkan aku sedang memelukmu.</span></button>
+  </div>
+  <article class="comfort-letter" id="comfortLetter" aria-live="polite"><h3 id="comfortLetterTitle"></h3><div id="comfortLetterText"></div><div class="comfort-actions"><button class="comfort-btn" id="comfortHug" type="button">Peluk aku 🫂</button><button class="comfort-btn secondary" id="comfortClose" type="button">Simpan dulu ♡</button></div></article>
+  <div class="voice-box">
+    <div class="comfort-kicker">DENGARKAN SAAT KAMU BUTUH AKU</div>
+    <h3 class="comfort-title" style="font-size:1.55rem">Pesan suara dariku 🎧</h3>
+    <p>Kalau kamu punya rekaman suara dari aku, kamu bisa memilihnya di sini untuk didengarkan. File diputar langsung di perangkat ini dan tidak diunggah ke mana pun.</p>
+    <label for="personalVoice" class="comfort-btn secondary" style="display:inline-block;cursor:pointer">Pilih rekaman suara ♡</label>
+    <input class="voice-file" type="file" id="personalVoice" accept="audio/*" aria-label="Pilih file rekaman suara" />
+    <audio class="voice-player" id="personalVoicePlayer" controls hidden></audio>
+    <p id="voiceStatus" aria-live="polite" style="font-size:.82rem">Belum ada rekaman dipilih.</p>
+  </div>
+  <div class="comfort-actions"><button class="comfort-btn" id="bedtimeToggle" type="button">Masuk mode sebelum tidur ☾</button></div>
+  <p id="bedtimeHint" style="text-align:center;font-size:.82rem;margin-top:10px;color:#a08796">Cahaya lebih redup, suasana lebih tenang. Tekan lagi untuk kembali.</p>
+</section>
+<div class="affection-overlay" id="comfortAffection" role="dialog" aria-modal="true" aria-label="Pelukan virtual" style="z-index:3200">
+  <div class="affection-card">
+    <button type="button" id="closeComfortAffection" aria-label="Tutup animasi" style="position:absolute;right:14px;top:12px;border:0;background:transparent;font-size:1.5rem;color:#9b6e85;cursor:pointer">×</button>
+    <div style="font-size:clamp(3rem,14vw,5.5rem);line-height:1.5;animation:comfortIn .6s ease both" aria-hidden="true">🫂</div>
+    <h3 style="font-family:Georgia,serif;font-weight:500;color:#80566b;font-size:1.5rem;margin:8px 0">Peluk erat dari jauh 🤍</h3>
+    <p style="line-height:1.8;color:#927c8b;margin:0">Tarik napas pelan, sayang. Bayangkan aku sedang memelukmu dan membiarkanmu istirahat sebentar. Kamu nggak harus menghadapi semuanya sekaligus.</p>
+  </div>
+</div>
+<script>
+(function(){
+ const messages={
+  miss:{title:'Kalau kamu lagi kangen aku…',text:'Andai aku bisa, sekarang aku sudah ada di sampingmu. Untuk sementara, anggap pesan ini sebagai peluk kecil dariku. Jarak mungkin bikin kita nggak bisa bertemu kapan saja, tapi kamu tetap punya tempat di hatiku. Aku juga menantikan saat kita bisa bertemu lagi. 🤍'},
+  sad:{title:'Kalau hari ini terasa berat…',text:'Sayang, kamu nggak harus kuat setiap saat. Kamu boleh capek, boleh menangis, boleh istirahat dan nggak melakukan apa-apa sebentar. Hari yang sulit bukan berarti kamu gagal. Ambil waktu untuk dirimu, ya. Aku bangga kamu sudah melewati sejauh ini.'},
+  doubt:{title:'Kalau kamu lupa betapa berharganya dirimu…',text:'Aku sayang kamu bukan karena kamu harus selalu ceria, selalu sempurna, atau selalu punya jawaban. Aku sayang kamu sebagai dirimu sendiri—termasuk bagian dirimu yang sedang lelah dan belum baik-baik saja. Kamu pantas diperlakukan dengan lembut, terutama oleh dirimu sendiri. 🌷'},
+  sleep:{title:'Untuk malam yang terasa panjang…',text:'Letakkan dulu semua yang bisa menunggu sampai besok. Longgarkan bahumu, tarik napas perlahan, lalu hembuskan. Kamu nggak perlu menyelesaikan semua hal malam ini. Semoga kamu merasa aman, hangat, dan bisa beristirahat. Selamat tidur, sayang. ☾'},
+  fight:{title:'Kalau kita sedang nggak baik-baik saja…',text:'Kalau ada yang menyakitimu, aku ingin mendengarkannya dengan sungguh-sungguh. Kita nggak harus langsung menyelesaikan semuanya saat emosi masih tinggi. Kita bisa berhenti sebentar, lalu bicara lagi dengan lebih tenang dan saling menghargai. Perasaanmu penting buat aku. 💌'},
+  hug:{title:'Sini, aku peluk dulu…',text:'Nggak perlu menjelaskan apa-apa kalau kamu belum siap. Bayangkan aku merangkulmu, membiarkanmu bersandar sebentar, dan mengingatkanmu bahwa kamu nggak harus melewati hari ini dengan sempurna. Satu napas dulu, ya. 🫂'}
+ };
+ const letter=document.getElementById('comfortLetter');
+ document.querySelectorAll('[data-comfort]').forEach(btn=>btn.addEventListener('click',()=>{const m=messages[btn.dataset.comfort];if(!m)return;document.getElementById('comfortLetterTitle').textContent=m.title;document.getElementById('comfortLetterText').textContent=m.text;letter.classList.add('show');letter.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});if(typeof window.romanticRecordAnswer==='function'){try{window.romanticRecordAnswer('mood_letter',m.title,'Pesan dibuka');}catch(e){}}}));
+ document.getElementById('comfortClose').addEventListener('click',()=>letter.classList.remove('show'));
+ const overlay=document.getElementById('comfortAffection');function closeHug(){overlay.classList.remove('show')}
+ document.getElementById('comfortHug').addEventListener('click',()=>overlay.classList.add('show'));document.getElementById('closeComfortAffection').addEventListener('click',closeHug);overlay.addEventListener('click',e=>{if(e.target===overlay)closeHug()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeHug()});
+ const input=document.getElementById('personalVoice'),player=document.getElementById('personalVoicePlayer'),status=document.getElementById('voiceStatus');let objectUrl='';
+ input.addEventListener('change',()=>{const file=input.files&&input.files[0];if(!file)return;if(!file.type.startsWith('audio/')){status.textContent='Pilih file audio yang valid ya.';return}if(objectUrl)URL.revokeObjectURL(objectUrl);objectUrl=URL.createObjectURL(file);player.src=objectUrl;player.hidden=false;status.textContent='Siap diputar: '+file.name+' · hanya di perangkat ini.';});
+ const bedtime=document.getElementById('bedtimeToggle'),section=document.getElementById('ruang-nyaman');bedtime.addEventListener('click',()=>{const active=section.classList.toggle('bedtime-mode');bedtime.textContent=active?'Kembali ke tampilan biasa ♡':'Masuk mode sebelum tidur ☾';document.body.style.overflow=active?'hidden':'';if(active)section.scrollTop=0;});
+})();
+</script>
+
 </body></html>
