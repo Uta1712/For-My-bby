@@ -1433,6 +1433,93 @@ document.addEventListener('click', function(event) {
 })();
 </script>
 
+
+<!-- BBY: sentuhan interaktif romantis (mouse + layar sentuh) -->
+<style id="bby-interaction-effects">
+  .bby-love-trail {
+    position: fixed; left: 0; top: 0; z-index: 2147483000;
+    pointer-events: none; user-select: none; line-height: 1;
+    color: #ff8db8; font-size: var(--trail-size, 17px);
+    filter: drop-shadow(0 0 7px rgba(255, 91, 155, .72));
+    animation: bby-trail-float 950ms cubic-bezier(.16,.72,.25,1) forwards;
+    will-change: transform, opacity;
+  }
+  @keyframes bby-trail-float {
+    0% { opacity: 0; transform: translate(-50%,-35%) scale(.45) rotate(-12deg); }
+    18% { opacity: .95; }
+    100% { opacity: 0; transform: translate(calc(-50% + var(--drift, 12px)), -105px) scale(1.25) rotate(22deg); }
+  }
+  .bby-pointer-glow {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    opacity: 0; transition: opacity .35s ease;
+    background: radial-gradient(260px circle at var(--bby-x, 50%) var(--bby-y, 50%), rgba(255,105,165,.085), transparent 72%);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .bby-pointer-glow { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bby-love-trail { animation-duration: 450ms; }
+    .bby-pointer-glow { display: none; }
+  }
+</style>
+<script id="bby-interaction-effects-script">
+(() => {
+  if (window.__bbyInteractionEffectsReady) return;
+  window.__bbyInteractionEffectsReady = true;
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const glow = document.createElement('div');
+  glow.className = 'bby-pointer-glow';
+  glow.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(glow);
+
+  const symbols = ['♡', '✦', '✧', '♥'];
+  let lastTrail = 0;
+  let lastGlow = 0;
+  let touchActive = false;
+  function trail(x, y) {
+    const now = performance.now();
+    if (now - lastTrail < (finePointer ? 58 : 105)) return;
+    lastTrail = now;
+    const el = document.createElement('span');
+    el.className = 'bby-love-trail';
+    el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
+    el.style.setProperty('--trail-size', (14 + Math.random() * 9) + 'px');
+    el.style.setProperty('--drift', (Math.random() * 36 - 18) + 'px');
+    document.body.appendChild(el);
+    el.addEventListener('animationend', () => el.remove(), { once: true });
+    window.setTimeout(() => { if (el.isConnected) el.remove(); }, 1400);
+  }
+  document.addEventListener('pointermove', (event) => {
+    if (event.pointerType === 'touch') {
+      if (!touchActive) return;
+      trail(event.clientX, event.clientY);
+      return;
+    }
+    if (event.pointerType === 'mouse' || event.pointerType === 'pen') {
+      const now = performance.now();
+      if (now - lastGlow > 24) {
+        glow.style.setProperty('--bby-x', event.clientX + 'px');
+        glow.style.setProperty('--bby-y', event.clientY + 'px');
+        lastGlow = now;
+      }
+      if (!reduceMotion) trail(event.clientX, event.clientY);
+    }
+  }, { passive: true });
+  document.addEventListener('pointerdown', (event) => {
+    if (event.pointerType === 'touch' || event.pointerType === 'pen') {
+      touchActive = true;
+      if (!reduceMotion) trail(event.clientX, event.clientY);
+    }
+  }, { passive: true });
+  const stopTouch = () => { touchActive = false; };
+  document.addEventListener('pointerup', stopTouch, { passive: true });
+  document.addEventListener('pointercancel', stopTouch, { passive: true });
+})();
+</script>
+
 </body></html>
 <style>
 /* Upgrade fitur 3 & 5: maskot responsif dan mesin hadiah tanpa pengulangan sampai semua hadiah keluar */
