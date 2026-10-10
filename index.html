@@ -76,6 +76,19 @@ footer{text-align:center;padding:32px 0 42px;color:#a48d9c;font-size:12px}
 @keyframes heartDrift{0%{opacity:0;transform:translate3d(0,18px,0) rotate(-18deg) scale(.45)}12%{opacity:1}55%{transform:translate3d(var(--sway,18px),-100px,0) rotate(18deg) scale(1.12)}100%{opacity:0;transform:translate3d(calc(var(--sway,18px) * -1),-260px,0) rotate(48deg) scale(.8)}}
 @keyframes ambientFloat{0%{opacity:0;transform:translateY(25px) rotate(-15deg) scale(.7)}15%{opacity:.55}80%{opacity:.35}100%{opacity:0;transform:translateY(-110vh) rotate(35deg) scale(1.15)}}
 @keyframes musicPulse{0%,100%{box-shadow:0 0 0 0 #eaaac866}50%{box-shadow:0 0 0 7px #eaaac800}}
+/* Visualizer musik romantis: bergerak saat pemutar musik dinyalakan */
+.music-visualizer{height:30px;display:flex;align-items:center;justify-content:center;gap:3px;width:31px;flex:0 0 31px;opacity:.45;transition:opacity .25s ease}
+.music-visualizer i{display:block;width:3px;height:5px;border-radius:8px;background:linear-gradient(180deg,#c58aa8,#e7aeca);transform-origin:center;animation:musicBars .72s ease-in-out infinite alternate;animation-play-state:paused}
+.music-visualizer i:nth-child(2){animation-delay:-.45s;animation-duration:.56s}
+.music-visualizer i:nth-child(3){animation-delay:-.2s;animation-duration:.83s}
+.music-visualizer i:nth-child(4){animation-delay:-.58s;animation-duration:.64s}
+.music-visualizer i:nth-child(5){animation-delay:-.32s;animation-duration:.92s}
+.music-dock.playing .music-visualizer{opacity:1}
+.music-dock.playing .music-visualizer i{animation-play-state:running}
+@keyframes musicBars{from{height:4px;transform:scaleY(.65)}to{height:27px;transform:scaleY(1);filter:brightness(1.12)}}
+@media(max-width:420px){.music-visualizer{width:25px;flex-basis:25px;gap:2px}.music-visualizer i{width:2.5px}}
+@media(prefers-reduced-motion:reduce){.music-visualizer i{animation:none!important;height:8px!important}.music-dock.playing .music-visualizer i:nth-child(2),.music-dock.playing .music-visualizer i:nth-child(4){height:17px!important}}
+
 @media(max-width:420px){.music-dock{right:10px;bottom:10px}.music-label{font-size:11px}.music-label small{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.heart,.music-dock.playing .music-toggle{animation:none!important}}
 
@@ -720,6 +733,9 @@ footer{color:#a78698}
 <div class="music-dock" id="musicDock">
   <button class="music-toggle" id="musicToggle" type="button" aria-label="Putar musik dari YouTube" aria-pressed="false" title="Putar atau hentikan musik">♫</button>
   <div class="music-label">Lagu untuk BBY<small id="musicStatus">autoplay dicoba · sentuh ♫ jika belum berbunyi</small></div>
+  <div class="music-visualizer" id="musicVisualizer" aria-label="Visualizer musik" role="img" title="Animasi musik romantis" aria-hidden="true">
+    <i></i><i></i><i></i><i></i><i></i>
+  </div>
 </div>
 <script>
 // Memuat lagu YouTube saat pengguna menekan tombol. Klik lagi untuk menghentikannya.
@@ -739,10 +755,10 @@ function toggleMusic(){
   frame.allowFullscreen=true;
   frame.src='https://www.youtube-nocookie.com/embed/'+youtubeVideoId+'?autoplay=1&playsinline=1&loop=1&playlist='+youtubeVideoId;
   host.replaceChildren(frame);
-  panel.classList.remove('show');musicPlaying=true;dock.classList.add('playing');
+  panel.classList.remove('show');musicPlaying=true;dock.classList.add('playing');const visualizer=document.getElementById('musicVisualizer');if(visualizer)visualizer.setAttribute('aria-label','Musik sedang diputar');
   btn.textContent='Ⅱ';btn.setAttribute('aria-label','Hentikan musik');btn.setAttribute('aria-pressed','true');status.textContent='lagu YouTube diputar ♡';hearts(7);
  }else{
-  host.replaceChildren();panel.classList.remove('show');musicPlaying=false;dock.classList.remove('playing');
+  host.replaceChildren();panel.classList.remove('show');musicPlaying=false;dock.classList.remove('playing');const visualizer=document.getElementById('musicVisualizer');if(visualizer)visualizer.setAttribute('aria-label','Musik dijeda');
   btn.textContent='♫';btn.setAttribute('aria-label','Putar musik dari YouTube');btn.setAttribute('aria-pressed','false');status.textContent='autoplay dicoba · sentuh ♫ jika belum berbunyi';
  }
 }
@@ -1434,93 +1450,6 @@ document.addEventListener('click', function(event) {
 </script>
 
 
-<!-- BBY: sentuhan interaktif romantis (mouse + layar sentuh) -->
-<style id="bby-interaction-effects">
-  .bby-love-trail {
-    position: fixed; left: 0; top: 0; z-index: 2147483000;
-    pointer-events: none; user-select: none; line-height: 1;
-    color: #ff8db8; font-size: var(--trail-size, 17px);
-    filter: drop-shadow(0 0 7px rgba(255, 91, 155, .72));
-    animation: bby-trail-float 950ms cubic-bezier(.16,.72,.25,1) forwards;
-    will-change: transform, opacity;
-  }
-  @keyframes bby-trail-float {
-    0% { opacity: 0; transform: translate(-50%,-35%) scale(.45) rotate(-12deg); }
-    18% { opacity: .95; }
-    100% { opacity: 0; transform: translate(calc(-50% + var(--drift, 12px)), -105px) scale(1.25) rotate(22deg); }
-  }
-  .bby-pointer-glow {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    opacity: 0; transition: opacity .35s ease;
-    background: radial-gradient(260px circle at var(--bby-x, 50%) var(--bby-y, 50%), rgba(255,105,165,.085), transparent 72%);
-  }
-  @media (hover: hover) and (pointer: fine) {
-    .bby-pointer-glow { opacity: 1; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .bby-love-trail { animation-duration: 450ms; }
-    .bby-pointer-glow { display: none; }
-  }
-</style>
-<script id="bby-interaction-effects-script">
-(() => {
-  if (window.__bbyInteractionEffectsReady) return;
-  window.__bbyInteractionEffectsReady = true;
-  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const finePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  const glow = document.createElement('div');
-  glow.className = 'bby-pointer-glow';
-  glow.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(glow);
-
-  const symbols = ['♡', '✦', '✧', '♥'];
-  let lastTrail = 0;
-  let lastGlow = 0;
-  let touchActive = false;
-  function trail(x, y) {
-    const now = performance.now();
-    if (now - lastTrail < (finePointer ? 58 : 105)) return;
-    lastTrail = now;
-    const el = document.createElement('span');
-    el.className = 'bby-love-trail';
-    el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    el.style.left = x + 'px';
-    el.style.top = y + 'px';
-    el.style.setProperty('--trail-size', (14 + Math.random() * 9) + 'px');
-    el.style.setProperty('--drift', (Math.random() * 36 - 18) + 'px');
-    document.body.appendChild(el);
-    el.addEventListener('animationend', () => el.remove(), { once: true });
-    window.setTimeout(() => { if (el.isConnected) el.remove(); }, 1400);
-  }
-  document.addEventListener('pointermove', (event) => {
-    if (event.pointerType === 'touch') {
-      if (!touchActive) return;
-      trail(event.clientX, event.clientY);
-      return;
-    }
-    if (event.pointerType === 'mouse' || event.pointerType === 'pen') {
-      const now = performance.now();
-      if (now - lastGlow > 24) {
-        glow.style.setProperty('--bby-x', event.clientX + 'px');
-        glow.style.setProperty('--bby-y', event.clientY + 'px');
-        lastGlow = now;
-      }
-      if (!reduceMotion) trail(event.clientX, event.clientY);
-    }
-  }, { passive: true });
-  document.addEventListener('pointerdown', (event) => {
-    if (event.pointerType === 'touch' || event.pointerType === 'pen') {
-      touchActive = true;
-      if (!reduceMotion) trail(event.clientX, event.clientY);
-    }
-  }, { passive: true });
-  const stopTouch = () => { touchActive = false; };
-  document.addEventListener('pointerup', stopTouch, { passive: true });
-  document.addEventListener('pointercancel', stopTouch, { passive: true });
-})();
-</script>
-
-</body></html>
 <style>
 /* Upgrade fitur 3 & 5: maskot responsif dan mesin hadiah tanpa pengulangan sampai semua hadiah keluar */
 #livingHeart{transform-origin:center;transition:filter .2s}#livingHeart:hover{filter:drop-shadow(0 0 10px #f3a8cb);transform:scale(1.12)}#livingHeart.mascot-pop{animation:mascotPop .55s cubic-bezier(.2,1.5,.4,1)}
@@ -1570,3 +1499,54 @@ document.addEventListener('click', function(event) {
  }
 })();
 </script>
+
+<style id="cute-extra-bby-pack">
+#bbyHugBuddy{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:calc(18px + env(safe-area-inset-bottom));z-index:9998;border:1px solid #f4c3d9;border-radius:999px;padding:11px 15px;background:linear-gradient(135deg,#fffafd,#ffe4f0);color:#9d5578;font:700 13px/1.2 inherit;box-shadow:0 8px 24px #c36b9630;cursor:pointer;display:flex;align-items:center;gap:7px;transition:transform .2s}
+#bbyHugBuddy:hover{transform:translateY(-3px) rotate(-2deg)}#bbyHugBuddy .hug-face{font-size:21px;animation:bbyBuddyBounce 2.2s ease-in-out infinite}
+#bbyHugToast{position:fixed;left:50%;bottom:84px;transform:translate(-50%,16px) scale(.96);z-index:9999;width:min(340px,calc(100vw - 32px));padding:17px 18px;border:1px solid #f4c6da;border-radius:23px;background:rgba(255,250,253,.97);color:#765365;text-align:center;box-shadow:0 12px 35px #a84c772b;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;backdrop-filter:blur(12px)}
+#bbyHugToast.show{opacity:1;transform:translate(-50%,0) scale(1)}#bbyHugToast .hug-big{font-size:34px;display:block;margin-bottom:5px}#bbyHugToast strong{display:block;color:#b75f89;font-size:15px;margin-bottom:5px}#bbyHugToast p{margin:0;font-size:13px;line-height:1.55}
+.bby-cute-float{position:fixed;z-index:10000;pointer-events:none;font-size:22px;animation:bbyCuteFloat 1.8s ease-out forwards}
+@keyframes bbyBuddyBounce{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-4px) rotate(6deg)}}
+@keyframes bbyCuteFloat{0%{opacity:0;transform:translate(0,0) scale(.55) rotate(-15deg)}15%{opacity:1}100%{opacity:0;transform:translate(var(--cx),-130px) scale(1.25) rotate(20deg)}}
+@media(prefers-reduced-motion:reduce){#bbyHugBuddy .hug-face,.bby-cute-float{animation:none}#bbyHugToast{transition:none}}
+@media(max-width:420px){
+  /* Naikkan tombol agar tidak menimpa pemutar musik di bagian bawah */
+  #bbyHugBuddy{padding:10px 12px;font-size:12px;bottom:calc(76px + env(safe-area-inset-bottom));right:12px}
+  #bbyHugToast{bottom:calc(132px + env(safe-area-inset-bottom));max-width:min(320px,calc(100vw - 28px))}
+}
+@media(max-height:420px) and (max-width:900px){
+  #bbyHugBuddy{bottom:calc(62px + env(safe-area-inset-bottom))}
+  #bbyHugToast{bottom:calc(112px + env(safe-area-inset-bottom))}
+}
+</style>
+
+
+<div id="bbyHugToast" role="status" aria-live="polite"><span class="hug-big">🫂💗</span><strong>Peluk virtual buat BBY!</strong><p id="bbyHugWords">Siniii, peluk dulu yang lamaaa 🤍</p></div>
+<button id="bbyHugBuddy" type="button" aria-label="Kirim peluk virtual"><span class="hug-face">🐻‍❄️</span><span>peluk aku ♡</span></button>
+<script id="cute-extra-bby-script">
+(()=>{const btn=document.getElementById('bbyHugBuddy'),toast=document.getElementById('bbyHugToast'),words=document.getElementById('bbyHugWords');if(!btn||!toast||!words)return;
+const notes=[
+'Siniii, peluk dulu yang lamaaa 🤍 Kamu nggak harus kuat terus kok.',
+'Kamu adalah bagian paling gemes dari hari-hariku. Muah! 😚💗',
+'Kalau dunia lagi berisik, istirahat sebentar di pelukanku yaa 🧸',
+'Pengingat kecil: kamu disayang, dirindukan, dan berharga banget 🌷',
+'Peluk virtual level 1000% dikirim khusus buat manusia favoritku! 💞',
+'Jangan lupa minum air dan senyum tipis ya, cantikku/manisku ✨',
+'Kalau aku bisa teleport, sekarang aku udah ada di sebelah kamu buat meluk 🥺'
+];let last=-1,timer;btn.addEventListener('click',()=>{let n;do{n=Math.floor(Math.random()*notes.length)}while(n===last);last=n;words.textContent=notes[n];toast.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>toast.classList.remove('show'),4200);const symbols=['💗','♡','✨','🌷','💕','🫧'];for(let i=0;i<12;i++){const el=document.createElement('span');el.className='bby-cute-float';el.textContent=symbols[Math.floor(Math.random()*symbols.length)];el.style.left=(Math.max(8,Math.min(92,50+(Math.random()*44-22))))+'vw';el.style.bottom=(20+Math.random()*35)+'vh';el.style.setProperty('--cx',(Math.random()*180-90)+'px');el.style.animationDelay=(Math.random()*.3)+'s';document.body.appendChild(el);setTimeout(()=>el.remove(),2200)} });
+})();
+</script>
+
+
+<style id="bby-hug-final-position-fix">
+/* Posisi aman: jangan berbagi area bawah dengan pemutar musik fixed */
+#bbyHugBuddy{top:82px !important;bottom:auto !important;right:12px !important;left:auto !important;z-index:10001 !important;}
+#bbyHugToast{top:140px !important;bottom:auto !important;z-index:10002 !important;}
+@media(max-width:420px){
+ #bbyHugBuddy{top:82px !important;bottom:auto !important;right:12px !important;}
+ #bbyHugToast{top:140px !important;bottom:auto !important;}
+}
+</style>
+
+</body>
+</html>
