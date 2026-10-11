@@ -665,6 +665,233 @@ footer{color:#a78698}
 }
 </style>
 
+
+<style id="bby-premium-cinematic-visual-refresh">
+/* Visual-only refresh: preserve all existing content, controls, media and scripts. */
+:root{
+  --pink:#e8a3c2;
+  --pink2:#fff0f6;
+  --blue:#d8edfb;
+  --ink:#4e3c4d;
+  --muted:#887787;
+  --white:#fffdfd;
+  --bby-line:rgba(207,153,183,.24);
+  --bby-shadow:0 24px 70px rgba(126,83,115,.10);
+}
+html{scroll-padding-top:24px}
+body{
+  background:
+    radial-gradient(ellipse at 8% 4%,rgba(255,218,235,.72),transparent 28rem),
+    radial-gradient(ellipse at 94% 23%,rgba(211,237,253,.72),transparent 32rem),
+    radial-gradient(ellipse at 16% 72%,rgba(255,238,246,.45),transparent 28rem),
+    linear-gradient(155deg,#fffafd 0%,#fff 48%,#f6fbff 100%);
+  color:var(--ink);
+  letter-spacing:.005em;
+}
+body:before{
+  content:"";
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:radial-gradient(rgba(160,119,149,.13) .55px,transparent .55px);
+  background-size:7px 7px;opacity:.16;
+}
+.wrap{width:min(100% - 38px,790px)}
+nav{
+  position:relative;
+  padding:19px 22px;
+  margin:12px -10px 0;
+  border:1px solid rgba(255,255,255,.88);
+  border-radius:22px;
+  background:rgba(255,255,255,.64);
+  box-shadow:0 10px 36px rgba(146,111,139,.06);
+  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(18px);
+  color:#a56b8b;
+}
+.brand{letter-spacing:.11em;font-size:11px}
+nav>div:last-child{font-size:11px;letter-spacing:.08em;color:#a18a9c}
+.hero{
+  min-height:88svh;
+  padding:48px 0 76px;
+  isolation:isolate;
+}
+.hero:before{
+  content:"";
+  position:absolute;
+  width:min(88vw,510px);height:min(88vw,510px);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,231,242,.62),rgba(228,243,253,.28) 56%,transparent 72%);
+  z-index:-1;pointer-events:none;
+}
+.blob{filter:blur(8px);opacity:.56}
+.b1{width:210px;height:210px;background:#ffddea;left:-100px;top:11%}
+.b2{width:190px;height:190px;background:#d8edff;right:-90px;bottom:8%}
+.hero-inner{max-width:510px}
+.eyebrow{
+  display:inline-block;padding:9px 15px;border:1px solid rgba(219,164,190,.32);
+  border-radius:999px;background:rgba(255,255,255,.65);
+  color:#aa6e8d;font-size:10px;letter-spacing:.22em;
+  box-shadow:0 8px 24px rgba(191,136,166,.06);
+}
+.hero-photo{
+  width:clamp(174px,29vw,218px);height:clamp(214px,36vw,266px);
+  object-fit:cover;object-position:center 28%;
+  border:8px solid rgba(255,255,255,.98);
+  border-radius:140px 140px 30px 30px;
+  box-shadow:0 24px 60px rgba(169,111,147,.20),0 0 0 1px rgba(220,176,199,.18);
+  transform:rotate(-2deg);
+  transition:transform .6s cubic-bezier(.2,.75,.25,1),box-shadow .6s ease;
+}
+.hero-photo:hover{transform:rotate(0) translateY(-4px);box-shadow:0 30px 75px rgba(169,111,147,.25),0 0 0 7px rgba(255,255,255,.38)}
+h1{
+  font-size:clamp(49px,10vw,76px);
+  line-height:1.01;letter-spacing:-.055em;
+  color:#a85e82;text-shadow:0 8px 35px rgba(218,160,190,.10);
+}
+h1 span{color:#7fa8cc}
+.lead{font-size:15px;line-height:1.95;max-width:370px;color:#806d7e}
+.primary{
+  background:linear-gradient(110deg,#d986aa 0%,#e5a9c4 46%,#a9cde8 100%);
+  box-shadow:0 12px 28px rgba(193,131,166,.23),inset 0 1px 0 rgba(255,255,255,.45);
+  border:1px solid rgba(255,255,255,.65);
+  transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+}
+.primary:hover{transform:translateY(-3px);box-shadow:0 17px 34px rgba(193,131,166,.30);filter:saturate(1.04)}
+.primary:active{transform:translateY(0) scale(.985)}
+.primary:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #b5d8f0;outline-offset:4px}
+.tiny{letter-spacing:.08em;color:#a18b9b}
+section{
+  position:relative;
+  padding:clamp(56px,8vw,82px) 0;
+  scroll-margin-top:18px;
+}
+section[id]:not(.future-section):not(.comfort-section):after{
+  content:"";display:block;position:absolute;bottom:0;left:20%;right:20%;
+  height:1px;background:linear-gradient(90deg,transparent,rgba(221,177,199,.38),rgba(190,221,242,.42),transparent);
+  pointer-events:none;
+}
+.section-tag{
+  color:#b17696;font-size:10px;letter-spacing:.23em;
+  margin-bottom:14px;
+}
+h2{
+  color:#8f5b7b;
+  font-size:clamp(31px,6.6vw,43px);
+  line-height:1.14;letter-spacing:-.035em;
+  margin-bottom:15px;
+}
+.sub{max-width:440px;font-size:14px;line-height:1.9;color:#8b7989;margin-bottom:34px}
+.gallery{gap:clamp(14px,3vw,24px);align-items:start;max-width:740px;margin:0 auto}
+.polaroid{
+  padding:11px 11px 18px;border-radius:13px;
+  border:1px solid rgba(255,255,255,.95);
+  background:linear-gradient(145deg,#fff,#fffafd);
+  box-shadow:0 20px 48px rgba(118,86,111,.10),0 2px 8px rgba(118,86,111,.04);
+  transition:transform .45s cubic-bezier(.2,.75,.25,1),box-shadow .45s ease;
+  overflow:hidden;
+}
+.polaroid:nth-child(2){margin-top:36px}
+.polaroid:nth-child(3){border-radius:16px;margin-top:10px}
+.polaroid img{border-radius:7px;transition:transform .7s cubic-bezier(.2,.75,.25,1);object-position:center}
+.polaroid:hover{transform:translateY(-6px) rotate(0deg);box-shadow:0 28px 58px rgba(118,86,111,.16)}
+.polaroid:hover img{transform:scale(1.025)}
+.caption{font-size:15px;color:#946983;letter-spacing:.01em;padding-top:14px}
+.note{
+  max-width:700px;margin:0 auto;
+  padding:clamp(27px,5vw,48px);
+  border:1px solid rgba(232,202,218,.82);
+  border-radius:28px;
+  background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(255,247,251,.95) 62%,rgba(243,250,255,.96));
+  box-shadow:var(--bby-shadow);
+  overflow:hidden;
+}
+.note:before{right:24px;top:14px;font-size:38px;color:#eac1d5}
+.note p{font-size:clamp(16px,2.4vw,18px);line-height:2.05;color:#705d70;position:relative;z-index:1}
+.note .sign{font-size:13px;letter-spacing:.035em;color:#b17495;line-height:1.8}
+.reasons{gap:14px;max-width:700px;margin:0 auto}
+.reason,.reason:nth-child(2),.reason:nth-child(3){
+  position:relative;overflow:hidden;
+  border:1px solid rgba(232,211,225,.76);
+  border-radius:22px;
+  padding:24px 18px;
+  background:rgba(255,255,255,.79);
+  box-shadow:0 12px 32px rgba(128,94,122,.055);
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+}
+.reason:nth-child(2),.reason:nth-child(3){background:rgba(242,249,255,.82);border-color:rgba(208,229,245,.9)}
+.reason:before{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:3px;background:linear-gradient(90deg,#efb7d0,#d5eafb);opacity:.8}
+.reason:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(128,94,122,.10);border-color:#e7c5d8}
+.reason .emoji{font-size:27px;margin-bottom:12px;filter:drop-shadow(0 4px 6px rgba(180,135,162,.12))}
+.reason p{font-size:13px;line-height:1.8;color:#776779}
+.surprise{
+  max-width:760px;margin:0 auto;
+  padding:clamp(34px,7vw,62px) clamp(20px,5vw,42px);
+  border:1px solid rgba(255,255,255,.92);
+  border-radius:32px;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(255,255,255,.9),transparent 36%),
+    linear-gradient(135deg,#ffedf5 0%,#fff9fc 48%,#eaf6ff 100%);
+  box-shadow:0 24px 65px rgba(149,112,145,.11);
+  overflow:hidden;
+}
+.surprise .gift{font-size:48px;filter:drop-shadow(0 8px 14px rgba(190,127,160,.15));animation:giftFloat 4s ease-in-out infinite}
+.surprise p{font-size:14px;line-height:1.95;color:#7f6b7a;max-width:390px}
+.hidden-message{
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:0 12px 35px rgba(173,131,160,.10);
+  color:#98617f;
+}
+footer{letter-spacing:.06em;padding:44px 0 56px;color:#a18d9e}
+.music-dock{
+  right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));
+  padding:9px 14px 9px 10px;
+  border:1px solid rgba(255,255,255,.96);
+  background:rgba(255,253,255,.84);
+  box-shadow:0 14px 38px rgba(125,88,119,.16);
+}
+.music-toggle{box-shadow:0 5px 15px rgba(215,180,201,.24)}
+.youtube-music-panel{border:1px solid rgba(255,255,255,.95);box-shadow:0 18px 44px rgba(125,88,119,.16)}
+/* Give the existing interactive chapters the same premium card language. */
+.future-shell,.comfort-shell,.future-letter,.comfort-letter,.comfort-choice,.future-timecard,
+.interactive-card,.quiz-stage,.gift-stage,.mood-stage,.boost-card,.voucher,.secret-shell{
+  border-radius:22px;
+}
+.future-shell,.comfort-shell{
+  box-shadow:0 22px 60px rgba(126,83,115,.09);
+}
+.future-timecard,.comfort-choice{
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.future-timecard:hover,.comfort-choice:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(126,83,115,.10)}
+#klw-launcher{
+  box-shadow:0 14px 35px rgba(199,109,155,.25)!important;
+  border:1px solid rgba(255,255,255,.9)!important;
+}
+#klw-panel{
+  box-shadow:0 30px 90px rgba(77,43,69,.26)!important;
+}
+@keyframes giftFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-5px) rotate(2deg)}}
+@media(max-width:600px){
+  .wrap{width:min(100% - 28px,790px)}
+  nav{padding:15px 14px;margin:8px -2px 0;border-radius:18px}
+  .hero{min-height:82svh;padding:36px 0 56px}
+  .hero-photo{width:174px;height:214px}
+  section{padding:55px 0}
+  .polaroid{padding:8px 8px 14px;border-radius:10px}
+  .polaroid:nth-child(2){margin-top:23px}
+  .polaroid:nth-child(3){width:86%}
+  .caption{font-size:13px;padding-top:11px}
+  .note{border-radius:23px;padding:26px 22px}
+  .reasons{gap:10px}
+  .reason,.reason:nth-child(2),.reason:nth-child(3){padding:19px 13px;border-radius:18px}
+  .surprise{border-radius:25px}
+  .music-dock{right:10px;bottom:max(10px,env(safe-area-inset-bottom));gap:7px}
+  .music-label{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-photo,.polaroid,.polaroid img,.reason,.future-timecard,.comfort-choice,.surprise .gift{transition:none!important;animation:none!important}
+}
+</style>
+
 </head>
 <body>
 <div class="wrap">
@@ -1548,5 +1775,358 @@ const notes=[
 }
 </style>
 
+
+<style id="bby-index-css-overlap-fix">
+/* CSS langsung di index.html agar tombol peluk tidak menumpuk dengan pemutar musik */
+#bbyHugBuddy {
+  position: fixed !important;
+  top: calc(82px + env(safe-area-inset-top)) !important;
+  bottom: auto !important;
+  right: max(12px, env(safe-area-inset-right)) !important;
+  left: auto !important;
+  z-index: 100001 !important;
+}
+#bbyHugToast {
+  position: fixed !important;
+  top: calc(140px + env(safe-area-inset-top)) !important;
+  bottom: auto !important;
+  z-index: 100002 !important;
+}
+@media (max-width: 480px) {
+  #bbyHugBuddy {
+    top: calc(76px + env(safe-area-inset-top)) !important;
+    right: 10px !important;
+    max-width: calc(100vw - 20px) !important;
+  }
+  #bbyHugToast {
+    top: calc(132px + env(safe-area-inset-top)) !important;
+    width: calc(100vw - 28px) !important;
+  }
+}
+</style>
+
+
+<style id="koalaLoveWorldStyles">
+  :root { --klw-pink:#ff8fb8; --klw-pale:#fff0f6; --klw-ink:#75465b; }
+  #klw-launcher {
+    position:fixed !important; left:max(14px,env(safe-area-inset-left)) !important;
+    bottom:calc(105px + env(safe-area-inset-bottom)) !important;
+    z-index:100003 !important; border:2px solid #fff !important;
+    border-radius:999px !important; background:linear-gradient(145deg,#ffe5f0,#ffacd0) !important;
+    box-shadow:0 7px 22px #d65e9270 !important; color:#75465b !important;
+    padding:9px 14px !important; display:flex !important; align-items:center !important; gap:8px !important;
+    font:700 14px/1.2 system-ui,sans-serif !important; cursor:pointer !important;
+    animation:klwBob 2.8s ease-in-out infinite;
+  }
+  #klw-launcher .klw-face { font-size:29px; }
+  @keyframes klwBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+  #klw-overlay {
+    display:none; position:fixed; inset:0; z-index:100010; padding:16px;
+    background:rgba(82,42,62,.48); backdrop-filter:blur(7px);
+    align-items:center; justify-content:center; font-family:system-ui,-apple-system,sans-serif;
+  }
+  #klw-overlay.klw-open { display:flex; }
+  #klw-panel {
+    position:relative; width:min(440px,100%); max-height:min(88dvh,760px); overflow:auto;
+    border:2px solid #fff; border-radius:28px; padding:20px 18px 22px;
+    color:var(--klw-ink); text-align:center;
+    background:radial-gradient(circle at 50% 0,#fff 0,#fff3f8 45%,#ffe0ed 100%);
+    box-shadow:0 20px 70px #54233f55;
+  }
+  #klw-close { position:absolute; right:12px; top:10px; width:36px;height:36px;border:0;border-radius:50%;background:#fff;color:#a44d76;font-size:22px;cursor:pointer; }
+  .klw-kicker { font-size:11px;letter-spacing:2px;font-weight:800;color:#d76c99;text-transform:uppercase; }
+  #klw-panel h2 { margin:5px 32px 4px; font-size:25px; line-height:1.15; color:#b74e7d; }
+  #klw-subtitle { font-size:13px; margin:0 auto 10px; max-width:300px; }
+  .klw-scene { height:205px; margin:4px auto 8px; position:relative; display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:23px;background:linear-gradient(#fff8fc,#ffd9e9); }
+  .klw-cloud { position:absolute; width:105px;height:35px;border-radius:40px;background:#fff9;top:22px;left:14px; }
+  .klw-cloud:after,.klw-cloud:before {content:"";position:absolute;background:inherit;border-radius:50%;width:42px;height:42px;top:-17px;left:18px}
+  .klw-cloud:before {width:30px;height:30px;left:52px;top:-9px}
+  .klw-heart { position:absolute;color:#ff75aa;animation:klwFloat 3s ease-in-out infinite;font-size:22px; }
+  .klw-heart.h1 {top:25px;right:35px}.klw-heart.h2{bottom:28px;left:29px;animation-delay:.8s}.klw-heart.h3{top:85px;left:35px;animation-delay:1.4s}
+  @keyframes klwFloat {0%,100%{transform:translateY(3px) rotate(-8deg)}50%{transform:translateY(-9px) rotate(9deg)}}
+  .klw-koalas { position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:center;gap:0;width:100%;padding-top:15px; }
+  .klw-koala { position:relative;width:115px;height:143px;transition:transform .3s;filter:drop-shadow(0 8px 5px #a85e7b25); }
+  .klw-koala.klw-bby { transform:translateX(-4px) scale(.96); }
+  .klw-koala.klw-cuddle { transform:translateX(8px) rotate(-5deg) scale(1.04); }
+  .klw-ear { position:absolute;top:9px;width:48px;height:48px;border-radius:50%;background:linear-gradient(145deg,#aaa8b2,#777783);border:4px solid #f7f4f7;box-shadow:inset 0 0 0 8px #f0bfd0; }
+  .klw-ear.left{left:0}.klw-ear.right{right:0}
+  .klw-head {position:absolute;top:20px;left:18px;width:79px;height:78px;border-radius:48% 48% 45% 45%;background:linear-gradient(145deg,#d8d6de,#aaa8b5);border:3px solid #fff;z-index:2;box-shadow:inset -5px -5px 0 #9997a5;}
+  .klw-body {position:absolute;bottom:0;left:29px;width:60px;height:65px;border-radius:48% 48% 38% 38%;background:linear-gradient(145deg,#d8d6de,#aaa8b5);border:3px solid #fff;z-index:1;}
+  .klw-belly {position:absolute;left:12px;top:14px;width:31px;height:38px;border-radius:50%;background:#fff0f4;}
+  .klw-eye {position:absolute;top:31px;width:6px;height:9px;border-radius:50%;background:#51444e}.klw-eye.left{left:17px}.klw-eye.right{right:17px}
+  .klw-blush {position:absolute;top:44px;width:15px;height:8px;border-radius:50%;background:#f49ab8;opacity:.85}.klw-blush.left{left:5px}.klw-blush.right{right:5px}
+  .klw-nose {position:absolute;top:38px;left:29px;width:18px;height:25px;border-radius:48% 48% 55% 55%;background:linear-gradient(120deg,#625b69,#3c3742);box-shadow:inset 3px 2px 0 #8c8391;z-index:2}
+  .klw-mouth {position:absolute;top:60px;left:36px;width:8px;height:5px;border-bottom:2px solid #7b5364;border-radius:50%}
+  .klw-bow {position:absolute;z-index:4;top:16px;right:9px;color:#ff6fa7;font-size:25px;text-shadow:0 1px #fff}
+  .klw-koala.klw-player .klw-head {background:linear-gradient(145deg,#c9d8d1,#9aafa6);box-shadow:inset -5px -5px 0 #8fa398}
+  .klw-koala.klw-player .klw-body {background:linear-gradient(145deg,#c9d8d1,#9aafa6)}
+  .klw-koala.klw-bby .klw-bow {color:#ff78ad}
+  #klw-status {font-weight:750;font-size:15px;margin:7px 0 10px;min-height:22px}
+  .klw-meter-label {display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin:0 2px 5px}
+  .klw-meter {height:12px;border-radius:99px;background:#f6ccdc;overflow:hidden;border:1px solid #fff}
+  #klw-meter-fill {height:100%;width:0;background:linear-gradient(90deg,#ff9ac1,#ed5795);border-radius:99px;transition:width .5s}
+  .klw-actions {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 9px}
+  .klw-action {border:1px solid #ffc5da;border-radius:15px;background:#fff;color:#a34f76;padding:10px 4px;min-height:62px;font-size:12px;font-weight:750;cursor:pointer;box-shadow:0 3px 0 #f8c8db}
+  .klw-action span{display:block;font-size:23px;margin-bottom:3px}
+  .klw-action:active {transform:translateY(2px);box-shadow:0 1px 0 #f8c8db}
+  #klw-twist {display:none;position:relative;margin-top:12px;padding:14px 12px;border-radius:19px;background:linear-gradient(135deg,#ffcee2,#fff);border:1px solid #ffb9d3;animation:klwReveal .8s ease both}
+  #klw-twist.klw-show {display:block}
+  #klw-twist h3{margin:3px 0 6px;color:#b34278;font-size:20px}
+  #klw-twist p{margin:5px 0;font-size:14px;line-height:1.5}
+  .klw-twist-hearts{font-size:22px;letter-spacing:5px;animation:klwFloat 2s infinite}
+  @keyframes klwReveal {from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+  @media(max-width:480px){
+    #klw-launcher{bottom:calc(102px + env(safe-area-inset-bottom)) !important;left:10px !important;padding:7px 10px !important;font-size:12px !important}
+    #klw-launcher .klw-face{font-size:25px}
+    #klw-panel{padding:18px 13px;border-radius:24px}
+    .klw-scene{height:190px}
+    .klw-koala{transform:scale(.9);transform-origin:bottom center;margin:0 -5px}
+    .klw-koala.klw-bby{transform:translateX(-4px) scale(.86)}
+    .klw-koala.klw-cuddle{transform:translateX(8px) rotate(-5deg) scale(.94)}
+    .klw-action{font-size:11px}
+  }
+  @media(prefers-reduced-motion:reduce){#klw-launcher,.klw-heart,#klw-twist{animation:none!important;transition:none!important}}
+</style>
+<button id="klw-launcher" type="button" aria-label="Buka Koala Love World"><span class="klw-face">🐨</span><span>Koala Love World 💗</span></button>
+<div id="klw-overlay" role="dialog" aria-modal="true" aria-labelledby="klw-title">
+  <section id="klw-panel">
+    <button id="klw-close" type="button" aria-label="Tutup">×</button>
+    <div class="klw-kicker">a tiny world just for us</div>
+    <h2 id="klw-title">Koala Love World</h2>
+    <p id="klw-subtitle">Koala BBY mau dipeluk… kamu mau peluk dia? 🥺</p>
+    <div class="klw-scene" aria-label="Dua koala lucu di dunia pink">
+      <div class="klw-cloud"></div><span class="klw-heart h1">♥</span><span class="klw-heart h2">♡</span><span class="klw-heart h3">✦</span>
+      <div class="klw-koalas">
+        <div class="klw-koala klw-player" id="klw-player" aria-label="Koala kamu">
+          <div class="klw-ear left"></div><div class="klw-ear right"></div><div class="klw-body"><div class="klw-belly"></div></div>
+          <div class="klw-head"><i class="klw-eye left"></i><i class="klw-eye right"></i><i class="klw-blush left"></i><i class="klw-blush right"></i><i class="klw-nose"></i><i class="klw-mouth"></i></div><span class="klw-bow">✿</span>
+        </div>
+        <div class="klw-koala klw-bby" id="klw-bby" aria-label="Koala BBY">
+          <div class="klw-ear left"></div><div class="klw-ear right"></div><div class="klw-body"><div class="klw-belly"></div></div>
+          <div class="klw-head"><i class="klw-eye left"></i><i class="klw-eye right"></i><i class="klw-blush left"></i><i class="klw-blush right"></i><i class="klw-nose"></i><i class="klw-mouth"></i></div><span class="klw-bow">♡</span>
+        </div>
+      </div>
+    </div>
+    <div id="klw-status" aria-live="polite">“Bby mau peluk… sini dong 🥺”</div>
+    <div class="klw-meter-label"><span>love meter 💞</span><span id="klw-meter-number">0%</span></div>
+    <div class="klw-meter"><div id="klw-meter-fill"></div></div>
+    <div id="klw-progress-stage" class="klw-progress-stage" aria-live="polite">💗 Tahap 1: Baru kenalan</div>
+    <div class="klw-progress-steps" aria-label="Tahapan kedekatan">
+      <span data-stage="1">🐨 Kenalan</span><span data-stage="2">🌷 Makin dekat</span><span data-stage="3">🫂 Pelukan</span><span data-stage="4">💞 Cinta penuh</span>
+    </div>
+    <div class="klw-actions">
+      <button class="klw-action" type="button" data-klw="hug"><span>🫂</span>Peluk BBY</button>
+      <button class="klw-action" type="button" data-klw="leaf"><span>🌿</span>Kasih eucalyptus</button>
+      <button class="klw-action" type="button" data-klw="pet"><span>🤍</span>Elus kepala</button>
+    </div>
+    <div id="klw-twist" aria-live="polite">
+      <div class="klw-twist-hearts">♡ ♥ ♡</div>
+      <h3>Plot twist… 💌</h3>
+      <p>Koala BBY ternyata nggak butuh hadiah paling mahal atau dunia paling sempurna.</p>
+      <p><strong>Dia cuma pengin tempat paling nyaman: pelukan koala kesayangannya. Dan tempat itu adalah kamu. 🐨💗</strong></p>
+      <p>Kalau dunia lagi capek, semoga kalian selalu jadi rumah untuk satu sama lain. ♡</p>
+    </div>
+  </section>
+</div>
+<script id="koalaLoveWorldScript">
+(function(){
+  const launcher=document.getElementById('klw-launcher');
+  const overlay=document.getElementById('klw-overlay');
+  const close=document.getElementById('klw-close');
+  const status=document.getElementById('klw-status');
+  const fill=document.getElementById('klw-meter-fill');
+  const number=document.getElementById('klw-meter-number');
+  const twist=document.getElementById('klw-twist');
+  const bby=document.getElementById('klw-bby');
+  const player=document.getElementById('klw-player');
+  const subtitle=document.getElementById('klw-subtitle');
+  let love=0, ending=false;
+  function openWorld(){overlay.classList.add('klw-open');document.body.style.overflow='hidden';}
+  function closeWorld(){overlay.classList.remove('klw-open');document.body.style.overflow='';}
+  function update(){
+    fill.style.width=love+'%';number.textContent=love+'%';
+    const stage = love >= 100 ? 4 : love >= 60 ? 3 : love >= 25 ? 2 : 1;
+    const stageText = document.getElementById('klw-progress-stage');
+    if(stageText) stageText.textContent = ['','💗 Tahap 1: Baru kenalan','🌷 Tahap 2: Makin dekat','🫂 Tahap 3: Siap berpelukan','💞 Tahap 4: Cinta penuh!'][stage];
+    document.querySelectorAll('#klw-panel .klw-progress-steps span').forEach(el=>el.classList.toggle('active',Number(el.dataset.stage)<=stage));
+    if(love>=100&&!ending)reveal();
+  }
+  function reveal(){
+    ending=true;twist.classList.add('klw-show');status.textContent='“Yeayyy, akhirnya dipeluk koala kesayangan! 🥹💗”';
+    bby.classList.add('klw-cuddle');player.classList.add('klw-cuddle');
+    subtitle.textContent='Rahasia kecil kalian akhirnya terbuka…';
+    for(let i=0;i<16;i++){const h=document.createElement('span');h.textContent=['♥','♡','✦','💕'][i%4];h.style.cssText='position:fixed;z-index:100020;left:'+(Math.random()*92+2)+'vw;top:'+(Math.random()*85+5)+'vh;color:#ff75aa;font-size:'+(18+Math.random()*18)+'px;pointer-events:none;animation:klwFloat '+(1.6+Math.random()*1.5)+'s ease-in-out forwards';overlay.appendChild(h);setTimeout(()=>h.remove(),3200);}
+  }
+  launcher.addEventListener('click',openWorld);
+  close.addEventListener('click',closeWorld);
+  overlay.addEventListener('click',e=>{if(e.target===overlay)closeWorld();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('klw-open'))closeWorld();});
+  document.querySelectorAll('[data-klw]').forEach(btn=>btn.addEventListener('click',()=>{
+    if(ending){status.textContent='“Peluk lagi? boleh banget, nggak ada batasnya 💗”';bby.classList.add('klw-cuddle');return;}
+    const action=btn.getAttribute('data-klw');
+    if(action==='hug'){love=100;status.textContent='“Mmmm peluknya nyaman banget… jangan dilepas dulu ya 🥺💗”';bby.classList.add('klw-cuddle');player.classList.add('klw-cuddle');}
+    if(action==='leaf'){love=Math.min(100,love+25);status.textContent='“Eucalyptus buat aku?! Makasihh, aku sayang kamu! 🌿💗”';bby.style.transform='translateY(-7px) rotate(4deg)';setTimeout(()=>{if(!ending)bby.style.transform='';},650);}
+    if(action==='pet'){love=Math.min(100,love+20);status.textContent='“Aaaah dielus! Koala BBY jadi malu… 🙈💕”';bby.style.transform='translateY(-5px) scale(1.04)';setTimeout(()=>{if(!ending)bby.style.transform='';},650);}
+    update();
+  }));
+})();
+</script>
+
+
+<style id="klwRealHugFix">
+  #klw-panel .klw-koalas { gap: 0 !important; }
+  #klw-panel .klw-koala { transform-origin: bottom center; }
+  #klw-panel .klw-koala.klw-cuddle {
+    transform: translateX(15px) rotate(-7deg) scale(1.03) !important;
+    z-index: 5;
+  }
+  #klw-panel .klw-koala.klw-player.klw-cuddle {
+    transform: translateX(19px) rotate(7deg) scale(1.02) !important;
+    z-index: 4;
+  }
+  #klw-panel .klw-koala.klw-cuddle::after,
+  #klw-panel .klw-koala.klw-player.klw-cuddle::after {
+    content: "";
+    position: absolute;
+    z-index: 6;
+    top: 76px;
+    width: 43px;
+    height: 18px;
+    border: 7px solid #aaa8b5;
+    border-top-color: #c7c4cf;
+    border-radius: 22px;
+    background: transparent;
+    pointer-events: none;
+  }
+  #klw-panel .klw-koala.klw-cuddle::after {
+    left: 4px;
+    transform: rotate(-24deg);
+  }
+  #klw-panel .klw-koala.klw-player.klw-cuddle::after {
+    right: 0;
+    transform: rotate(24deg);
+  }
+  #klw-panel .klw-koala.klw-cuddle .klw-mouth,
+  #klw-panel .klw-koala.klw-player.klw-cuddle .klw-mouth {
+    width: 12px;
+    height: 7px;
+    border: 0;
+    border-bottom: 2px solid #a45178;
+    border-radius: 0 0 12px 12px;
+  }
+  @media(max-width:480px) {
+    #klw-panel .klw-koala.klw-cuddle {
+      transform: translateX(13px) rotate(-7deg) scale(.92) !important;
+    }
+    #klw-panel .klw-koala.klw-player.klw-cuddle {
+      transform: translateX(16px) rotate(7deg) scale(.9) !important;
+    }
+  }
+</style>
+
+
+<style id="hideOldHugButton">
+  #bbyHugBuddy,
+  #bbyHugToast {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+
+
+<style id="klw-visible-cuddle-redesign">
+/* Pelukan lebih jelas: kepala mendekat, badan saling tumpang tindih, lengan merangkul pasangan */
+#klw-panel .klw-koalas { position:relative; gap:0 !important; }
+#klw-panel .klw-koala { flex:0 0 115px; }
+#klw-panel .klw-koala.klw-cuddle {
+  transform: translateX(-5px) rotate(-9deg) scale(1.03) !important;
+  z-index:4 !important;
+}
+#klw-panel .klw-koala.klw-player.klw-cuddle {
+  transform: translateX(9px) rotate(8deg) scale(1.02) !important;
+  z-index:3 !important;
+}
+/* Arms are long curved strokes crossing around the partner, not small rings on the belly */
+#klw-panel .klw-koala.klw-cuddle::after,
+#klw-panel .klw-koala.klw-player.klw-cuddle::after {
+  top:72px !important;
+  width:66px !important;
+  height:31px !important;
+  border:8px solid #aaa8b5 !important;
+  border-bottom-color:transparent !important;
+  border-radius:30px 30px 18px 18px !important;
+  background:transparent !important;
+  z-index:7 !important;
+}
+#klw-panel .klw-koala.klw-cuddle::after {
+  left:-9px !important;
+  transform:rotate(28deg) !important;
+}
+#klw-panel .klw-koala.klw-player.klw-cuddle::after {
+  right:-8px !important;
+  transform:rotate(-28deg) !important;
+}
+#klw-panel .klw-koala.klw-cuddle .klw-head,
+#klw-panel .klw-koala.klw-player.klw-cuddle .klw-head {
+  transform:translateY(3px);
+}
+@media(max-width:480px) {
+  #klw-panel .klw-koala.klw-cuddle { transform:translateX(-3px) rotate(-9deg) scale(.92) !important; }
+  #klw-panel .klw-koala.klw-player.klw-cuddle { transform:translateX(8px) rotate(8deg) scale(.90) !important; }
+  #klw-panel .klw-koala.klw-cuddle::after,
+  #klw-panel .klw-koala.klw-player.klw-cuddle::after { width:58px !important;height:27px !important; }
+}
+</style>
+
+
+<style id="klw-natural-hug-fix">
+/* Make the koalas lean into each other and use short arms that visibly wrap across the partner. */
+#klw-panel .klw-koalas { align-items:flex-end !important; }
+#klw-panel .klw-koala.klw-player.klw-cuddle {
+  transform: translateX(17px) rotate(8deg) scale(1.02) !important;
+  z-index: 4 !important;
+}
+#klw-panel .klw-koala.klw-bby.klw-cuddle {
+  transform: translateX(-17px) rotate(-8deg) scale(1.03) !important;
+  z-index: 5 !important;
+}
+/* Remove the old oversized loop-shaped arms. */
+#klw-panel .klw-koala.klw-cuddle::after,
+#klw-panel .klw-koala.klw-player.klw-cuddle::after {
+  top: 78px !important;
+  width: 54px !important;
+  height: 15px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: #aaa8b5 !important;
+  box-shadow: inset 0 3px 0 #c9c6d0, 0 1px 2px #8e8793 !important;
+  z-index: 8 !important;
+}
+#klw-panel .klw-koala.klw-player.klw-cuddle::after {
+  right: -7px !important;
+  left: auto !important;
+  transform: rotate(-32deg) !important;
+}
+#klw-panel .klw-koala.klw-bby.klw-cuddle::after {
+  left: -7px !important;
+  right: auto !important;
+  transform: rotate(32deg) !important;
+}
+@media(max-width:480px) {
+  #klw-panel .klw-koala.klw-player.klw-cuddle { transform:translateX(14px) rotate(8deg) scale(.90) !important; }
+  #klw-panel .klw-koala.klw-bby.klw-cuddle { transform:translateX(-14px) rotate(-8deg) scale(.92) !important; }
+  #klw-panel .klw-koala.klw-cuddle::after,
+  #klw-panel .klw-koala.klw-player.klw-cuddle::after { width:49px !important; }
+}
+</style>
+
+
+<style id="klw-progress-style">
+#klw-panel .klw-progress-stage{margin:8px auto 7px;text-align:center;color:#c84f83;font-weight:800;font-size:13px}
+#klw-panel .klw-progress-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin:0 auto 12px;max-width:420px}
+#klw-panel .klw-progress-steps span{font-size:9px;line-height:1.25;text-align:center;padding:6px 2px;border-radius:10px;background:#fff0f6;color:#a68a98;border:1px solid #f7d8e6}
+#klw-panel .klw-progress-steps span.active{background:#ffb4d2;color:#8f315d;border-color:#f27bab;box-shadow:0 2px 7px #f4a1c455;font-weight:800}
+</style>
 </body>
 </html>
